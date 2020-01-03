@@ -1,8 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import HeaderService from './core/services/header.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private movies: any[];
+
+  constructor(private router: ActivatedRoute) { }
+
+  ngOnInit(){
+    this.movies = this.router.snapshot.data['movies'].results
+  }
+}

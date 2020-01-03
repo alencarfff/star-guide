@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import HeaderService from '../core/services/header.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import MovieModel from '../core/models/movie.model';
 
 @Component({
   selector: 'sw-header',
@@ -7,13 +8,11 @@ import HeaderService from '../core/services/header.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  items: any[];
+  movies: MovieModel[];
+  
+  constructor(private router: ActivatedRoute) { }
 
-  constructor(private headerService: HeaderService) { }
-
-  ngOnInit() {
-    this.headerService.getMovies().subscribe(response => {
-      this.items = response.results;
-    });
+  ngOnInit(){
+    this.movies = this.router.snapshot.data['movies'].results;
   }
 }
