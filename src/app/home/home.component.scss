@@ -58,6 +58,7 @@ $card-txt-font-size--xs: calc(.5em + 2vmin);
 
                 img {
                     max-height: $card-height--sm;
+                    filter: brightness(80%);
                 }
 
                 p {
@@ -67,7 +68,7 @@ $card-txt-font-size--xs: calc(.5em + 2vmin);
                     letter-spacing: $card-txt-letter-spacing--sm;
                     font-size: $card-txt-font-size--sm;
                     background: rgba(15, 15, 15, 0.5);
-                    margin-bottom: 20px;
+                    margin-bottom: 15px;
                 }
 
                 // &:hover {
