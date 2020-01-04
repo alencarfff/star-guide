@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"wrapper\" *ngIf=\"isLoading | async\">\n    <div class=\"container\">\n        <span class=\"bubble1\"></span>\n        <span class=\"bubble2\"></span>\n        <span class=\"bubble3\"></span>\n        \n        <img class=\"icon\" src=\"../../assets/stormtrooper.png\" />\n    </div>\n\n    <p class=\"text\">Loading...</p>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"wrapper\" *ngIf=\"isLoading | async\">\n    <div class=\"container\">\n        <span class=\"bubble1\"></span>\n        <span class=\"bubble2\"></span>\n        <span class=\"bubble3\"></span>\n        \n        <img class=\"icon\" src=\"assets/stormtrooper.png\" />\n    </div>\n\n    <p class=\"text\">Loading...</p>\n</div>\n");
 
 /***/ }),
 
