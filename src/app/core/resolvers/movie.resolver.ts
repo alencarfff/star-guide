@@ -9,7 +9,7 @@ export class MovieResolver implements Resolve<MovieModel> {
     constructor(private movieService: MovieService){}
 
     resolve(route: ActivatedRouteSnapshot,
-            state: RouterStateSnapshot) : Observable<any>|Promise<any>|any{
+            state: RouterStateSnapshot) : Observable<MovieModel[]>|Promise<any>|any{
         return this.movieService.getMovies();
     }
 }

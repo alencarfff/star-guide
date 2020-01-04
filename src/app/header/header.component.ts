@@ -4,15 +4,9 @@ import MovieModel from '../core/models/movie.model';
 
 @Component({
   selector: 'sw-header',
-  templateUrl: './header.component.html',
+  templateUrl: '\./header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  movies: MovieModel[];
-  
-  constructor(private router: ActivatedRoute) { }
-
-  ngOnInit(){
-    this.movies = this.router.snapshot.data['movies'].results;
-  }
+export class HeaderComponent {
+  @Input() movies: MovieModel[];
 }
