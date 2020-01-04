@@ -10,6 +10,9 @@ export class MovieResolver implements Resolve<MovieModel> {
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot) : Observable<MovieModel[]>|Promise<any>|any{
-        return this.movieService.getMovies();
+        // return this.movieService.sortByEpisodeId(
+        //     Observable.of([this.movieService.getMovies()])
+        // );
+            return this.movieService.getMovies();
     }
 }

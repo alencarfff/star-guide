@@ -15,6 +15,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieItemComponent } from './movies/movie-item/movie-item.component';
 import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
 import { LoaderService } from './core/services/loader.service';
+import { UtilService } from './core/util.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { LoaderService } from './core/services/loader.service';
   ],
   providers: [,
     LoaderService,
+    UtilService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

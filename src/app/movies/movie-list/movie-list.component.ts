@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import MovieModel from 'src/app/core/models/movie.model';
+import { UtilService } from 'src/app/core/util.service';
 
 @Component({
   selector: 'sw-movie-list',
@@ -9,21 +10,11 @@ import MovieModel from 'src/app/core/models/movie.model';
 export class MovieListComponent implements OnInit {
   @Input() movies: MovieModel[] = [];
 
-  constructor() { }
+  constructor(private utilService: UtilService) { }
 
   ngOnInit() {}
 
-
-  toRoman(num) {
-    var roman = { x: 10, ix: 9, v: 5, iv: 4, i: 1 };
-    var str = '';
-  
-    for (var i of Object.keys(roman)) {
-      var q = Math.floor(num / roman[i]);
-      num -= q * roman[i];
-      str += i.repeat(q);
-    }
-  
-    return str;
+  toRoman(num: number) : string {
+    return this.utilService.toRoman(num);
   }
 }
