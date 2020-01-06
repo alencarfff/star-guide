@@ -1,12 +1,15 @@
 <section class="section-wrapper">
     <nav class="section-inner">
-        <h1>star guide</h1>
+        <h1 (click)="goToHome()">star guide</h1>
         <ol>
-            <li>
+            <li (click)="goToHome()">
                 <mat-icon> home </mat-icon>
             </li>
             
-            <li *ngFor="let movie of movies">{{ toRoman(movie.episode_id) }}</li>
+            <li *ngFor="let movie of movies"
+                (click)="goToMovieDetail(movie.episode_id)">
+                {{ toRoman(movie.episode_id) }}
+            </li>
         </ol>
     </nav>
 </section>

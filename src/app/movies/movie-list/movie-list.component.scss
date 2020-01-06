@@ -2,28 +2,10 @@
 
 //content height = calc(100vh - 50px - 83px - 32px)
 
-$card-height--md: 88vh;
-$card-height--sm: 44vh;
-$card-height--xs: 33vh;
-
-$card-width-normal--md: calc(100% / 7.1); 
-$card-width-normal--sm: calc(100% / 4.1);
-$card-width-normal--xs: 100%;
-
-$card-width-hover--md: calc(100% / 7 + (100% / 4));
-
-$card-txt-letter-spacing--md: 5px;
-$card-txt-letter-spacing--sm: 2.5px;
-$card-txt-letter-spacing--xs: 1px;
-
-$card-txt-font-size--md: calc(1em + 1.25vmin);
-$card-txt-font-size--sm: calc(.375em + 1vmin);
-$card-txt-font-size--xs: calc(.5em + 2vmin);
-
 .wrapper {
-    min-height: $card-height--md;
-    height: 100%;
-    padding: 35px 0; //temp
+    background: $background-color--default;
+    position: relative;
+    overflow: hidden;
 
     //desktop devices
     @media screen and (min-width: 1024px){
@@ -44,6 +26,17 @@ $card-txt-font-size--xs: calc(.5em + 2vmin);
                 bottom: 5%;
             }
         }
+
+        @for $i from 1 through 7 {
+            .movie-item-animated:nth-child(#{$i}){
+                animation: bottom-to-up calc((#{$i} - 0.35) * 425ms);
+            }
+        }
+    }
+
+    @keyframes bottom-to-up {
+        0% { bottom: -110% }
+        100% { bottom: 0 }
     }
 
     //small devices
@@ -64,7 +57,7 @@ $card-txt-font-size--xs: calc(.5em + 2vmin);
                 p {
                     z-index: 10;
                     opacity: 1;
-                    width: 100%;
+                    width: 90%;
                     letter-spacing: $card-txt-letter-spacing--sm;
                     font-size: $card-txt-font-size--sm;
                     background: rgba(15, 15, 15, 0.5);
@@ -122,11 +115,19 @@ $card-txt-font-size--xs: calc(.5em + 2vmin);
 
 .movie-list {
     display: flex;
-    height: 100%;
+    height: $card-height--md;
     flex-flow: row nowrap;
     list-style-type: upper-roman;
     margin: 0;
     padding: 0;
+    width: calc(100vw - 10%);
+    position: relative;
+    background: $background-color--default;
+    background: linear-gradient(180deg, transparentize($background-color--default, 0) 0%, 
+                                        transparentize($background-color--default, 1) 10%, 
+                                        transparentize($background-color--default, 1) 90%, 
+                                        transparentize($background-color--default, 0) 100%);
+
 
     .movie-item {
         display: flex;
@@ -141,6 +142,7 @@ $card-txt-font-size--xs: calc(.5em + 2vmin);
         transition: width 400ms ease-in-out,
                     box-shadow 2s;
         margin: 0 1px;
+        z-index: 10;
         
         .episode {
             position: absolute;

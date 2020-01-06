@@ -10,7 +10,7 @@ export default interface MovieModel {
     starships: string[],
     vehicles: string[],
     species: string[],
-    created: Date,
-    edited: Date,
+    created: string,
+    edited: string,
     url: string
 }
