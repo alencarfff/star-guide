@@ -2482,6 +2482,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.movieService.observeMovieChange().subscribe(function (movie) {
             _this3.movie = movie;
           });
+          this.activateStopTextTimer();
         }
       }, {
         key: "skipOrShowText",
@@ -2490,11 +2491,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.textIsPlaying = false;
           } else {
             this.textIsPlaying = true;
-            var self = this;
-            setTimeout(function () {
-              self.textIsPlaying = false;
-            }, 80 * 1000);
+            this.activateStopTextTimer();
           }
+        }
+      }, {
+        key: "activateStopTextTimer",
+        value: function activateStopTextTimer() {
+          var self = this;
+          setTimeout(function () {
+            self.textIsPlaying = false;
+          }, 88 * 1000);
         }
       }, {
         key: "getMovieFromRoute",

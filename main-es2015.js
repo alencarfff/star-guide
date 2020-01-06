@@ -1311,6 +1311,7 @@ let MovieDetailComponent = class MovieDetailComponent {
         this.movieService.observeMovieChange().subscribe(movie => {
             this.movie = movie;
         });
+        this.activateStopTextTimer();
     }
     skipOrShowText() {
         if (this.textIsPlaying) {
@@ -1318,11 +1319,14 @@ let MovieDetailComponent = class MovieDetailComponent {
         }
         else {
             this.textIsPlaying = true;
-            let self = this;
-            setTimeout(() => {
-                self.textIsPlaying = false;
-            }, 80 * 1000);
+            this.activateStopTextTimer();
         }
+    }
+    activateStopTextTimer() {
+        let self = this;
+        setTimeout(() => {
+            self.textIsPlaying = false;
+        }, 88 * 1000);
     }
     getMovieFromRoute() {
         const movies = this.movieService.movies || null;
