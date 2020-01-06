@@ -28,6 +28,8 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.observeMovieChange().subscribe(movie => {
       this.movie = movie;
     });
+
+    this.activateStopTextTimer();
   }
 
   skipOrShowText(){
@@ -36,12 +38,15 @@ export class MovieDetailComponent implements OnInit {
     }
     else {
       this.textIsPlaying = true;
-
-      let self = this;
-      setTimeout(() => {
-        self.textIsPlaying = false
-      }, 80 * 1000);
+      this.activateStopTextTimer()
     }
+  }
+
+  activateStopTextTimer(){
+    let self = this;
+    setTimeout(() => {
+      self.textIsPlaying = false
+    }, 88 * 1000);
   }
 
   getMovieFromRoute(){

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import WarningService from './core/services/warning.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,15 @@ import WarningService from './core/services/warning.service';
 export class AppComponent {
   showContent: boolean = false;
 
-  constructor(private warningService: WarningService){
+  constructor(private warningService: WarningService,
+              private router: Router){
     let self = this;
     
-    setTimeout(() => self.showContent = true, this.warningService.timeInMs);
+    setTimeout(() => {
+      
+      self.showContent = true;
+      self.router.navigate(['movies']);
+
+    }, this.warningService.timeInMs);
   }
 }

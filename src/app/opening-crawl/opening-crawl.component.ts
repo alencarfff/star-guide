@@ -23,5 +23,4 @@ export class OpeningCrawlComponent implements OnInit {
   toRoman(num: number): string {
     return this.utilService.toRoman(num);
   }
-
 }
