@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterStateSnapshot, Router, ActivatedRoute } from '@angular/router';
 import MovieModel from '../core/models/movie.model';
+import MovieService from '../core/services/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,11 @@ import MovieModel from '../core/models/movie.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  movies: MovieModel[] = [];
-  
-  constructor(private router: ActivatedRoute) { }
+  constructor(private router: ActivatedRoute,
+              private movieService: MovieService) { }
 
   ngOnInit() {
-    this.movies = this.router.snapshot.data['movies'].results;
+    this.movieService.movies = this.router.snapshot.data['movies'];
   }
 
   toRoman(num) {

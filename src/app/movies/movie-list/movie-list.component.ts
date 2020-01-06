@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import MovieModel from 'src/app/core/models/movie.model';
+import { UtilService } from 'src/app/core/util.service';
+import { Router } from '@angular/router';
+import MovieService from 'src/app/core/services/movie.service';
+import WarningService from 'src/app/core/services/warning.service';
 
 @Component({
   selector: 'sw-movie-list',
@@ -7,23 +11,28 @@ import MovieModel from 'src/app/core/models/movie.model';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
-  @Input() movies: MovieModel[] = [];
+  private movies: MovieModel[] = [];
+  private toAnimate: boolean = true;
 
-  constructor() { }
-
-  ngOnInit() {}
-
-
-  toRoman(num) {
-    var roman = { x: 10, ix: 9, v: 5, iv: 4, i: 1 };
-    var str = '';
+  constructor(private movieService: MovieService,
+              private utilService: UtilService,
+              private warningService: WarningService,
+              private router: Router) { }
+              
+  ngOnInit() {
+     this.movies = this.movieService.movies; 
   
-    for (var i of Object.keys(roman)) {
-      var q = Math.floor(num / roman[i]);
-      num -= q * roman[i];
-      str += i.repeat(q);
-    }
-  
-    return str;
+    let self = this;
+    setTimeout(() => self.toAnimate = false, this.warningService.timeInMs);  
+  }
+
+  toRoman(num: number) : string {
+    return this.utilService.toRoman(num);
+  }
+
+  goToMovieDetail(position: number){
+    this.movieService.movie = this.movies[position - 1];
+    
+    this.router.navigate(['movies', position]);
   }
 }

@@ -10,11 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderComponent } from './loader/loader.component';
-import { MovieListComponent } from './movies/movie-list/movie-list.component';
-import { MoviesComponent } from './movies/movies.component';
-import { MovieItemComponent } from './movies/movie-item/movie-item.component';
 import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
-import { LoaderService } from './core/services/loader.service';
+import { MoviesModule } from './movies/movies.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { WarningComponent } from './warning/warning.component';
+import { IntroductionComponent } from './introduction/introduction.component';
 
 @NgModule({
   declarations: [
@@ -23,20 +23,19 @@ import { LoaderService } from './core/services/loader.service';
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    MovieListComponent,
-    MoviesComponent,
-    MovieItemComponent,
-    LoaderComponent
+    ErrorPageComponent,
+    WarningComponent,
+    IntroductionComponent,
   ],
   imports: [
     BrowserModule,
+    MoviesModule,
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,
     BrowserAnimationsModule
   ],
   providers: [,
-    LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

@@ -1,0 +1,45 @@
+<div class="movie">
+    <button (click)="skipOrShowText()">
+        {{ textIsPlaying ? 'Skip Intro' : 'Play Intro' }}
+    </button>
+    
+    <div class="opening_crawl" *ngIf="textIsPlaying">
+        <sw-opening-crawl [movie]="movie"></sw-opening-crawl>
+    </div>
+
+    <div>
+        <h2>Episode {{ movie.episode_id }} - {{ movie.title | lowercase }}</h2>
+        <p>Release date: {{ movie.release_date }}</p>
+    </div>
+
+    <div>
+        <h3>production</h3>
+        <p>Director: {{ movie.director }}</p>
+        <p>Producer: {{ movie.producer }}</p>
+    </div>
+
+    <div>
+        <h3>characters</h3>
+        <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+    </div>
+
+    <div>
+        <h3>planets</h3>
+        <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+    </div>
+
+    <div>
+        <h3>starships</h3>
+        <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+    </div>
+
+    <div>
+        <h3>vehicles</h3>
+        <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+    </div>
+
+    <div>
+        <h3>species</h3>
+        <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+    </div>
+</div>
