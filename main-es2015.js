@@ -490,19 +490,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _core_services_warning_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./core/services/warning.service */ "./src/app/core/services/warning.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
 let AppComponent = class AppComponent {
-    constructor(warningService) {
+    constructor(warningService, router) {
         this.warningService = warningService;
+        this.router = router;
         this.showContent = false;
         let self = this;
-        setTimeout(() => self.showContent = true, this.warningService.timeInMs);
+        setTimeout(() => {
+            self.showContent = true;
+            self.router.navigate(['movies']);
+        }, this.warningService.timeInMs);
     }
 };
 AppComponent.ctorParameters = () => [
-    { type: _core_services_warning_service__WEBPACK_IMPORTED_MODULE_2__["default"] }
+    { type: _core_services_warning_service__WEBPACK_IMPORTED_MODULE_2__["default"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

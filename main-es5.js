@@ -990,21 +990,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _core_services_warning_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ./core/services/warning.service */
     "./src/app/core/services/warning.service.ts");
+    /* harmony import */
 
-    var AppComponent = function AppComponent(warningService) {
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+
+    var AppComponent = function AppComponent(warningService, router) {
       _classCallCheck(this, AppComponent);
 
       this.warningService = warningService;
+      this.router = router;
       this.showContent = false;
       var self = this;
       setTimeout(function () {
-        return self.showContent = true;
+        self.showContent = true;
+        self.router.navigate(['movies']);
       }, this.warningService.timeInMs);
     };
 
     AppComponent.ctorParameters = function () {
       return [{
         type: _core_services_warning_service__WEBPACK_IMPORTED_MODULE_2__["default"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
       }];
     };
 
