@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import MovieModel from '../core/models/movie.model';
 
 @Component({
   selector: 'sw-header',
-  templateUrl: './header.component.html',
+  templateUrl: '\./header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit() {}
+export class HeaderComponent {
+  @Input() movies: MovieModel[];
 }

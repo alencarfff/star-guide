@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <ol class="list movie-list">
+        <li *ngFor="let movie of movies" 
+            class="item movie-item">
+            <span class="episode">episode {{ toRoman(movie.episode_id) }}</span>
+            <p class="name">{{ movie.title }}</p>
+            <img class="image" [src]="'assets/img/movies/movie-' + toRoman(movie.episode_id) + '.jpg'" />
+       </li>
+    </ol>
+</div>

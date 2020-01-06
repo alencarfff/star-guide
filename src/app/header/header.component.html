@@ -5,14 +5,8 @@
             <li>
                 <mat-icon> home </mat-icon>
             </li>
-            <li>i</li>
-            <li>ii</li>
-            <li>iii</li>
-            <li>iv</li>
-            <li>v</li>
-            <li>vi</li>
-            <li>vii</li>
-            <li>viii</li>
+            
+            <li *ngFor="let movie of movies">{{ movie.episode_id }}</li>
         </ol>
     </nav>
 </section>

@@ -1,46 +1,11 @@
-<section class="section-wrapper">
-    <main class="content">
-        <ol class="list movie-list">
-            <li class="item movie-item">
-                <span class="episode">episode i</span>
-                <p class="name">a ameaça fantasma</p>
-                <img class="image" src="assets/img/movies/movie-i.jpg" />
-            </li>
-            <li class="item movie-item">
-                <span class="episode">episode ii</span>
-                <p class="name">o ataque dos clones</p>
-                <img class="image" src="assets/img/movies/movie-ii.jpg" />
-            </li>
-            <li class="item movie-item">
-                <span class="episode">episode iii</span>
-                <p class="name">a vingança dos sith </p>
-                <img class="image" src="assets/img/movies/movie-iii.jpg" />
-            </li>
-            <li class="item movie-item">
-                <span class="episode">episode iv</span>
-                <p class="name">uma nova esperança</p>
-                <img class="image" src="assets/img/movies/movie-iv.jpg" />
-            </li>
-            <li class="item movie-item">
-                <span class="episode">episode v</span>
-                <p class="name">o império contra-ataca</p>
-                <img class="image" src="assets/img/movies/movie-v.jpg" />
-            </li>
-            <li class="item movie-item">
-                <span class="episode">episode vi</span>
-                <p class="name">o retorno de jedi</p>
-                <img class="image" src="assets/img/movies/movie-vi.jpg" />
-            </li>
-            <li class="item movie-item">
-                <span class="episode">episode vii</span>
-                <p class="name">o despertar da força</p>
-                <img class="image" src="assets/img/movies/movie-vii.jpg" />
-            </li>
-            <!-- <li class="item movie-item">
-                <span class="episode">episode viii</span>
-                <p class="name">os ultimos jedi</p>
-                <img class="image" src="assets/img/movies/movie-viii.jpg" />
-            </li> -->
-        </ol>
-    </main>
-</section>
+<div id="app">
+    <sw-header [movies]="movies"></sw-header>
+    
+    <section class="section-wrapper">
+        <main class="content">
+            <router-outlet></router-outlet>
+        </main>
+    </section>
+
+    <sw-footer></sw-footer>
+</div>

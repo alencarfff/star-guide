@@ -35,6 +35,15 @@ section {
             flex-grow: 1;
             padding: 0;
     
+            mat-icon {
+                font-size: $txt-font-size--header;
+                width: unset;
+                height: unset;
+                line-height: unset;
+                display: inline-block;
+                margin-top: 6px;
+            }
+
             li {
                 font-size: $txt-font-size--header;
                 padding: 0 8.75px;
