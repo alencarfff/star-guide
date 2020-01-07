@@ -1,7 +1,7 @@
 @import "global/variables";
 
 section {
-    background: linear-gradient(to top, #000 80%, rgba(0,0,0,0));
+    // background: linear-gradient(to top, #000 80%, rgba(0,0,0,0));
     width: 100%;
     max-height: $footer-max-height;
 }
@@ -13,7 +13,7 @@ p {
     font-family: 'Star Jedi', sans-serif;
 
     a {
-        color: #fff;
+        color: $txt-color--default;
         text-decoration: none;
         border-bottom: 1px solid cyan;
         transition: color 300ms ease,

@@ -16,6 +16,8 @@ $final-bb2: 150px;
 $initial-bb3: 150px;
 $final-bb3: 200px;
 
+@import 'global/variables';
+
 @mixin abs-center {
     position: absolute;
     top: 50%;
@@ -84,7 +86,7 @@ $final-bb3: 200px;
 
 
 .text {
-    color: #fff;
+    color: $txt-color--default;
     font-size: 2.5em;
     margin: .5em 0 0 .25em;
 }

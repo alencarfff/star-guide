@@ -14,7 +14,6 @@ import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
 import { MoviesModule } from './movies/movies.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { WarningComponent } from './warning/warning.component';
-import { IntroductionComponent } from './introduction/introduction.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { IntroductionComponent } from './introduction/introduction.component';
     LoaderComponent,
     ErrorPageComponent,
     WarningComponent,
-    IntroductionComponent,
   ],
   imports: [
     BrowserModule,

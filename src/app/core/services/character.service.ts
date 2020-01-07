@@ -18,6 +18,10 @@ export class CharacterService {
     return this.http.get<CharacterModel[]>(`${this.url}/people`);
   }
 
+  requestCharacterByUrl(url: string){
+    return this.http.get<CharacterModel>(`${url}`);
+  }
+
   set characters(characters: CharacterModel[]){
     this._characters = characters;
   }
