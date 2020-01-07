@@ -1,7 +1,4 @@
-<div id="app">
-    <sw-header></sw-header>
-    
-    <router-outlet></router-outlet>
+<!-- <sw-warning></sw-warning> -->
 
-    <sw-footer></sw-footer>
-</div>    
+<sw-loader></sw-loader>
+<router-outlet *ngIf="showContent"></router-outlet>

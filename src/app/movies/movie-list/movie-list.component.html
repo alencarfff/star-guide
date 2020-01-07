@@ -1,0 +1,11 @@
+<div class="wrapper">
+    <ol class="list movie-list">
+        <li *ngFor="let movie of movies"
+            (click)="goToMovieDetail(movie.episode_id)" 
+            class="item movie-item" [ngClass]="toAnimate ? 'movie-item-animated' : ''">
+            <span class="episode">episode {{ toRoman(movie.episode_id) }}</span>
+            <p class="name">{{ movie.title }}</p>
+            <img class="image" [src]="'assets/img/movies/' + toRoman(movie.episode_id) + '/bg.jpg'" />
+       </li>
+    </ol>
+</div>

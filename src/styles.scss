@@ -1,7 +1,11 @@
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
+@import 'modules/_fonts';
+@import 'global/variables';
+
 @import '~@angular/material/theming';
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -28,15 +32,23 @@ $star-guide-theme: mat-light-theme($star-guide-primary, $star-guide-accent, $sta
 
 /* You can add global styles to this file, and also import other style files */
 
-@import "global/variables";
+html, 
+body { 
+    height: 100%; 
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-body {
+body { 
+    margin: 0; 
+    font-family: "Tahoma", "Source Sans Pro", "Roboto", "Helvetica Neue", sans-serif; 
     background: $background-color--default;
     text-rendering: optimizeLegibility;
-    font-family: $txt-font-family--default;
+}
+
+::selection {
+    background: #d400ff; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #d400ff; /* Gecko Browsers */
 }
 
 .section-wrapper {
@@ -44,7 +56,30 @@ body {
     box-sizing: border-box;
 
     .section-inner {
-        padding: 8px 0;
         box-sizing: inherit;
+    }
+}
+
+.bold {
+    font-weight: 700;
+}
+
+
+
+button {
+    padding: 5px 15px;
+    height: 30px;
+    border: 2px solid #face51;
+    background: none;
+    color: #face51;
+    font-weight: 700;
+    border-radius: 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 175ms ease;
+
+    &:hover {
+        color: #151515;
+        background: #face51;
     }
 }

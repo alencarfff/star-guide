@@ -1,0 +1,190 @@
+@import "global/variables";
+
+//content height = calc(100vh - 50px - 83px - 32px)
+
+.wrapper {
+    background: $background-color--default;
+    position: relative;
+    overflow: hidden;
+
+    //desktop devices
+    @media screen and (min-width: 1024px){
+
+        .movie-item:hover {
+            width: $card-width-hover--md;
+
+            p {
+                z-index: 10;
+                opacity: 1;
+                font-size: $card-txt-font-size--md;
+            }
+
+            img { filter: brightness(35%) }
+
+            .episode { 
+                opacity: .25;
+                bottom: 5%;
+            }
+        }
+
+        @for $i from 1 through 7 {
+            .movie-item-animated:nth-child(#{$i}){
+                animation: bottom-to-up calc((#{$i} - 0.35) * 425ms);
+            }
+        }
+    }
+
+    @keyframes bottom-to-up {
+        0% { bottom: -110% }
+        100% { bottom: 0 }
+    }
+
+    //small devices
+    @media screen and (max-width: 1024px){
+        .movie-list {
+            flex-flow: row wrap;
+
+            .movie-item {
+                width: $card-width-normal--sm;
+                height: $card-height--sm;
+                align-items: flex-end;
+
+                img {
+                    max-height: $card-height--sm;
+                    filter: brightness(80%);
+                }
+
+                p {
+                    z-index: 10;
+                    opacity: 1;
+                    width: 90%;
+                    letter-spacing: $card-txt-letter-spacing--sm;
+                    font-size: $card-txt-font-size--sm;
+                    background: rgba(15, 15, 15, 0.5);
+                    margin-bottom: 15px;
+                }
+
+                // &:hover {
+                //     p {
+                //         font-size: $card-txt-font-size--sm;
+                //     }
+
+                //     .episode { 
+                //         opacity: .25;
+                //         bottom: 5%;
+                //     }
+                // }
+            }
+        }
+    }
+
+    //extra small devices
+    @media screen and (max-width: 580px){
+        .movie-list {
+            flex-flow: row wrap;
+
+            .movie-item {
+                width: $card-width-normal--xs;
+                height: $card-height--xs;
+                margin: 3px 0;
+                align-items: center;
+
+                img { 
+                    filter: brightness(35%);
+                    max-height: unset;
+                    width: 100%;
+                    height: auto;
+                }
+
+                p {
+                    width: 100%;
+                    background: none;
+                    font-size: $card-txt-font-size--xs;
+                    letter-spacing: $card-txt-letter-spacing--xs;
+                    margin-bottom: 0;
+                }
+
+                .episode {
+                    opacity: .25;
+                    bottom: 5%;
+                }
+            }
+        }        
+    }    
+}
+
+.movie-list {
+    display: flex;
+    height: $card-height--md;
+    flex-flow: row nowrap;
+    list-style-type: upper-roman;
+    margin: 0;
+    padding: 0;
+    width: calc(100vw - 10%);
+    position: relative;
+    background: $background-color--default;
+    background: linear-gradient(180deg, transparentize($background-color--default, 0) 0%, 
+                                        transparentize($background-color--default, 1) 10%, 
+                                        transparentize($background-color--default, 1) 90%, 
+                                        transparentize($background-color--default, 0) 100%);
+
+
+    .movie-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        height: $card-height--md;
+        width: $card-width-normal--md;
+        cursor: pointer;
+        user-select: none;
+        transition: width 400ms ease-in-out,
+                    box-shadow 2s;
+        margin: 0 1px;
+        z-index: 10;
+        
+        .episode {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            color: $txt-color--default;
+            font-family: $txt-font-family--primary;
+            font-size: calc(.5em + 1.375vmin);
+            transition: opacity 650ms,
+                        bottom 350ms;
+        }
+
+        p {
+            text-align: center;
+            color: $txt-color--default;
+            font-weight: 700;
+            letter-spacing: $card-txt-letter-spacing--md;
+            z-index: 0;
+            opacity: 0;
+            font-family: $txt-font-family--primary;
+            font-size: 0.005px;
+            margin: 0;
+            transition: opacity 650ms, 
+                        font-size 500ms,
+                        width 500ms;
+            user-select: none;
+            width: 82%;
+        }
+
+        img {
+            z-index: -1;
+            width: auto;
+            height: 100%;
+            max-height: $card-height--md;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: brightness(100%);
+            transition: filter 250ms ease-in-out;
+        }
+    }
+}

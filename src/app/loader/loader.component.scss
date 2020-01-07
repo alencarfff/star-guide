@@ -1,0 +1,131 @@
+$icon-area-size: 200px;
+$icon-size: 100px;
+
+$animation-interval: 3000ms;
+
+$color-bb2: rgb(20, 147, 220);
+$color-bb1: rgb(23, 102, 204);
+$color-bb3: rgb(69, 29, 179);
+
+$initial-bb1: 200px;
+$final-bb1: 175px;
+
+$initial-bb2: 175px;
+$final-bb2: 150px;
+
+$initial-bb3: 150px;
+$final-bb3: 200px;
+
+@import 'global/variables';
+
+@mixin abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper {
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 120;
+
+    .container {
+        width: $final-bb3;
+        height: $final-bb3;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .bubble1,
+        .bubble2,
+        .bubble3 {
+            content: "";
+            @include abs-center;
+            border-radius: 100%;
+            opacity: 0;
+        }
+        
+        .bubble1 {
+            z-index: 145;
+            width: $initial-bb1;
+            height: $initial-bb1;
+            animation: increase-bb1 $animation-interval infinite;
+        }
+        .bubble2 {
+            z-index: 146;
+            width: $initial-bb2;
+            height: $initial-bb2;
+            animation: increase-bb2 $animation-interval infinite;
+        }    
+        .bubble3 {
+            z-index: 147;
+            width: $initial-bb3;
+            height: $initial-bb3;
+            animation: increase-bb3 $animation-interval infinite;
+        }
+        
+        .icon {
+            z-index: 1000;
+            width: $icon-size;
+            height: $icon-size;
+            animation: bump $animation-interval infinite;
+            opacity: 1;
+        }
+    }
+}
+
+
+.text {
+    color: $txt-color--default;
+    font-size: 2.5em;
+    margin: .5em 0 0 .25em;
+}
+
+@keyframes increase-bb1 {
+    0% { width: $initial-bb1; height: $initial-bb1; background: $color-bb1; opacity: .5; }
+    50% { width: $final-bb1; height: $final-bb1; background: $color-bb1; opacity: 0; }
+}
+
+@keyframes increase-bb2 {
+    0% { opacity: 0 }
+    25% { width: $initial-bb2; height: $initial-bb2; background: $color-bb2; opacity: .75; }
+    75% { width: $final-bb2; height: $final-bb2; background: $color-bb2; opacity: 0; }
+}
+
+@keyframes increase-bb3 {
+    0% { opacity: 0 } 
+    50% { width: $initial-bb3; height: $initial-bb3; background: $color-bb3; opacity: .25; }
+    100% { width: $final-bb3; height: $final-bb3; background: $color-bb3; opacity: .5; }
+}
+
+@keyframes hide-and-seek {
+    0% { opacity: 0; }
+    15% { opacity: 1; 
+        // transform: rotate(0);
+     } 
+    50% { opacity: 1; 
+        // transform: rotate(360deg);
+     } 
+    97.5% { opacity: 0; 
+        // transform: rotate(360deg) 
+    }
+}
+
+@keyframes bump {
+    5% { width: $icon-size; height: $icon-size; } 
+    45% { width: $icon-size - 20px; height: $icon-size - 20px; }
+    55% { width: $icon-size - 20px; height: $icon-size - 20px; }
+    95% { width: $icon-size; height: $icon-size; } 
+}
+
+

@@ -9,11 +9,11 @@ ol {
 }
 
 section {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    background: linear-gradient(to bottom, #000 80%, rgba(0,0,0,0));
+    // position: absolute;
+    // top: 0;
+    // width: 100%;
+    // z-index: 100;
+    max-height: $header-max-height;
 
     nav {
         justify-content: space-between;
@@ -26,8 +26,10 @@ section {
             flex-grow: 1;
             font-size: calc(#{$txt-font-size--header} + .85vmin);
             color: $txt-color--default;
-            font-family: $txt-font-family--title;
+            font-family: $txt-font-family--primary;
             font-weight: 400;
+            user-select: none;
+            cursor: pointer;
         }
 
         ol {
@@ -35,7 +37,21 @@ section {
             flex-grow: 1;
             padding: 0;
     
+            > * {
+                user-select: none;
+            }
+
+            mat-icon {
+                font-size: $txt-font-size--header;
+                width: unset;
+                height: unset;
+                line-height: unset;
+                display: inline-block;
+                margin-top: 6px;
+            }
+
             li {
+                font-family: $txt-font-family--primary;
                 font-size: $txt-font-size--header;
                 padding: 0 8.75px;
                 cursor: pointer;

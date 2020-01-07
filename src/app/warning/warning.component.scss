@@ -1,0 +1,43 @@
+@import 'global/variables';
+
+.wrapper {
+    position: fixed;
+    z-index: 10000;
+    background: #000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+
+    h3 {
+        font-family: 'Impact', sans-serif;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 5em;
+        margin: 0;
+        color: crimson;
+    }
+
+    p {
+        color: $txt-color--default;
+        font-size: calc(1em + 2vmin);
+        letter-spacing: 5px;
+    }
+
+    h3, 
+    p {
+        opacity: 0;
+        animation: hide-and-seek 4s ease-in-out;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@keyframes hide-and-seek {
+    0% { opacity: 0 }
+    25% { opacity: 1 }
+    75% { opacity: 1 }
+    100% { opacity: 0 }
+}

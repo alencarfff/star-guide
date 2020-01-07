@@ -1,13 +1,9 @@
 @import "global/variables";
 
 section {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 100;
-    background: linear-gradient(to top, #000 80%, rgba(0,0,0,0));
+    // background: linear-gradient(to top, #000 80%, rgba(0,0,0,0));
     width: 100%;
+    max-height: $footer-max-height;
 }
 
 p {
@@ -17,6 +13,15 @@ p {
     font-family: 'Star Jedi', sans-serif;
 
     a {
-        color: $txt-color--hover;
+        color: $txt-color--default;
+        text-decoration: none;
+        border-bottom: 1px solid cyan;
+        transition: color 300ms ease,
+                    border-bottom 300ms ease;
+
+        &:hover {
+            color: cyan;
+            border-bottom: 1px solid #000;
+        }
     }
 }

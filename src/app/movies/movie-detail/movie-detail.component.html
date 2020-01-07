@@ -1,0 +1,67 @@
+<div class="movie">    
+    <button *ngIf="textIsPlaying" (click)="skipOrShowText()">Skip Intro</button>          
+
+    <div class="opening-crawl" *ngIf="textIsPlaying">
+        <sw-opening-crawl [movie]="movie"></sw-opening-crawl>
+    </div>
+    
+    <div class="content">
+        <div class="section-data">
+            <div class="column-left">
+                <div class="header">
+                    <h2 class="title">{{ movie.title }} </h2>
+                    <p class="subtitle">Episode {{ toRoman(movie.episode_id) | uppercase }}</p>
+                </div>
+
+                <div class="production mv-25">
+                    <p><span class="bold">Director:</span> {{ movie.director }}</p>
+                    <p><span class="bold">Producer:</span> {{ movie.producer }}</p>
+                    <p><span class="bold">Release date:</span> {{ movie.release_date }}</p>
+                </div>
+                
+                <hr class="mv-25" />
+
+                <div class="mv-25">
+                    <div class="row">
+                        <h3>Opening Crawl</h3>
+                        <button (click)="skipOrShowText()">Play Intro</button>                    
+                    </div>
+          
+                    <p class="opening-txt">{{ movie.opening_crawl }}</p>
+                </div>    
+            </div>
+            <div class="column-right">
+                <div class="image-container">
+                    <img [src]="'/assets/img/movies/' + toRoman(movieId) + '/bg.jpg'" />
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <sw-character-list
+                [characterUrls]="movie.characters"
+                [movieId]="movie.episode_id">
+            </sw-character-list>
+        </div>
+        
+        <div>
+            <h3>Planets</h3>
+            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+        </div>
+        
+        <div>
+            <h3>Starships</h3>
+            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+        </div>
+        
+        <div>
+            <h3>Vehicles</h3>
+            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+        </div>
+        
+        <div>
+            <h3>Species</h3>
+            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
+        </div>
+    </div>
+</div>

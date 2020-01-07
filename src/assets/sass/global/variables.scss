@@ -1,12 +1,37 @@
-$background-color--default: #050505;
+$background-color--default: #070707;
+$background-color--secondary: #000;
 
 // $txt-color--default: #171715;
-$txt-color--default: #f1f1f1;
-$txt-color--hover: gold;
+$txt-color--default: #e9e9e9;
+$txt-color--hover: crimson;
 
-$txt-font-family--default: "star jedi", monospace;
-$txt-font-family--title: "Star Jedi", sans-serif;
+$txt-font-family--primary: "Star Jedi", monospace;
+$txt-font-family--secondary: "Tahoma", sans-serif;
 
 $txt-font-size--header: calc(.35em + 2vmin);
 
 $element-hover--color: #02ffdd;
+
+$header-max-height: 38px;
+$footer-max-height: 28px;
+$content-min-height: calc(100vh - #{$header-max-height} - #{$footer-max-height} - 10px);
+
+/* MOVIE LIST */
+
+$card-height--md: 88vh;
+$card-height--sm: 44vh;
+$card-height--xs: 33vh;
+
+$card-width-normal--md: calc(100% / 7.1); 
+$card-width-normal--sm: calc(100% / 4.1);
+$card-width-normal--xs: 100%;
+
+$card-width-hover--md: calc(100% / 7 + (100% / 4));
+
+$card-txt-letter-spacing--md: 5px;
+$card-txt-letter-spacing--sm: 2.5px;
+$card-txt-letter-spacing--xs: 1px;
+
+$card-txt-font-size--md: calc(1em + 1.25vmin);
+$card-txt-font-size--sm: calc(.375em + 1vmin);
+$card-txt-font-size--xs: calc(.5em + 2vmin);
