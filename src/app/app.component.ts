@@ -13,11 +13,11 @@ export class AppComponent {
               private router: Router){
 
     let self = this;
-    // setTimeout(() => {
+    setTimeout(() => {
       
       self.showContent = true;
-    //   self.router.navigate(['movies']);
+      self.router.navigate(['movies']);
 
-    // }, this.warningService.timeInMs);
+    }, this.warningService.timeInMs);
   }
 }
