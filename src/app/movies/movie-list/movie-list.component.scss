@@ -150,7 +150,8 @@
             width: 100%;
             text-align: center;
             opacity: 0;
-            color: #fff;
+            color: $txt-color--default;
+            font-family: $txt-font-family--primary;
             font-size: calc(.5em + 1.375vmin);
             transition: opacity 650ms,
                         bottom 350ms;
@@ -158,11 +159,12 @@
 
         p {
             text-align: center;
-            color: #f1f1f1;
+            color: $txt-color--default;
             font-weight: 700;
             letter-spacing: $card-txt-letter-spacing--md;
             z-index: 0;
             opacity: 0;
+            font-family: $txt-font-family--primary;
             font-size: 0.005px;
             margin: 0;
             transition: opacity 650ms, 

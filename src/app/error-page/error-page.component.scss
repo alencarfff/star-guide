@@ -1,4 +1,6 @@
+@import 'global/variables';
+
 p {
-    color: #fff;
+    color: $txt-color--default;
     font-size: 8em;
 }
