@@ -2,14 +2,22 @@
     <nav class="section-inner">
         <h1 (click)="goToHome()">star guide</h1>
         <ol>
-            <li (click)="goToHome()">
-                <mat-icon> home </mat-icon>
+            <li (click)="goTo('')">
+                <!-- <mat-icon> home </mat-icon> -->
+                Home
             </li>
             
-            <li *ngFor="let movie of movies"
+            <li (click)="goTo('movies')">Movies</li>
+            <li (click)="goTo('characters')">Characters</li>
+            <li (click)="goTo('planets')">Planets</li>
+            <li (click)="goTo('starships')">Starships</li>
+            <li (click)="goTo('vehicles')">Vehicles</li>
+            <li (click)="goTo('species')">Species</li>
+
+            <!-- <li *ngFor="let movie of movies"
                 (click)="goToMovieDetail(movie.episode_id)">
                 {{ toRoman(movie.episode_id) }}
-            </li>
+            </li> -->
         </ol>
     </nav>
 </section>

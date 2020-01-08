@@ -14,8 +14,8 @@ export class CharacterService {
 
   constructor(private http: HttpClient){}
 
-  requestCharacters() : Observable<CharacterModel[]>{
-    return this.http.get<CharacterModel[]>(`${this.url}/people`);
+  requestCharactersPage(page: number) : Observable<any>{
+    return this.http.get<any>(`${this.url}/people?page=${page}`);
   }
 
   requestCharacterByUrl(url: string){

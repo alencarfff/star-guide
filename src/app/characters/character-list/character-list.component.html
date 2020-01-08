@@ -1,7 +1,4 @@
-<div class="row">
-    <h3>Characters</h3>
-    <button>Expand ({{ characters.length }})</button>
-</div>
+<h3>Characters</h3>
 
 <ul class="character-list">
     <li *ngFor="let character of characters" class="character-item">
@@ -15,3 +12,9 @@
         </div>
     </li>
 </ul>
+
+<div class="row">
+    <button (click)="previousPage()">Previous</button>
+    <span>{{ pageable.page }}</span>
+    <button (click)="nextPage()">Next</button>
+</div>

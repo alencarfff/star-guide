@@ -10,14 +10,13 @@ h4 {
 
 ul {
     display: flex;
-    flex-flow: row nowrap;
-    overflow-x: scroll;
-    max-width: 95%;
+    flex-flow: row wrap;
 }
 
 li {
-    min-width: calc(100% / 4);
-    max-width: calc(100% / 4);
+    list-style-type: none;
+    min-width: calc(100% / 6);
+    max-width: calc(100% / 6);
     border: 1px solid white;
 
     &:not(:first-child) {
@@ -36,13 +35,13 @@ li {
         padding: 0 25px;
         
         .name {
-            font-size: 1.5em;
+            font-size: 1em;
         }
     }
 }
 
 .image-container {
-    max-width: 150px;
+    max-width: 100px;
 
     img {
         width: 100%;

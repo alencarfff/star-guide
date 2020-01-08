@@ -9,42 +9,50 @@ import { Subscription } from 'rxjs';
   templateUrl: './character-list.component.html',
   styleUrls: ['./character-list.component.scss']
 })
-export class CharacterListComponent implements OnInit, OnDestroy {
-  @Input() characterUrls: string[];
-  @Input() movieId;
+export class CharacterListComponent implements OnInit {
   private characters: CharacterModel[] = [];
-  private subscriptions: Subscription[] = [];
+  private pageable: any = {
+    page: 1,
+    next: null,
+    previous: null
+  }
 
-  constructor(private characterService: CharacterService,
-              private utilService: UtilService) {}
+  constructor(private utilService: UtilService,
+              private characterService: CharacterService) {}
 
-  private readonly moviesAssetsPath: string = "/src/assets/img/movies";
+  private readonly assetsPath: string = "/src/assets/img/movies";
 
   ngOnInit() {
-    this.characterUrls.forEach(characterUrl => {
-      this.subscriptions.push(
-        this.characterService.requestCharacterByUrl(characterUrl).subscribe(character => {
-          this.characters.push(character);
-        })
-      );
+    this.request();
+  }
+
+  request(){
+    this.characterService.requestCharactersPage(this.pageable.page).subscribe(response => {
+      this.characters = response.results;
+      this.pageable.next = response.next;
+      this.pageable.previous = response.previous;      
     });
   }
 
-  toRoman(num: number){
-    return this.utilService.toRoman(num);
+  nextPage(){
+    if( this.pageable.next ){
+      this.pageable.page++;
+      this.request();
+    }
+  }
+
+  previousPage(){
+    if( this.pageable.previous ){
+      this.pageable.page--;
+      this.request();
+    }
   }
 
   getCharacterImage(character: CharacterModel){
-    return `${this.moviesAssetsPath}/${this.toRoman(this.movieId)}/characters/${this.getCharacterId(character.url)}`;
+    return `${this.assetsPath}/characters/${this.getCharacterId(character.url)}`;
   }
 
-  getCharacterId(url: string){
+  getCharacterId(url: string) : number {
     return 0;
-  }
-
-  ngOnDestroy(){
-    this.subscriptions.forEach(sub => {
-      sub.unsubscribe();
-    });
   }
 }
