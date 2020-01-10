@@ -14,6 +14,11 @@ import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
 import { MoviesModule } from './movies/movies.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { WarningComponent } from './warning/warning.component';
+import { CharactersModule } from './characters/characters.module';
+import { PlanetsModule } from './planets/planets.module';
+import { VehiclesModule } from './vehicles/vehicles.module';
+import { SpeciesModule } from './species/species.module';
+import { StarshipsModule } from './starships/starships.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import { WarningComponent } from './warning/warning.component';
   imports: [
     BrowserModule,
     MoviesModule,
+    CharactersModule,
+    PlanetsModule,
+    StarshipsModule,
+    VehiclesModule,
+    SpeciesModule,
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,

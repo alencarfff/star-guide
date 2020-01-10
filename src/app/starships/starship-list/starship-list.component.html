@@ -1,0 +1,8 @@
+<h3>Starships</h3>
+
+<sw-card-list [items]="starships" (onClick)="goToDetail($event)"></sw-card-list>
+
+<sw-paginator
+    (onChange)="request()"
+    [pageable]="pageable">
+</sw-paginator>

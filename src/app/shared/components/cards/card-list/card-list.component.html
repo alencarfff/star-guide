@@ -1,0 +1,7 @@
+<ul>
+    <li *ngFor="let item of items; let i = index" (click)="click(i)">
+        <sw-card [title]="item.name"
+            image="../../../assets/img/planets/tattoine.jpeg" >
+        </sw-card>
+    </li>
+</ul>

@@ -1,19 +1,12 @@
 @import 'global/variables';
 
-h5,
-h3,
-h2,
-p {
-    color: $txt-color--default;
-}
-
 .movie {
 
     .content {
         padding: 25px;
         background: $background-color--secondary;
         border-radius: 25px;
-
+        height: calc(#{$content-min-height} - 50px);
         
         .section-data {
             display: flex;

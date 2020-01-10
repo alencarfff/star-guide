@@ -42,6 +42,7 @@ body {
     font-family: "Tahoma", "Source Sans Pro", "Roboto", "Helvetica Neue", sans-serif; 
     background: $background-color--default;
     text-rendering: optimizeLegibility;
+    color: $txt-color--default;
 }
 
 ::selection {

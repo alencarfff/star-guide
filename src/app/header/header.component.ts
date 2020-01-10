@@ -10,27 +10,17 @@ import MovieModel from '../core/models/movie.model';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  private movies: MovieModel[];
 
   constructor(private router: Router, 
-              private utilService: UtilService,
-              private movieService: MovieService){}
+              private utilService: UtilService){}
 
-  ngOnInit(){
-    this.movies = this.movieService.movies;
-  }
+  ngOnInit(){}
 
-  goToHome(){
-    this.router.navigate(['movies']);
+  goTo(url: string){
+    this.router.navigate([url]);
   }
 
   toRoman(num: number) : string {
     return this.utilService.toRoman(num);
-  }
-
-  goToMovieDetail(position: number){
-    this.movieService.movie = this.movies[position - 1];
-        
-    this.router.navigate(['movies', position]);
   }
 }
