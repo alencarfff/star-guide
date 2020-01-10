@@ -1,1 +1,8 @@
-<p>vehicle-list works!</p>
+<h3>Vehicles</h3>
+
+<sw-card-list [items]="vehicles" (onClick)="goToDetail($event)"></sw-card-list>
+
+<sw-paginator
+    (onChange)="request()"
+    [pageable]="pageable">
+</sw-paginator>

@@ -3,30 +3,27 @@ import CharacterModel from '../models/character.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment'
 import { Observable } from 'rxjs';
+import CachedPagination from '../classes/cached-pagination.class';
 
 @Injectable({ providedIn: 'root' })
-export class CharacterService {
-  private url: string = environment.url;
+export class CharacterService extends CachedPagination {
+  private url: string = environment.url + "/people";
 
-  private _characters: CharacterModel[];
+  private _characters: CharacterModel[][] = new Array();
   private _character: CharacterModel;
-  private characterUpdate = new EventEmitter<CharacterModel>();
+  // private characterUpdate = new EventEmitter<CharacterModel>();
 
-  constructor(private http: HttpClient){}
-
-  requestCharactersPage(page: number) : Observable<any>{
-    return this.http.get<any>(`${this.url}/people?page=${page}`);
+  requestPage(page: number) : Observable<any>{
+    return super.requestPage(page, this.url);
   }
-
-  requestCharacterByUrl(url: string){
-    return this.http.get<CharacterModel>(`${url}`);
+  requestByUrl(url: string) : Observable<CharacterModel>{
+    return super.requestByUrl(url);
   }
-
-  set characters(characters: CharacterModel[]){
-    this._characters = characters;
+  savePage(characters: CharacterModel[], page: number) {
+    super.savePage(characters, page);
   }
-  get characters(){
-    return this._characters;
+  getPage(page: number) : CharacterModel[]{
+    return super.getPage(page);
   }
 
   set character(character: CharacterModel){

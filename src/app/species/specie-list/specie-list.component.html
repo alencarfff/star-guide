@@ -1,1 +1,8 @@
-<p>specie-list works!</p>
+<h3>Species</h3>
+
+<sw-card-list [items]="species" (onClick)="goToDetail($event)"></sw-card-list>
+
+<sw-paginator
+    (onChange)="request()"
+    [pageable]="pageable">
+</sw-paginator>

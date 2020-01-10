@@ -1,20 +1,8 @@
 <h3>Characters</h3>
 
-<ul class="character-list">
-    <li *ngFor="let character of characters" class="character-item">
-        <div class="character">
-            <div class="image-container" *ngIf="movieId != 0">
-                <img src="../../../assets/img/movies/iii/characters/anakin-skywalker.png" />
-            </div>
-            <div class="body">
-                <h4 class="name">{{ character.name }}</h4>
-            </div>
-        </div>
-    </li>
-</ul>
+<sw-card-list [items]="characters" (onClick)="goToDetail($event)"></sw-card-list>
 
-<div class="row">
-    <button (click)="previousPage()">Previous</button>
-    <span>{{ pageable.page }}</span>
-    <button (click)="nextPage()">Next</button>
-</div>
+<sw-paginator
+    (onChange)="request()"
+    [pageable]="pageable">
+</sw-paginator>

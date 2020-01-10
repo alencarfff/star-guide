@@ -16,13 +16,27 @@ import { VehicleListComponent } from './vehicles/vehicle-list/vehicle-list.compo
 import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
 import { SpecieListComponent } from './species/specie-list/specie-list.component';
 import { SpecieDetailComponent } from './species/specie-detail/specie-detail.component';
+import { CharacterResolver } from './core/resolvers/character.resolver';
+import { PlanetResolve } from './core/resolvers/planet.resolver';
+import { StarshipResolve } from './core/resolvers/starship.resolve';
+import { VehicleResolver } from './core/resolvers/vehicle.resolver';
+import { SpecieResolver } from './core/resolvers/specie.resolver';
 
 const routes: Routes = [
   { 
     path: "", 
     component: HomeComponent,
-    resolve: { movies: MovieResolver },
+    resolve: { 
+      movies: MovieResolver,
+      characters: CharacterResolver,
+      planets: PlanetResolve,
+      starships: StarshipResolve,
+      vehicles: VehicleResolver,
+      species: SpecieResolver
+    },
     children: [
+      { path: "", pathMatch: "full", redirectTo: "movies" },
+
       { path: "movies", component: MovieListComponent },
       { path: "movies/:id", component: MovieDetailComponent }, 
 

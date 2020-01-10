@@ -1,0 +1,12 @@
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    float: right;
+    clear: right;
+
+    span {
+        font-size: 1.1em;
+        margin: 0 20px;
+    }
+}

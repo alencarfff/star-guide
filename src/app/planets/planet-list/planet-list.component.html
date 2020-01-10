@@ -1,1 +1,8 @@
-<p>planet-list works!</p>
+<h3>Planets</h3>
+
+<sw-card-list [items]="planets" (onClick)="goToDetail($event)"></sw-card-list>
+
+<sw-paginator 
+    (onChange)="request()"
+    [pageable]="pageable">
+</sw-paginator>
