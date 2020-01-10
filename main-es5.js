@@ -1,3 +1,17 @@
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -56,6 +70,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/characters/character-detail/character-detail.component.html":
+  /*!*******************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/characters/character-detail/character-detail.component.html ***!
+    \*******************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppCharactersCharacterDetailCharacterDetailComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "";
+    /***/
+  },
+
+  /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/characters/character-list/character-list.component.html":
   /*!***************************************************************************************************************!*\
     !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/characters/character-list/character-list.component.html ***!
@@ -71,7 +105,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"row\">\n    <h3>Characters</h3>\n    <button>Expand ({{ characters.length }})</button>\n</div>\n\n<ul class=\"character-list\">\n    <li *ngFor=\"let character of characters\" class=\"character-item\">\n        <div class=\"character\">\n            <div class=\"image-container\" *ngIf=\"movieId != 0\">\n                <img src=\"../../../assets/img/movies/iii/characters/anakin-skywalker.png\" />\n            </div>\n            <div class=\"body\">\n                <h4 class=\"name\">{{ character.name }}</h4>\n            </div>\n        </div>\n    </li>\n</ul>";
+    __webpack_exports__["default"] = "<h3>Characters</h3>\n\n<sw-card-list [items]=\"characters\" (onClick)=\"goToDetail($event)\"></sw-card-list>\n\n<sw-paginator\n    (onChange)=\"request()\"\n    [pageable]=\"pageable\">\n</sw-paginator>";
     /***/
   },
 
@@ -131,7 +165,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<section class=\"section-wrapper\">\n    <nav class=\"section-inner\">\n        <h1 (click)=\"goToHome()\">star guide</h1>\n        <ol>\n            <li (click)=\"goToHome()\">\n                <mat-icon> home </mat-icon>\n            </li>\n            \n            <li *ngFor=\"let movie of movies\"\n                (click)=\"goToMovieDetail(movie.episode_id)\">\n                {{ toRoman(movie.episode_id) }}\n            </li>\n        </ol>\n    </nav>\n</section>";
+    __webpack_exports__["default"] = "<section class=\"section-wrapper\">\n    <nav class=\"section-inner\">\n        <h1>star guide</h1>\n        <ol>\n            <!-- <li (click)=\"goTo('')\">\n                <mat-icon> home </mat-icon>\n            </li> -->\n            \n            <li (click)=\"goTo('movies')\">Movies</li>\n            <li (click)=\"goTo('characters')\">Characters</li>\n            <li (click)=\"goTo('planets')\">Planets</li>\n            <li (click)=\"goTo('starships')\">Starships</li>\n            <li (click)=\"goTo('vehicles')\">Vehicles</li>\n            <li (click)=\"goTo('species')\">Species</li>\n\n            <!-- <li *ngFor=\"let movie of movies\"\n                (click)=\"goToMovieDetail(movie.episode_id)\">\n                {{ toRoman(movie.episode_id) }}\n            </li> -->\n        </ol>\n    </nav>\n</section>";
     /***/
   },
 
@@ -191,7 +225,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"movie\">    \n    <button *ngIf=\"textIsPlaying\" (click)=\"skipOrShowText()\">Skip Intro</button>          \n\n    <div class=\"opening-crawl\" *ngIf=\"textIsPlaying\">\n        <sw-opening-crawl [movie]=\"movie\"></sw-opening-crawl>\n    </div>\n    \n    <div class=\"content\">\n        <div class=\"section-data\">\n            <div class=\"column-left\">\n                <div class=\"header\">\n                    <h2 class=\"title\">{{ movie.title }} </h2>\n                    <p class=\"subtitle\">Episode {{ toRoman(movie.episode_id) | uppercase }}</p>\n                </div>\n\n                <div class=\"production mv-25\">\n                    <p><span class=\"bold\">Director:</span> {{ movie.director }}</p>\n                    <p><span class=\"bold\">Producer:</span> {{ movie.producer }}</p>\n                    <p><span class=\"bold\">Release date:</span> {{ movie.release_date }}</p>\n                </div>\n                \n                <hr class=\"mv-25\" />\n\n                <div class=\"mv-25\">\n                    <div class=\"row\">\n                        <h3>Opening Crawl</h3>\n                        <button (click)=\"skipOrShowText()\">Play Intro</button>                    \n                    </div>\n          \n                    <p class=\"opening-txt\">{{ movie.opening_crawl }}</p>\n                </div>    \n            </div>\n            <div class=\"column-right\">\n                <div class=\"image-container\">\n                    <img [src]=\"'/assets/img/movies/' + toRoman(movieId) + '/bg.jpg'\" />\n                </div>\n            </div>\n        </div>\n        \n        <div>\n            <sw-character-list\n                [characterUrls]=\"movie.characters\"\n                [movieId]=\"movie.episode_id\">\n            </sw-character-list>\n        </div>\n        \n        <div>\n            <h3>Planets</h3>\n            <!-- <sw-character-list [movieCharacters]=\"movie.characters\"></sw-character-list> -->\n        </div>\n        \n        <div>\n            <h3>Starships</h3>\n            <!-- <sw-character-list [movieCharacters]=\"movie.characters\"></sw-character-list> -->\n        </div>\n        \n        <div>\n            <h3>Vehicles</h3>\n            <!-- <sw-character-list [movieCharacters]=\"movie.characters\"></sw-character-list> -->\n        </div>\n        \n        <div>\n            <h3>Species</h3>\n            <!-- <sw-character-list [movieCharacters]=\"movie.characters\"></sw-character-list> -->\n        </div>\n    </div>\n</div>";
+    __webpack_exports__["default"] = "<div class=\"movie\">    \n    <button *ngIf=\"textIsPlaying\" (click)=\"skipOrShowText()\">Skip Intro</button>          \n\n    <div class=\"opening-crawl\" *ngIf=\"textIsPlaying\">\n        <sw-opening-crawl [movie]=\"movie\"></sw-opening-crawl>\n    </div>\n    \n    <div class=\"content\">\n        <div class=\"section-data\">\n            <div class=\"column-left\">\n                <div class=\"header\">\n                    <h2 class=\"title\">{{ movie.title }} </h2>\n                    <p class=\"subtitle\">Episode {{ toRoman(movie.episode_id) | uppercase }}</p>\n                </div>\n\n                <div class=\"production mv-25\">\n                    <p><span class=\"bold\">Director:</span> {{ movie.director }}</p>\n                    <p><span class=\"bold\">Producer:</span> {{ movie.producer }}</p>\n                    <p><span class=\"bold\">Release date:</span> {{ movie.release_date }}</p>\n                </div>\n                \n                <hr class=\"mv-25\" />\n\n                <div class=\"mv-25\">\n                    <div class=\"row\">\n                        <h3>Opening Crawl</h3>\n                        <button (click)=\"skipOrShowText()\">Play Intro</button>                    \n                    </div>\n          \n                    <p class=\"opening-txt\">{{ movie.opening_crawl }}</p>\n                </div>    \n            </div>\n            <div class=\"column-right\">\n                <div class=\"image-container\">\n                    <img [src]=\"'/assets/img/movies/' + toRoman(movieId) + '.jpg'\" />\n                </div>\n            </div>\n        </div>\n    </div>\n</div>";
     /***/
   },
 
@@ -211,27 +245,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"wrapper\">\n    <ol class=\"list movie-list\">\n        <li *ngFor=\"let movie of movies\"\n            (click)=\"goToMovieDetail(movie.episode_id)\" \n            class=\"item movie-item\" [ngClass]=\"toAnimate ? 'movie-item-animated' : ''\">\n            <span class=\"episode\">episode {{ toRoman(movie.episode_id) }}</span>\n            <p class=\"name\">{{ movie.title }}</p>\n            <img class=\"image\" [src]=\"'assets/img/movies/' + toRoman(movie.episode_id) + '/bg.jpg'\" />\n       </li>\n    </ol>\n</div>";
-    /***/
-  },
-
-  /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/movies/movies.component.html":
-  /*!************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/movies/movies.component.html ***!
-    \************************************************************************************/
-
-  /*! exports provided: default */
-
-  /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppMoviesMoviesComponentHtml(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = "<!-- <sw-movie-list [movies]=\"movies\"></sw-movie-list> -->";
+    __webpack_exports__["default"] = "<div class=\"wrapper\">\n    <ol class=\"list movie-list\">\n        <li *ngFor=\"let movie of movies\"\n            (click)=\"goToMovieDetail(movie.episode_id)\" \n            class=\"item movie-item\" [ngClass]=\"toAnimate ? 'movie-item-animated' : ''\">\n            <span class=\"episode\">episode {{ toRoman(movie.episode_id) }}</span>\n            <p class=\"name\">{{ movie.title }}</p>\n            <img class=\"image\" [src]=\"'assets/img/movies/' + toRoman(movie.episode_id) + '.jpg'\" />\n       </li>\n    </ol>\n</div>";
     /***/
   },
 
@@ -252,6 +266,226 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     __webpack_exports__["default"] = "<audio hidden autoplay *ngIf=\"showAudio\">\n    <source src=\"assets/media/audio/star-wars-theme-song.mp3\" />\n    <!-- <source src=\"assets/media/audio/star-wars-the-imperial-march.mp3\"></source> -->\n</audio>\n<div class=\"wrapper\">\n    <div class=\"star-wars-intro\">\n        <p class=\"intro-text\">\n            A Long Time Ago, in a galaxy far,<br/>\n            far away...\n        </p>\n      \n        <!-- <h2 class=\"main-logo\">\n          <img src=\"img/star-wars-intro.png\">\n        </h2> -->\n      \n        <div class=\"main-content\">\n            <div class=\"title-content\">\n                <div class=\"content-header\">\n                    <span>Episode {{ (toRoman(movie.episode_id) | uppercase) }}</span>\n                    <br/>\n                    <span class=\"title\">{{ movie.title | uppercase }}</span>\n                </div>\n                <br>\n                <p class=\"content-body\"> {{ movie.opening_crawl }} </p>\n                <!-- <a href=\"./StarScroll.zip\" class=\"space-button\">Download The Code Now!</a>           -->\n            </div>\n        </div>\n    </div>\n</div>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/planets/planet-detail/planet-detail.component.html":
+  /*!**********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/planets/planet-detail/planet-detail.component.html ***!
+    \**********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPlanetsPlanetDetailPlanetDetailComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<p>planet-detail works!</p>\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/planets/planet-list/planet-list.component.html":
+  /*!******************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/planets/planet-list/planet-list.component.html ***!
+    \******************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPlanetsPlanetListPlanetListComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<h3>Planets</h3>\n\n<sw-card-list [items]=\"planets\" (onClick)=\"goToDetail($event)\"></sw-card-list>\n\n<sw-paginator \n    (onChange)=\"request()\"\n    [pageable]=\"pageable\">\n</sw-paginator>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/cards/card-list/card-list.component.html":
+  /*!******************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/cards/card-list/card-list.component.html ***!
+    \******************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppSharedComponentsCardsCardListCardListComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ul>\n    <li *ngFor=\"let item of items; let i = index\" (click)=\"click(i)\">\n        <sw-card [title]=\"item.name\"\n            image=\"../../../assets/img/planets/tattoine.jpeg\" >\n        </sw-card>\n    </li>\n</ul>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/cards/card/card.component.html":
+  /*!********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/cards/card/card.component.html ***!
+    \********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppSharedComponentsCardsCardCardComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"card\">\n    <div class=\"image-container\">\n        <img [src]=\"image\" />\n    </div>\n    <div class=\"body\">\n        <h4 class=\"name\">{{ title }}</h4>\n    </div>\n</div>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/paginator/paginator.component.html":
+  /*!************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/paginator/paginator.component.html ***!
+    \************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppSharedComponentsPaginatorPaginatorComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"row\">\n    <button (click)=\"previousPage()\">Previous</button>\n    <span>{{ pageable.page }}</span>\n    <button (click)=\"nextPage()\">Next</button>\n</div>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/species/specie-detail/specie-detail.component.html":
+  /*!**********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/species/specie-detail/specie-detail.component.html ***!
+    \**********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppSpeciesSpecieDetailSpecieDetailComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<p>specie-detail works!</p>\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/species/specie-list/specie-list.component.html":
+  /*!******************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/species/specie-list/specie-list.component.html ***!
+    \******************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppSpeciesSpecieListSpecieListComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<h3>Species</h3>\n\n<sw-card-list [items]=\"species\" (onClick)=\"goToDetail($event)\"></sw-card-list>\n\n<sw-paginator\n    (onChange)=\"request()\"\n    [pageable]=\"pageable\">\n</sw-paginator>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/starships/starship-detail/starship-detail.component.html":
+  /*!****************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/starships/starship-detail/starship-detail.component.html ***!
+    \****************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppStarshipsStarshipDetailStarshipDetailComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<p>starship-detail works!</p>\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/starships/starship-list/starship-list.component.html":
+  /*!************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/starships/starship-list/starship-list.component.html ***!
+    \************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppStarshipsStarshipListStarshipListComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<h3>Starships</h3>\n\n<sw-card-list [items]=\"starships\" (onClick)=\"goToDetail($event)\"></sw-card-list>\n\n<sw-paginator\n    (onChange)=\"request()\"\n    [pageable]=\"pageable\">\n</sw-paginator>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/vehicles/vehicle-detail/vehicle-detail.component.html":
+  /*!*************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/vehicles/vehicle-detail/vehicle-detail.component.html ***!
+    \*************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppVehiclesVehicleDetailVehicleDetailComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<p>vehicle-detail works!</p>\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/vehicles/vehicle-list/vehicle-list.component.html":
+  /*!*********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/vehicles/vehicle-list/vehicle-list.component.html ***!
+    \*********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppVehiclesVehicleListVehicleListComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<h3>Vehicles</h3>\n\n<sw-card-list [items]=\"vehicles\" (onClick)=\"goToDetail($event)\"></sw-card-list>\n\n<sw-paginator\n    (onChange)=\"request()\"\n    [pageable]=\"pageable\">\n</sw-paginator>";
     /***/
   },
 
@@ -885,41 +1119,167 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _movies_movie_detail_movie_detail_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./movies/movie-detail/movie-detail.component */
-    "./src/app/movies/movie-detail/movie-detail.component.ts");
-    /* harmony import */
-
-
-    var _movies_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _movies_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./movies/movie-list/movie-list.component */
     "./src/app/movies/movie-list/movie-list.component.ts");
     /* harmony import */
 
 
-    var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./error-page/error-page.component */
     "./src/app/error-page/error-page.component.ts");
+    /* harmony import */
+
+
+    var _movies_movie_detail_movie_detail_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ./movies/movie-detail/movie-detail.component */
+    "./src/app/movies/movie-detail/movie-detail.component.ts");
+    /* harmony import */
+
+
+    var _characters_character_list_character_list_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ./characters/character-list/character-list.component */
+    "./src/app/characters/character-list/character-list.component.ts");
+    /* harmony import */
+
+
+    var _characters_character_detail_character_detail_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ./characters/character-detail/character-detail.component */
+    "./src/app/characters/character-detail/character-detail.component.ts");
+    /* harmony import */
+
+
+    var _planets_planet_list_planet_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ./planets/planet-list/planet-list.component */
+    "./src/app/planets/planet-list/planet-list.component.ts");
+    /* harmony import */
+
+
+    var _planets_planet_detail_planet_detail_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ./planets/planet-detail/planet-detail.component */
+    "./src/app/planets/planet-detail/planet-detail.component.ts");
+    /* harmony import */
+
+
+    var _starships_starship_list_starship_list_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ./starships/starship-list/starship-list.component */
+    "./src/app/starships/starship-list/starship-list.component.ts");
+    /* harmony import */
+
+
+    var _starships_starship_detail_starship_detail_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! ./starships/starship-detail/starship-detail.component */
+    "./src/app/starships/starship-detail/starship-detail.component.ts");
+    /* harmony import */
+
+
+    var _vehicles_vehicle_list_vehicle_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ./vehicles/vehicle-list/vehicle-list.component */
+    "./src/app/vehicles/vehicle-list/vehicle-list.component.ts");
+    /* harmony import */
+
+
+    var _vehicles_vehicle_detail_vehicle_detail_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! ./vehicles/vehicle-detail/vehicle-detail.component */
+    "./src/app/vehicles/vehicle-detail/vehicle-detail.component.ts");
+    /* harmony import */
+
+
+    var _species_specie_list_specie_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! ./species/specie-list/specie-list.component */
+    "./src/app/species/specie-list/specie-list.component.ts");
+    /* harmony import */
+
+
+    var _species_specie_detail_specie_detail_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! ./species/specie-detail/specie-detail.component */
+    "./src/app/species/specie-detail/specie-detail.component.ts");
+    /* harmony import */
+
+
+    var _core_resolvers_character_resolver__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    /*! ./core/resolvers/character.resolver */
+    "./src/app/core/resolvers/character.resolver.ts");
+    /* harmony import */
+
+
+    var _core_resolvers_planet_resolver__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    /*! ./core/resolvers/planet.resolver */
+    "./src/app/core/resolvers/planet.resolver.ts");
+    /* harmony import */
+
+
+    var _core_resolvers_starship_resolve__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    /*! ./core/resolvers/starship.resolve */
+    "./src/app/core/resolvers/starship.resolve.ts");
+    /* harmony import */
+
+
+    var _core_resolvers_vehicle_resolver__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    /*! ./core/resolvers/vehicle.resolver */
+    "./src/app/core/resolvers/vehicle.resolver.ts");
+    /* harmony import */
+
+
+    var _core_resolvers_specie_resolver__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    /*! ./core/resolvers/specie.resolver */
+    "./src/app/core/resolvers/specie.resolver.ts");
 
     var routes = [{
       path: "",
       component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
       resolve: {
-        movies: _core_resolvers_movie_resolver__WEBPACK_IMPORTED_MODULE_4__["MovieResolver"]
+        movies: _core_resolvers_movie_resolver__WEBPACK_IMPORTED_MODULE_4__["MovieResolver"],
+        characters: _core_resolvers_character_resolver__WEBPACK_IMPORTED_MODULE_18__["CharacterResolver"],
+        planets: _core_resolvers_planet_resolver__WEBPACK_IMPORTED_MODULE_19__["PlanetResolve"],
+        starships: _core_resolvers_starship_resolve__WEBPACK_IMPORTED_MODULE_20__["StarshipResolve"],
+        vehicles: _core_resolvers_vehicle_resolver__WEBPACK_IMPORTED_MODULE_21__["VehicleResolver"],
+        species: _core_resolvers_specie_resolver__WEBPACK_IMPORTED_MODULE_22__["SpecieResolver"]
       },
       children: [{
+        path: "",
+        pathMatch: "full",
+        redirectTo: "movies"
+      }, {
         path: "movies",
-        children: [{
-          path: "",
-          component: _movies_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_6__["MovieListComponent"]
-        }, {
-          path: ":id",
-          component: _movies_movie_detail_movie_detail_component__WEBPACK_IMPORTED_MODULE_5__["MovieDetailComponent"]
-        }]
+        component: _movies_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_5__["MovieListComponent"]
+      }, {
+        path: "movies/:id",
+        component: _movies_movie_detail_movie_detail_component__WEBPACK_IMPORTED_MODULE_7__["MovieDetailComponent"]
+      }, {
+        path: "characters",
+        component: _characters_character_list_character_list_component__WEBPACK_IMPORTED_MODULE_8__["CharacterListComponent"]
+      }, {
+        path: "characters/:id",
+        component: _characters_character_detail_character_detail_component__WEBPACK_IMPORTED_MODULE_9__["CharacterDetailComponent"]
+      }, {
+        path: "planets",
+        component: _planets_planet_list_planet_list_component__WEBPACK_IMPORTED_MODULE_10__["PlanetListComponent"]
+      }, {
+        path: "planets/:id",
+        component: _planets_planet_detail_planet_detail_component__WEBPACK_IMPORTED_MODULE_11__["PlanetDetailComponent"]
+      }, {
+        path: "starships",
+        component: _starships_starship_list_starship_list_component__WEBPACK_IMPORTED_MODULE_12__["StarshipListComponent"]
+      }, {
+        path: "starships/:id",
+        component: _starships_starship_detail_starship_detail_component__WEBPACK_IMPORTED_MODULE_13__["StarshipDetailComponent"]
+      }, {
+        path: "vehicles",
+        component: _vehicles_vehicle_list_vehicle_list_component__WEBPACK_IMPORTED_MODULE_14__["VehicleListComponent"]
+      }, {
+        path: "vehicles/:id",
+        component: _vehicles_vehicle_detail_vehicle_detail_component__WEBPACK_IMPORTED_MODULE_15__["VehicleDetailComponent"]
+      }, {
+        path: "species",
+        component: _species_specie_list_specie_list_component__WEBPACK_IMPORTED_MODULE_16__["SpecieListComponent"]
+      }, {
+        path: "species/:id",
+        component: _species_specie_detail_specie_detail_component__WEBPACK_IMPORTED_MODULE_17__["SpecieDetailComponent"]
       }]
     }, {
       path: "**",
-      component: _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_7__["ErrorPageComponent"]
+      component: _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_6__["ErrorPageComponent"]
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -1122,6 +1482,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _warning_warning_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ./warning/warning.component */
     "./src/app/warning/warning.component.ts");
+    /* harmony import */
+
+
+    var _characters_characters_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! ./characters/characters.module */
+    "./src/app/characters/characters.module.ts");
+    /* harmony import */
+
+
+    var _planets_planets_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! ./planets/planets.module */
+    "./src/app/planets/planets.module.ts");
+    /* harmony import */
+
+
+    var _vehicles_vehicles_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    /*! ./vehicles/vehicles.module */
+    "./src/app/vehicles/vehicles.module.ts");
+    /* harmony import */
+
+
+    var _species_species_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    /*! ./species/species.module */
+    "./src/app/species/species.module.ts");
+    /* harmony import */
+
+
+    var _starships_starships_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    /*! ./starships/starships.module */
+    "./src/app/starships/starships.module.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1129,7 +1519,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"], _header_header_component__WEBPACK_IMPORTED_MODULE_7__["HeaderComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_9__["FooterComponent"], _loader_loader_component__WEBPACK_IMPORTED_MODULE_11__["LoaderComponent"], _error_page_error_page_component__WEBPACK_IMPORTED_MODULE_14__["ErrorPageComponent"], _warning_warning_component__WEBPACK_IMPORTED_MODULE_15__["WarningComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _movies_movies_module__WEBPACK_IMPORTED_MODULE_13__["MoviesModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIconModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _movies_movies_module__WEBPACK_IMPORTED_MODULE_13__["MoviesModule"], _characters_characters_module__WEBPACK_IMPORTED_MODULE_16__["CharactersModule"], _planets_planets_module__WEBPACK_IMPORTED_MODULE_17__["PlanetsModule"], _starships_starships_module__WEBPACK_IMPORTED_MODULE_20__["StarshipsModule"], _vehicles_vehicles_module__WEBPACK_IMPORTED_MODULE_18__["VehiclesModule"], _species_species_module__WEBPACK_IMPORTED_MODULE_19__["SpeciesModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIconModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClientModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"]],
       providers: [, {
         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HTTP_INTERCEPTORS"],
         useClass: _core_interceptors_loader_interceptor__WEBPACK_IMPORTED_MODULE_12__["LoaderInterceptor"],
@@ -1137,6 +1527,85 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
     })], AppModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/characters/character-detail/character-detail.component.scss":
+  /*!*****************************************************************************!*\
+    !*** ./src/app/characters/character-detail/character-detail.component.scss ***!
+    \*****************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppCharactersCharacterDetailCharacterDetailComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NoYXJhY3RlcnMvY2hhcmFjdGVyLWRldGFpbC9jaGFyYWN0ZXItZGV0YWlsLmNvbXBvbmVudC5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/characters/character-detail/character-detail.component.ts":
+  /*!***************************************************************************!*\
+    !*** ./src/app/characters/character-detail/character-detail.component.ts ***!
+    \***************************************************************************/
+
+  /*! exports provided: CharacterDetailComponent */
+
+  /***/
+  function srcAppCharactersCharacterDetailCharacterDetailComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CharacterDetailComponent", function () {
+      return CharacterDetailComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var CharacterDetailComponent =
+    /*#__PURE__*/
+    function () {
+      function CharacterDetailComponent() {
+        _classCallCheck(this, CharacterDetailComponent);
+      }
+
+      _createClass(CharacterDetailComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return CharacterDetailComponent;
+    }();
+
+    CharacterDetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-character-detail',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./character-detail.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/characters/character-detail/character-detail.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./character-detail.component.scss */
+      "./src/app/characters/character-detail/character-detail.component.scss")).default]
+    })], CharacterDetailComponent);
     /***/
   },
 
@@ -1156,7 +1625,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "h3,\nh4 {\n  color: #fff;\n}\n\n.row {\n  display: flex;\n  justify-content: space-between;\n}\n\nul {\n  display: flex;\n  flex-flow: row nowrap;\n  overflow-x: scroll;\n  max-width: 95%;\n}\n\nli {\n  min-width: calc(100% / 4);\n  max-width: calc(100% / 4);\n  border: 1px solid white;\n}\n\nli:not(:first-child) {\n  margin-left: 10px;\n}\n\nli:not(:last-child) {\n  margin-right: 10px;\n}\n\n.character {\n  display: flex;\n  flex-flow: column nowrap;\n}\n\n.character .body {\n  padding: 0 25px;\n}\n\n.character .body .name {\n  font-size: 1.5em;\n}\n\n.image-container {\n  max-width: 150px;\n}\n\n.image-container img {\n  width: 100%;\n  height: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9jaGFyYWN0ZXJzL2NoYXJhY3Rlci1saXN0L2NoYXJhY3Rlci1saXN0LmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jaGFyYWN0ZXJzL2NoYXJhY3Rlci1saXN0L2NoYXJhY3Rlci1saXN0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztFQUVJLFdBQUE7QUNDSjs7QURFQTtFQUNJLGFBQUE7RUFDQSw4QkFBQTtBQ0NKOztBREVBO0VBQ0ksYUFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxjQUFBO0FDQ0o7O0FERUE7RUFDSSx5QkFBQTtFQUNBLHlCQUFBO0VBQ0EsdUJBQUE7QUNDSjs7QURDSTtFQUNJLGlCQUFBO0FDQ1I7O0FEQ0k7RUFDSSxrQkFBQTtBQ0NSOztBREdBO0VBQ0ksYUFBQTtFQUNBLHdCQUFBO0FDQUo7O0FERUk7RUFDSSxlQUFBO0FDQVI7O0FERVE7RUFDSSxnQkFBQTtBQ0FaOztBREtBO0VBQ0ksZ0JBQUE7QUNGSjs7QURJSTtFQUNJLFdBQUE7RUFDQSxZQUFBO0FDRlIiLCJmaWxlIjoic3JjL2FwcC9jaGFyYWN0ZXJzL2NoYXJhY3Rlci1saXN0L2NoYXJhY3Rlci1saXN0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaDMsXG5oNCB7XG4gICAgY29sb3I6ICNmZmY7XG59XG5cbi5yb3cge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuXG51bCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWZsb3c6IHJvdyBub3dyYXA7XG4gICAgb3ZlcmZsb3cteDogc2Nyb2xsO1xuICAgIG1heC13aWR0aDogOTUlO1xufVxuXG5saSB7XG4gICAgbWluLXdpZHRoOiBjYWxjKDEwMCUgLyA0KTtcbiAgICBtYXgtd2lkdGg6IGNhbGMoMTAwJSAvIDQpO1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHdoaXRlO1xuXG4gICAgJjpub3QoOmZpcnN0LWNoaWxkKSB7XG4gICAgICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICAgIH1cbiAgICAmOm5vdCg6bGFzdC1jaGlsZCkge1xuICAgICAgICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG4gICAgfSAgIFxufVxuXG4uY2hhcmFjdGVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcblxuICAgIC5ib2R5IHtcbiAgICAgICAgcGFkZGluZzogMCAyNXB4O1xuICAgICAgICBcbiAgICAgICAgLm5hbWUge1xuICAgICAgICAgICAgZm9udC1zaXplOiAxLjVlbTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuLmltYWdlLWNvbnRhaW5lciB7XG4gICAgbWF4LXdpZHRoOiAxNTBweDtcblxuICAgIGltZyB7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgfVxufSAgICIsImgzLFxuaDQge1xuICBjb2xvcjogI2ZmZjtcbn1cblxuLnJvdyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cblxudWwge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWZsb3c6IHJvdyBub3dyYXA7XG4gIG92ZXJmbG93LXg6IHNjcm9sbDtcbiAgbWF4LXdpZHRoOiA5NSU7XG59XG5cbmxpIHtcbiAgbWluLXdpZHRoOiBjYWxjKDEwMCUgLyA0KTtcbiAgbWF4LXdpZHRoOiBjYWxjKDEwMCUgLyA0KTtcbiAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG59XG5saTpub3QoOmZpcnN0LWNoaWxkKSB7XG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xufVxubGk6bm90KDpsYXN0LWNoaWxkKSB7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbn1cblxuLmNoYXJhY3RlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcbn1cbi5jaGFyYWN0ZXIgLmJvZHkge1xuICBwYWRkaW5nOiAwIDI1cHg7XG59XG4uY2hhcmFjdGVyIC5ib2R5IC5uYW1lIHtcbiAgZm9udC1zaXplOiAxLjVlbTtcbn1cblxuLmltYWdlLWNvbnRhaW5lciB7XG4gIG1heC13aWR0aDogMTUwcHg7XG59XG4uaW1hZ2UtY29udGFpbmVyIGltZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IGF1dG87XG59Il19 */";
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NoYXJhY3RlcnMvY2hhcmFjdGVyLWxpc3QvY2hhcmFjdGVyLWxpc3QuY29tcG9uZW50LnNjc3MifQ== */";
     /***/
   },
 
@@ -1200,55 +1669,90 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_core_models_entity_enum__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/core/models/entity.enum */
+    "./src/app/core/models/entity.enum.ts");
+    /* harmony import */
+
+
+    var src_app_core_util_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! src/app/core/util.service */
     "./src/app/core/util.service.ts");
 
     var CharacterListComponent =
     /*#__PURE__*/
     function () {
-      function CharacterListComponent(characterService, utilService) {
+      function CharacterListComponent(activatedRoute, router, utilService, characterService) {
         _classCallCheck(this, CharacterListComponent);
 
-        this.characterService = characterService;
+        this.activatedRoute = activatedRoute;
+        this.router = router;
         this.utilService = utilService;
+        this.characterService = characterService;
+        this.actualEntity = src_app_core_models_entity_enum__WEBPACK_IMPORTED_MODULE_4__["EntityEnum"].CHARACTER;
         this.characters = [];
-        this.subscriptions = [];
-        this.moviesAssetsPath = "/src/assets/img/movies";
+        this.pageable = {
+          next: null,
+          previous: null,
+          page: 1
+        };
       }
 
       _createClass(CharacterListComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var response = this.activatedRoute.snapshot.parent.data['characters'];
+          this.characters = response.results;
+          this.pageable.next = response.next;
+          this.pageable.previous = response.previous;
+          this.characterService.savePage(this.characters, this.pageable.page);
+        }
+      }, {
+        key: "request",
+        value: function request() {
+          var characters = this.characterService.getPage(this.pageable.page);
+
+          if (characters.length > 0) {
+            this.characters = characters;
+          } else {
+            this.update();
+          }
+        }
+      }, {
+        key: "update",
+        value: function update() {
           var _this = this;
 
-          this.characterUrls.forEach(function (characterUrl) {
-            _this.subscriptions.push(_this.characterService.requestCharacterByUrl(characterUrl).subscribe(function (character) {
-              _this.characters.push(character);
-            }));
+          this.characterService.requestPage(this.pageable.page).subscribe(function (response) {
+            _this.characters = response.results;
+            _this.pageable.next = response.next;
+            _this.pageable.previous = response.previous;
+
+            _this.characterService.savePage(response.results, _this.pageable.page);
           });
         }
       }, {
-        key: "toRoman",
-        value: function toRoman(num) {
-          return this.utilService.toRoman(num);
+        key: "getImage",
+        value: function getImage(url) {
+          return this.utilService.getEntityImage(url, this.actualEntity);
         }
       }, {
-        key: "getCharacterImage",
-        value: function getCharacterImage(character) {
-          return "".concat(this.moviesAssetsPath, "/").concat(this.toRoman(this.movieId), "/characters/").concat(this.getCharacterId(character.url));
+        key: "getId",
+        value: function getId(character) {
+          return this.utilService.getEntityId(character.url);
         }
       }, {
-        key: "getCharacterId",
-        value: function getCharacterId(url) {
-          return 0;
-        }
-      }, {
-        key: "ngOnDestroy",
-        value: function ngOnDestroy() {
-          this.subscriptions.forEach(function (sub) {
-            sub.unsubscribe();
-          });
+        key: "goToDetail",
+        value: function goToDetail(position) {
+          var character = this.characters[position];
+          this.characterService.character = character;
+          this.router.navigate(['characters', this.getId(character)]);
         }
       }]);
 
@@ -1257,14 +1761,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     CharacterListComponent.ctorParameters = function () {
       return [{
-        type: src_app_core_services_character_service__WEBPACK_IMPORTED_MODULE_2__["CharacterService"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
       }, {
-        type: src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: src_app_core_util_service__WEBPACK_IMPORTED_MODULE_5__["UtilService"]
+      }, {
+        type: src_app_core_services_character_service__WEBPACK_IMPORTED_MODULE_2__["CharacterService"]
       }];
     };
 
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], CharacterListComponent.prototype, "characterUrls", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], CharacterListComponent.prototype, "movieId", void 0);
     CharacterListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'sw-character-list',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -1274,6 +1780,167 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /*! ./character-list.component.scss */
       "./src/app/characters/character-list/character-list.component.scss")).default]
     })], CharacterListComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/characters/characters.module.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/characters/characters.module.ts ***!
+    \*************************************************/
+
+  /*! exports provided: CharactersModule */
+
+  /***/
+  function srcAppCharactersCharactersModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CharactersModule", function () {
+      return CharactersModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _character_detail_character_detail_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./character-detail/character-detail.component */
+    "./src/app/characters/character-detail/character-detail.component.ts");
+    /* harmony import */
+
+
+    var _character_list_character_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./character-list/character-list.component */
+    "./src/app/characters/character-list/character-list.component.ts");
+    /* harmony import */
+
+
+    var _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../shared/components/paginator/paginator.module */
+    "./src/app/shared/components/paginator/paginator.module.ts");
+    /* harmony import */
+
+
+    var _shared_components_cards_card_card_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/components/cards/card/card.module */
+    "./src/app/shared/components/cards/card/card.module.ts");
+    /* harmony import */
+
+
+    var _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../shared/components/cards/card-list/card-list.module */
+    "./src/app/shared/components/cards/card-list/card-list.module.ts");
+
+    var CharactersModule = function CharactersModule() {
+      _classCallCheck(this, CharactersModule);
+    };
+
+    CharactersModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_character_detail_character_detail_component__WEBPACK_IMPORTED_MODULE_3__["CharacterDetailComponent"], _character_list_character_list_component__WEBPACK_IMPORTED_MODULE_4__["CharacterListComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__["PaginatorModule"], _shared_components_cards_card_card_module__WEBPACK_IMPORTED_MODULE_6__["CardModule"], _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_7__["CardListModule"]]
+    })], CharactersModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/classes/cached-pagination.class.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/core/classes/cached-pagination.class.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppCoreClassesCachedPaginationClassTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var CachedPagination =
+    /*#__PURE__*/
+    function () {
+      function CachedPagination(http) {
+        _classCallCheck(this, CachedPagination);
+
+        this.http = http;
+        this._content = new Array();
+      }
+
+      _createClass(CachedPagination, [{
+        key: "requestPage",
+        value: function requestPage(page, url) {
+          return this.http.get("".concat(url, "?page=").concat(page));
+        }
+      }, {
+        key: "requestByUrl",
+        value: function requestByUrl(url) {
+          return this.http.get("".concat(url));
+        }
+      }, {
+        key: "savePage",
+        value: function savePage(content, page) {
+          this._content[page] = content;
+        }
+      }, {
+        key: "getPage",
+        value: function getPage(page) {
+          return this._content[page] || [];
+        }
+      }]);
+
+      return CachedPagination;
+    }();
+
+    CachedPagination.ctorParameters = function () {
+      return [{
+        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
+      }];
+    };
+
+    CachedPagination = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+      providedIn: "root"
+    })], CachedPagination);
+    /* harmony default export */
+
+    __webpack_exports__["default"] = CachedPagination;
     /***/
   },
 
@@ -1352,6 +2019,115 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     LoaderInterceptor = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Injectable"])()], LoaderInterceptor);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/models/entity.enum.ts":
+  /*!********************************************!*\
+    !*** ./src/app/core/models/entity.enum.ts ***!
+    \********************************************/
+
+  /*! exports provided: EntityEnum */
+
+  /***/
+  function srcAppCoreModelsEntityEnumTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "EntityEnum", function () {
+      return EntityEnum;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var EntityEnum;
+
+    (function (EntityEnum) {
+      EntityEnum["MOVIE"] = "movies";
+      EntityEnum["CHARACTER"] = "people";
+      EntityEnum["PLANET"] = "planets";
+      EntityEnum["SPECIE"] = "species";
+      EntityEnum["STARSHIP"] = "starships";
+      EntityEnum["VEHICLE"] = "vehicles";
+    })(EntityEnum || (EntityEnum = {}));
+    /***/
+
+  },
+
+  /***/
+  "./src/app/core/resolvers/character.resolver.ts":
+  /*!******************************************************!*\
+    !*** ./src/app/core/resolvers/character.resolver.ts ***!
+    \******************************************************/
+
+  /*! exports provided: CharacterResolver */
+
+  /***/
+  function srcAppCoreResolversCharacterResolverTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CharacterResolver", function () {
+      return CharacterResolver;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _services_character_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../services/character.service */
+    "./src/app/core/services/character.service.ts");
+
+    var CharacterResolver =
+    /*#__PURE__*/
+    function () {
+      function CharacterResolver(characterService) {
+        _classCallCheck(this, CharacterResolver);
+
+        this.characterService = characterService;
+      }
+
+      _createClass(CharacterResolver, [{
+        key: "resolve",
+        value: function resolve(route, state) {
+          return this.characterService.requestPage(1);
+        }
+      }]);
+
+      return CharacterResolver;
+    }();
+
+    CharacterResolver.ctorParameters = function () {
+      return [{
+        type: _services_character_service__WEBPACK_IMPORTED_MODULE_2__["CharacterService"]
+      }];
+    };
+
+    CharacterResolver = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], CharacterResolver);
     /***/
   },
 
@@ -1435,6 +2211,282 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/core/resolvers/planet.resolver.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/core/resolvers/planet.resolver.ts ***!
+    \***************************************************/
+
+  /*! exports provided: PlanetResolve */
+
+  /***/
+  function srcAppCoreResolversPlanetResolverTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PlanetResolve", function () {
+      return PlanetResolve;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _services_planet_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../services/planet.service */
+    "./src/app/core/services/planet.service.ts");
+
+    var PlanetResolve =
+    /*#__PURE__*/
+    function () {
+      function PlanetResolve(planetService) {
+        _classCallCheck(this, PlanetResolve);
+
+        this.planetService = planetService;
+      }
+
+      _createClass(PlanetResolve, [{
+        key: "resolve",
+        value: function resolve(route, state) {
+          return this.planetService.requestPage(1);
+        }
+      }]);
+
+      return PlanetResolve;
+    }();
+
+    PlanetResolve.ctorParameters = function () {
+      return [{
+        type: _services_planet_service__WEBPACK_IMPORTED_MODULE_2__["PlanetService"]
+      }];
+    };
+
+    PlanetResolve = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], PlanetResolve);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/resolvers/specie.resolver.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/core/resolvers/specie.resolver.ts ***!
+    \***************************************************/
+
+  /*! exports provided: SpecieResolver */
+
+  /***/
+  function srcAppCoreResolversSpecieResolverTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SpecieResolver", function () {
+      return SpecieResolver;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _services_specie_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../services/specie.service */
+    "./src/app/core/services/specie.service.ts");
+
+    var SpecieResolver =
+    /*#__PURE__*/
+    function () {
+      function SpecieResolver(SpecieService) {
+        _classCallCheck(this, SpecieResolver);
+
+        this.SpecieService = SpecieService;
+      }
+
+      _createClass(SpecieResolver, [{
+        key: "resolve",
+        value: function resolve(route, state) {
+          return this.SpecieService.requestPage(1);
+        }
+      }]);
+
+      return SpecieResolver;
+    }();
+
+    SpecieResolver.ctorParameters = function () {
+      return [{
+        type: _services_specie_service__WEBPACK_IMPORTED_MODULE_2__["SpecieService"]
+      }];
+    };
+
+    SpecieResolver = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], SpecieResolver);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/resolvers/starship.resolve.ts":
+  /*!****************************************************!*\
+    !*** ./src/app/core/resolvers/starship.resolve.ts ***!
+    \****************************************************/
+
+  /*! exports provided: StarshipResolve */
+
+  /***/
+  function srcAppCoreResolversStarshipResolveTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "StarshipResolve", function () {
+      return StarshipResolve;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _services_starship_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../services/starship.service */
+    "./src/app/core/services/starship.service.ts");
+
+    var StarshipResolve =
+    /*#__PURE__*/
+    function () {
+      function StarshipResolve(starshipService) {
+        _classCallCheck(this, StarshipResolve);
+
+        this.starshipService = starshipService;
+      }
+
+      _createClass(StarshipResolve, [{
+        key: "resolve",
+        value: function resolve(route, state) {
+          return this.starshipService.requestPage(1);
+        }
+      }]);
+
+      return StarshipResolve;
+    }();
+
+    StarshipResolve.ctorParameters = function () {
+      return [{
+        type: _services_starship_service__WEBPACK_IMPORTED_MODULE_2__["StarshipService"]
+      }];
+    };
+
+    StarshipResolve = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], StarshipResolve);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/resolvers/vehicle.resolver.ts":
+  /*!****************************************************!*\
+    !*** ./src/app/core/resolvers/vehicle.resolver.ts ***!
+    \****************************************************/
+
+  /*! exports provided: VehicleResolver */
+
+  /***/
+  function srcAppCoreResolversVehicleResolverTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "VehicleResolver", function () {
+      return VehicleResolver;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _services_vehicle_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../services/vehicle.service */
+    "./src/app/core/services/vehicle.service.ts");
+
+    var VehicleResolver =
+    /*#__PURE__*/
+    function () {
+      function VehicleResolver(VehicleService) {
+        _classCallCheck(this, VehicleResolver);
+
+        this.VehicleService = VehicleService;
+      }
+
+      _createClass(VehicleResolver, [{
+        key: "resolve",
+        value: function resolve(route, state) {
+          return this.VehicleService.requestPage(1);
+        }
+      }]);
+
+      return VehicleResolver;
+    }();
+
+    VehicleResolver.ctorParameters = function () {
+      return [{
+        type: _services_vehicle_service__WEBPACK_IMPORTED_MODULE_2__["VehicleService"]
+      }];
+    };
+
+    VehicleResolver = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], VehicleResolver);
+    /***/
+  },
+
+  /***/
   "./src/app/core/services/character.service.ts":
   /*!****************************************************!*\
     !*** ./src/app/core/services/character.service.ts ***!
@@ -1468,44 +2520,52 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/common/http */
-    "./node_modules/@angular/common/fesm2015/http.js");
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
     /* harmony import */
 
 
-    var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! src/environments/environment */
-    "./src/environments/environment.ts");
+    var _classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../classes/cached-pagination.class */
+    "./src/app/core/classes/cached-pagination.class.ts");
 
     var CharacterService =
     /*#__PURE__*/
-    function () {
-      function CharacterService(http) {
+    function (_classes_cached_pagin) {
+      _inherits(CharacterService, _classes_cached_pagin);
+
+      function CharacterService() {
+        var _this4;
+
         _classCallCheck(this, CharacterService);
 
-        this.http = http;
-        this.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].url;
-        this.characterUpdate = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-      }
+        _this4 = _possibleConstructorReturn(this, _getPrototypeOf(CharacterService).apply(this, arguments));
+        _this4.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].url + "/people";
+        _this4._characters = new Array();
+        return _this4;
+      } // private characterUpdate = new EventEmitter<CharacterModel>();
+
 
       _createClass(CharacterService, [{
-        key: "requestCharacters",
-        value: function requestCharacters() {
-          return this.http.get("".concat(this.url, "/people"));
+        key: "requestPage",
+        value: function requestPage(page) {
+          return _get(_getPrototypeOf(CharacterService.prototype), "requestPage", this).call(this, page, this.url);
         }
       }, {
-        key: "requestCharacterByUrl",
-        value: function requestCharacterByUrl(url) {
-          return this.http.get("".concat(url));
+        key: "requestByUrl",
+        value: function requestByUrl(url) {
+          return _get(_getPrototypeOf(CharacterService.prototype), "requestByUrl", this).call(this, url);
         }
       }, {
-        key: "characters",
-        set: function set(characters) {
-          this._characters = characters;
-        },
-        get: function get() {
-          return this._characters;
+        key: "savePage",
+        value: function savePage(characters, page) {
+          _get(_getPrototypeOf(CharacterService.prototype), "savePage", this).call(this, characters, page);
+        }
+      }, {
+        key: "getPage",
+        value: function getPage(page) {
+          return _get(_getPrototypeOf(CharacterService.prototype), "getPage", this).call(this, page);
         }
       }, {
         key: "character",
@@ -1518,13 +2578,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return CharacterService;
-    }();
-
-    CharacterService.ctorParameters = function () {
-      return [{
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
-      }];
-    };
+    }(_classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
     CharacterService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
@@ -1709,6 +2763,402 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/core/services/planet.service.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/core/services/planet.service.ts ***!
+    \*************************************************/
+
+  /*! exports provided: PlanetService */
+
+  /***/
+  function srcAppCoreServicesPlanetServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PlanetService", function () {
+      return PlanetService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../classes/cached-pagination.class */
+    "./src/app/core/classes/cached-pagination.class.ts");
+
+    var PlanetService =
+    /*#__PURE__*/
+    function (_classes_cached_pagin2) {
+      _inherits(PlanetService, _classes_cached_pagin2);
+
+      function PlanetService() {
+        var _this5;
+
+        _classCallCheck(this, PlanetService);
+
+        _this5 = _possibleConstructorReturn(this, _getPrototypeOf(PlanetService).apply(this, arguments));
+        _this5.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].url + "/planets";
+        _this5._planets = new Array();
+        return _this5;
+      }
+
+      _createClass(PlanetService, [{
+        key: "requestPage",
+        value: function requestPage(page) {
+          return _get(_getPrototypeOf(PlanetService.prototype), "requestPage", this).call(this, page, this.url);
+        }
+      }, {
+        key: "requestByUrl",
+        value: function requestByUrl(url) {
+          return _get(_getPrototypeOf(PlanetService.prototype), "requestByUrl", this).call(this, url);
+        }
+      }, {
+        key: "savePage",
+        value: function savePage(planets, page) {
+          _get(_getPrototypeOf(PlanetService.prototype), "savePage", this).call(this, planets, page);
+        }
+      }, {
+        key: "getPage",
+        value: function getPage(page) {
+          return _get(_getPrototypeOf(PlanetService.prototype), "getPage", this).call(this, page);
+        }
+      }, {
+        key: "planet",
+        set: function set(planet) {
+          this._planet = planet;
+        },
+        get: function get() {
+          return this._planet;
+        }
+      }]);
+
+      return PlanetService;
+    }(_classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+    PlanetService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], PlanetService);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/services/specie.service.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/core/services/specie.service.ts ***!
+    \*************************************************/
+
+  /*! exports provided: SpecieService */
+
+  /***/
+  function srcAppCoreServicesSpecieServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SpecieService", function () {
+      return SpecieService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../classes/cached-pagination.class */
+    "./src/app/core/classes/cached-pagination.class.ts");
+
+    var SpecieService =
+    /*#__PURE__*/
+    function (_classes_cached_pagin3) {
+      _inherits(SpecieService, _classes_cached_pagin3);
+
+      function SpecieService() {
+        var _this6;
+
+        _classCallCheck(this, SpecieService);
+
+        _this6 = _possibleConstructorReturn(this, _getPrototypeOf(SpecieService).apply(this, arguments));
+        _this6.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].url + "/species";
+        _this6._species = new Array();
+        return _this6;
+      }
+
+      _createClass(SpecieService, [{
+        key: "requestPage",
+        value: function requestPage(page) {
+          return _get(_getPrototypeOf(SpecieService.prototype), "requestPage", this).call(this, page, this.url);
+        }
+      }, {
+        key: "requestByUrl",
+        value: function requestByUrl(url) {
+          return _get(_getPrototypeOf(SpecieService.prototype), "requestByUrl", this).call(this, url);
+        }
+      }, {
+        key: "savePage",
+        value: function savePage(species, page) {
+          _get(_getPrototypeOf(SpecieService.prototype), "savePage", this).call(this, species, page);
+        }
+      }, {
+        key: "getPage",
+        value: function getPage(page) {
+          return _get(_getPrototypeOf(SpecieService.prototype), "getPage", this).call(this, page);
+        }
+      }, {
+        key: "specie",
+        set: function set(specie) {
+          this._specie = specie;
+        },
+        get: function get() {
+          return this._specie;
+        }
+      }]);
+
+      return SpecieService;
+    }(_classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+    SpecieService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], SpecieService);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/services/starship.service.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/core/services/starship.service.ts ***!
+    \***************************************************/
+
+  /*! exports provided: StarshipService */
+
+  /***/
+  function srcAppCoreServicesStarshipServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "StarshipService", function () {
+      return StarshipService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../classes/cached-pagination.class */
+    "./src/app/core/classes/cached-pagination.class.ts");
+
+    var StarshipService =
+    /*#__PURE__*/
+    function (_classes_cached_pagin4) {
+      _inherits(StarshipService, _classes_cached_pagin4);
+
+      function StarshipService() {
+        var _this7;
+
+        _classCallCheck(this, StarshipService);
+
+        _this7 = _possibleConstructorReturn(this, _getPrototypeOf(StarshipService).apply(this, arguments));
+        _this7.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].url + "/starships";
+        _this7._starships = new Array();
+        return _this7;
+      }
+
+      _createClass(StarshipService, [{
+        key: "requestPage",
+        value: function requestPage(page) {
+          return _get(_getPrototypeOf(StarshipService.prototype), "requestPage", this).call(this, page, this.url);
+        }
+      }, {
+        key: "requestByUrl",
+        value: function requestByUrl(url) {
+          return _get(_getPrototypeOf(StarshipService.prototype), "requestByUrl", this).call(this, url);
+        }
+      }, {
+        key: "savePage",
+        value: function savePage(starships, page) {
+          _get(_getPrototypeOf(StarshipService.prototype), "savePage", this).call(this, starships, page);
+        }
+      }, {
+        key: "getPage",
+        value: function getPage(page) {
+          return _get(_getPrototypeOf(StarshipService.prototype), "getPage", this).call(this, page);
+        }
+      }, {
+        key: "starship",
+        set: function set(starship) {
+          this._starship = starship;
+        },
+        get: function get() {
+          return this._starship;
+        }
+      }]);
+
+      return StarshipService;
+    }(_classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+    StarshipService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], StarshipService);
+    /***/
+  },
+
+  /***/
+  "./src/app/core/services/vehicle.service.ts":
+  /*!**************************************************!*\
+    !*** ./src/app/core/services/vehicle.service.ts ***!
+    \**************************************************/
+
+  /*! exports provided: VehicleService */
+
+  /***/
+  function srcAppCoreServicesVehicleServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "VehicleService", function () {
+      return VehicleService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../classes/cached-pagination.class */
+    "./src/app/core/classes/cached-pagination.class.ts");
+
+    var VehicleService =
+    /*#__PURE__*/
+    function (_classes_cached_pagin5) {
+      _inherits(VehicleService, _classes_cached_pagin5);
+
+      function VehicleService() {
+        var _this8;
+
+        _classCallCheck(this, VehicleService);
+
+        _this8 = _possibleConstructorReturn(this, _getPrototypeOf(VehicleService).apply(this, arguments));
+        _this8.url = src_environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].url + "/vehicles";
+        _this8._vehicles = new Array();
+        return _this8;
+      }
+
+      _createClass(VehicleService, [{
+        key: "requestPage",
+        value: function requestPage(page) {
+          return _get(_getPrototypeOf(VehicleService.prototype), "requestPage", this).call(this, page, this.url);
+        }
+      }, {
+        key: "requestByUrl",
+        value: function requestByUrl(url) {
+          return _get(_getPrototypeOf(VehicleService.prototype), "requestByUrl", this).call(this, url);
+        }
+      }, {
+        key: "savePage",
+        value: function savePage(vehicles, page) {
+          _get(_getPrototypeOf(VehicleService.prototype), "savePage", this).call(this, vehicles, page);
+        }
+      }, {
+        key: "getPage",
+        value: function getPage(page) {
+          return _get(_getPrototypeOf(VehicleService.prototype), "getPage", this).call(this, page);
+        }
+      }, {
+        key: "vehicle",
+        set: function set(vehicle) {
+          this._vehicle = vehicle;
+        },
+        get: function get() {
+          return this._vehicle;
+        }
+      }]);
+
+      return VehicleService;
+    }(_classes_cached_pagination_class__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+    VehicleService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    })], VehicleService);
+    /***/
+  },
+
+  /***/
   "./src/app/core/services/warning.service.ts":
   /*!**************************************************!*\
     !*** ./src/app/core/services/warning.service.ts ***!
@@ -1803,6 +3253,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function () {
       function UtilService() {
         _classCallCheck(this, UtilService);
+
+        this.assetsPath = "/src/assets/img/";
       }
 
       _createClass(UtilService, [{
@@ -1825,6 +3277,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
 
           return str;
+        }
+      }, {
+        key: "getEntityImage",
+        value: function getEntityImage(url, entityName) {
+          console.log(entityName);
+          return "".concat(this.assetsPath, "/").concat(entityName, "/").concat(this.getEntityId(url));
+        }
+      }, {
+        key: "getEntityId",
+        value: function getEntityId(url) {
+          var parts = url.split('/');
+          return +parts[parts.length - 2];
         }
       }]);
 
@@ -1932,7 +3396,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "/* MOVIE LIST */\nsection {\n  width: 100%;\n  max-height: 28px;\n}\np {\n  text-align: center;\n  margin: 0 auto;\n  color: #e9e9e9;\n  font-family: \"Star Jedi\", sans-serif;\n}\np a {\n  color: #e9e9e9;\n  text-decoration: none;\n  border-bottom: 1px solid cyan;\n  transition: color 300ms ease, border-bottom 300ms ease;\n}\np a:hover {\n  color: cyan;\n  border-bottom: 1px solid #000;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQSxlQUFBO0FDaEJBO0VBRUksV0FBQTtFQUNBLGdCRFVnQjtBRVhwQjtBRElBO0VBQ0ksa0JBQUE7RUFDQSxjQUFBO0VBQ0EsY0RQaUI7RUNRakIsb0NBQUE7QUNESjtBREdJO0VBQ0ksY0RYYTtFQ1liLHFCQUFBO0VBQ0EsNkJBQUE7RUFDQSxzREFBQTtBQ0RSO0FESVE7RUFDSSxXQUFBO0VBQ0EsNkJBQUE7QUNGWiIsImZpbGUiOiJzcmMvYXBwL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkYmFja2dyb3VuZC1jb2xvci0tZGVmYXVsdDogIzA3MDcwNztcbiRiYWNrZ3JvdW5kLWNvbG9yLS1zZWNvbmRhcnk6ICMwMDA7XG5cbi8vICR0eHQtY29sb3ItLWRlZmF1bHQ6ICMxNzE3MTU7XG4kdHh0LWNvbG9yLS1kZWZhdWx0OiAjZTllOWU5O1xuJHR4dC1jb2xvci0taG92ZXI6IGNyaW1zb247XG5cbiR0eHQtZm9udC1mYW1pbHktLXByaW1hcnk6IFwiU3RhciBKZWRpXCIsIG1vbm9zcGFjZTtcbiR0eHQtZm9udC1mYW1pbHktLXNlY29uZGFyeTogXCJUYWhvbWFcIiwgc2Fucy1zZXJpZjtcblxuJHR4dC1mb250LXNpemUtLWhlYWRlcjogY2FsYyguMzVlbSArIDJ2bWluKTtcblxuJGVsZW1lbnQtaG92ZXItLWNvbG9yOiAjMDJmZmRkO1xuXG4kaGVhZGVyLW1heC1oZWlnaHQ6IDM4cHg7XG4kZm9vdGVyLW1heC1oZWlnaHQ6IDI4cHg7XG4kY29udGVudC1taW4taGVpZ2h0OiBjYWxjKDEwMHZoIC0gI3skaGVhZGVyLW1heC1oZWlnaHR9IC0gI3skZm9vdGVyLW1heC1oZWlnaHR9IC0gMTBweCk7XG5cbi8qIE1PVklFIExJU1QgKi9cblxuJGNhcmQtaGVpZ2h0LS1tZDogODh2aDtcbiRjYXJkLWhlaWdodC0tc206IDQ0dmg7XG4kY2FyZC1oZWlnaHQtLXhzOiAzM3ZoO1xuXG4kY2FyZC13aWR0aC1ub3JtYWwtLW1kOiBjYWxjKDEwMCUgLyA3LjEpOyBcbiRjYXJkLXdpZHRoLW5vcm1hbC0tc206IGNhbGMoMTAwJSAvIDQuMSk7XG4kY2FyZC13aWR0aC1ub3JtYWwtLXhzOiAxMDAlO1xuXG4kY2FyZC13aWR0aC1ob3Zlci0tbWQ6IGNhbGMoMTAwJSAvIDcgKyAoMTAwJSAvIDQpKTtcblxuJGNhcmQtdHh0LWxldHRlci1zcGFjaW5nLS1tZDogNXB4O1xuJGNhcmQtdHh0LWxldHRlci1zcGFjaW5nLS1zbTogMi41cHg7XG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLXhzOiAxcHg7XG5cbiRjYXJkLXR4dC1mb250LXNpemUtLW1kOiBjYWxjKDFlbSArIDEuMjV2bWluKTtcbiRjYXJkLXR4dC1mb250LXNpemUtLXNtOiBjYWxjKC4zNzVlbSArIDF2bWluKTtcbiRjYXJkLXR4dC1mb250LXNpemUtLXhzOiBjYWxjKC41ZW0gKyAydm1pbik7IiwiQGltcG9ydCBcImdsb2JhbC92YXJpYWJsZXNcIjtcblxuc2VjdGlvbiB7XG4gICAgLy8gYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHRvcCwgIzAwMCA4MCUsIHJnYmEoMCwwLDAsMCkpO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1heC1oZWlnaHQ6ICRmb290ZXItbWF4LWhlaWdodDtcbn1cblxucCB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG1hcmdpbjogMCBhdXRvO1xuICAgIGNvbG9yOiAkdHh0LWNvbG9yLS1kZWZhdWx0O1xuICAgIGZvbnQtZmFtaWx5OiAnU3RhciBKZWRpJywgc2Fucy1zZXJpZjtcblxuICAgIGEge1xuICAgICAgICBjb2xvcjogJHR4dC1jb2xvci0tZGVmYXVsdDtcbiAgICAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgY3lhbjtcbiAgICAgICAgdHJhbnNpdGlvbjogY29sb3IgMzAwbXMgZWFzZSxcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyLWJvdHRvbSAzMDBtcyBlYXNlO1xuXG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgICAgY29sb3I6IGN5YW47XG4gICAgICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzAwMDtcbiAgICAgICAgfVxuICAgIH1cbn0iLCIvKiBNT1ZJRSBMSVNUICovXG5zZWN0aW9uIHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDI4cHg7XG59XG5cbnAge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbjogMCBhdXRvO1xuICBjb2xvcjogI2U5ZTllOTtcbiAgZm9udC1mYW1pbHk6IFwiU3RhciBKZWRpXCIsIHNhbnMtc2VyaWY7XG59XG5wIGEge1xuICBjb2xvcjogI2U5ZTllOTtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgY3lhbjtcbiAgdHJhbnNpdGlvbjogY29sb3IgMzAwbXMgZWFzZSwgYm9yZGVyLWJvdHRvbSAzMDBtcyBlYXNlO1xufVxucCBhOmhvdmVyIHtcbiAgY29sb3I6IGN5YW47XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xufSJdfQ== */";
+    __webpack_exports__["default"] = "/* MOVIE LIST */\nsection {\n  width: 100%;\n  max-height: 28px;\n}\np {\n  text-align: center;\n  margin: 0 auto;\n  color: #e9e9e9;\n  font-family: \"Star Jedi\", sans-serif;\n}\np a {\n  color: #e9e9e9;\n  text-decoration: none;\n  color: cyan;\n  text-shadow: 0px 0px 0px cyan;\n  transition: color 300ms ease, text-shadow 300ms ease;\n}\np a:hover {\n  text-shadow: 0 0 10px aqua;\n  color: #84ffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQSxlQUFBO0FDaEJBO0VBRUksV0FBQTtFQUNBLGdCRFVnQjtBRVhwQjtBRElBO0VBQ0ksa0JBQUE7RUFDQSxjQUFBO0VBQ0EsY0RQaUI7RUNRakIsb0NBQUE7QUNESjtBREdJO0VBQ0ksY0RYYTtFQ1liLHFCQUFBO0VBQ0EsV0FBQTtFQUNBLDZCQUFBO0VBQ0Esb0RBQUE7QUNEUjtBRElRO0VBQ0ksMEJBQUE7RUFDQSxjQUFBO0FDRloiLCJmaWxlIjoic3JjL2FwcC9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGJhY2tncm91bmQtY29sb3ItLWRlZmF1bHQ6ICMwNzA3MDc7XG4kYmFja2dyb3VuZC1jb2xvci0tc2Vjb25kYXJ5OiAjMDAwO1xuXG4vLyAkdHh0LWNvbG9yLS1kZWZhdWx0OiAjMTcxNzE1O1xuJHR4dC1jb2xvci0tZGVmYXVsdDogI2U5ZTllOTtcbiR0eHQtY29sb3ItLWhvdmVyOiBjcmltc29uO1xuXG4kdHh0LWZvbnQtZmFtaWx5LS1wcmltYXJ5OiBcIlN0YXIgSmVkaVwiLCBtb25vc3BhY2U7XG4kdHh0LWZvbnQtZmFtaWx5LS1zZWNvbmRhcnk6IFwiVGFob21hXCIsIHNhbnMtc2VyaWY7XG5cbiR0eHQtZm9udC1zaXplLS1oZWFkZXI6IGNhbGMoLjM1ZW0gKyAydm1pbik7XG5cbiRlbGVtZW50LWhvdmVyLS1jb2xvcjogIzAyZmZkZDtcblxuJGhlYWRlci1tYXgtaGVpZ2h0OiAzOHB4O1xuJGZvb3Rlci1tYXgtaGVpZ2h0OiAyOHB4O1xuJGNvbnRlbnQtbWluLWhlaWdodDogY2FsYygxMDB2aCAtICN7JGhlYWRlci1tYXgtaGVpZ2h0fSAtICN7JGZvb3Rlci1tYXgtaGVpZ2h0fSAtIDEwcHgpO1xuXG4vKiBNT1ZJRSBMSVNUICovXG5cbiRjYXJkLWhlaWdodC0tbWQ6IDg4dmg7XG4kY2FyZC1oZWlnaHQtLXNtOiA0NHZoO1xuJGNhcmQtaGVpZ2h0LS14czogMzN2aDtcblxuJGNhcmQtd2lkdGgtbm9ybWFsLS1tZDogY2FsYygxMDAlIC8gNy4xKTsgXG4kY2FyZC13aWR0aC1ub3JtYWwtLXNtOiBjYWxjKDEwMCUgLyA0LjEpO1xuJGNhcmQtd2lkdGgtbm9ybWFsLS14czogMTAwJTtcblxuJGNhcmQtd2lkdGgtaG92ZXItLW1kOiBjYWxjKDEwMCUgLyA3ICsgKDEwMCUgLyA0KSk7XG5cbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0tbWQ6IDVweDtcbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0tc206IDIuNXB4O1xuJGNhcmQtdHh0LWxldHRlci1zcGFjaW5nLS14czogMXB4O1xuXG4kY2FyZC10eHQtZm9udC1zaXplLS1tZDogY2FsYygxZW0gKyAxLjI1dm1pbik7XG4kY2FyZC10eHQtZm9udC1zaXplLS1zbTogY2FsYyguMzc1ZW0gKyAxdm1pbik7XG4kY2FyZC10eHQtZm9udC1zaXplLS14czogY2FsYyguNWVtICsgMnZtaW4pOyIsIkBpbXBvcnQgXCJnbG9iYWwvdmFyaWFibGVzXCI7XG5cbnNlY3Rpb24ge1xuICAgIC8vIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byB0b3AsICMwMDAgODAlLCByZ2JhKDAsMCwwLDApKTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXgtaGVpZ2h0OiAkZm9vdGVyLW1heC1oZWlnaHQ7XG59XG5cbnAge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXJnaW46IDAgYXV0bztcbiAgICBjb2xvcjogJHR4dC1jb2xvci0tZGVmYXVsdDtcbiAgICBmb250LWZhbWlseTogJ1N0YXIgSmVkaScsIHNhbnMtc2VyaWY7XG5cbiAgICBhIHtcbiAgICAgICAgY29sb3I6ICR0eHQtY29sb3ItLWRlZmF1bHQ7XG4gICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAgICAgY29sb3I6IGN5YW47XG4gICAgICAgIHRleHQtc2hhZG93OiAwcHggMHB4IDBweCBjeWFuO1xuICAgICAgICB0cmFuc2l0aW9uOiBjb2xvciAzMDBtcyBlYXNlLCBcbiAgICAgICAgICAgICAgICAgICAgdGV4dC1zaGFkb3cgMzAwbXMgZWFzZTtcblxuICAgICAgICAmOmhvdmVyIHtcbiAgICAgICAgICAgIHRleHQtc2hhZG93OiAwIDAgMTBweCByZ2IoMCwgMjU1LCAyNTUpO1xuICAgICAgICAgICAgY29sb3I6IHJnYigxMzIsIDI1NSwgMjU1KTtcbiAgICAgICAgfVxuICAgIH1cbn0iLCIvKiBNT1ZJRSBMSVNUICovXG5zZWN0aW9uIHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1heC1oZWlnaHQ6IDI4cHg7XG59XG5cbnAge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbjogMCBhdXRvO1xuICBjb2xvcjogI2U5ZTllOTtcbiAgZm9udC1mYW1pbHk6IFwiU3RhciBKZWRpXCIsIHNhbnMtc2VyaWY7XG59XG5wIGEge1xuICBjb2xvcjogI2U5ZTllOTtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBjb2xvcjogY3lhbjtcbiAgdGV4dC1zaGFkb3c6IDBweCAwcHggMHB4IGN5YW47XG4gIHRyYW5zaXRpb246IGNvbG9yIDMwMG1zIGVhc2UsIHRleHQtc2hhZG93IDMwMG1zIGVhc2U7XG59XG5wIGE6aG92ZXIge1xuICB0ZXh0LXNoYWRvdzogMCAwIDEwcHggYXF1YTtcbiAgY29sb3I6ICM4NGZmZmY7XG59Il19 */";
     /***/
   },
 
@@ -2011,7 +3475,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "/* MOVIE LIST */\nol {\n  list-style: none;\n}\nnav,\nol {\n  display: flex;\n  align-items: center;\n}\nsection {\n  max-height: 38px;\n}\nsection nav {\n  justify-content: space-between;\n}\nsection nav > * {\n  margin: 0;\n}\nsection nav h1 {\n  flex-grow: 1;\n  font-size: calc(calc(.35em + 2vmin) + .85vmin);\n  color: #e9e9e9;\n  font-family: \"Star Jedi\", monospace;\n  font-weight: 400;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  cursor: pointer;\n}\nsection nav ol {\n  justify-content: space-around;\n  flex-grow: 1;\n  padding: 0;\n}\nsection nav ol > * {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\nsection nav ol mat-icon {\n  font-size: calc(.35em + 2vmin);\n  width: unset;\n  height: unset;\n  line-height: unset;\n  display: inline-block;\n  margin-top: 6px;\n}\nsection nav ol li {\n  font-family: \"Star Jedi\", monospace;\n  font-size: calc(.35em + 2vmin);\n  padding: 0 8.75px;\n  cursor: pointer;\n  letter-spacing: 3px;\n  transition: color 125ms cubic-bezier(0.14, 0.85, 0.14, 0.85);\n  font-weight: 700;\n  color: #e9e9e9;\n  border-radius: 5px;\n  background: #202020;\n}\nsection nav ol li:hover {\n  background: crimson;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQSxlQUFBO0FDaEJBO0VBQUssZ0JBQUE7QUNDTDtBRENBOztFQUVJLGFBQUE7RUFDQSxtQkFBQTtBQ0VKO0FEQ0E7RUFLSSxnQkREZ0I7QUVEcEI7QURJSTtFQUNJLDhCQUFBO0FDRlI7QURJUTtFQUNJLFNBQUE7QUNGWjtBREtRO0VBQ0ksWUFBQTtFQUNBLDhDQUFBO0VBQ0EsY0R2QlM7RUN3QlQsbUNEckJlO0VDc0JmLGdCQUFBO0VBQ0EseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7RUFDQSxlQUFBO0FDSFo7QURNUTtFQUNJLDZCQUFBO0VBQ0EsWUFBQTtFQUNBLFVBQUE7QUNKWjtBRE1ZO0VBQ0kseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7QUNKaEI7QURPWTtFQUNJLDhCRGxDUTtFQ21DUixZQUFBO0VBQ0EsYUFBQTtFQUNBLGtCQUFBO0VBQ0EscUJBQUE7RUFDQSxlQUFBO0FDTGhCO0FEUVk7RUFDSSxtQ0Q5Q1c7RUMrQ1gsOEJENUNRO0VDNkNSLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLG1CQUFBO0VBQ0EsNERBQUE7RUFDQSxnQkFBQTtFQUNBLGNEeERLO0VDeURMLGtCQUFBO0VBQ0EsbUJBQUE7QUNOaEI7QURRZ0I7RUFDSSxtQkQ1REQ7QUVzRG5CIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRiYWNrZ3JvdW5kLWNvbG9yLS1kZWZhdWx0OiAjMDcwNzA3O1xuJGJhY2tncm91bmQtY29sb3ItLXNlY29uZGFyeTogIzAwMDtcblxuLy8gJHR4dC1jb2xvci0tZGVmYXVsdDogIzE3MTcxNTtcbiR0eHQtY29sb3ItLWRlZmF1bHQ6ICNlOWU5ZTk7XG4kdHh0LWNvbG9yLS1ob3ZlcjogY3JpbXNvbjtcblxuJHR4dC1mb250LWZhbWlseS0tcHJpbWFyeTogXCJTdGFyIEplZGlcIiwgbW9ub3NwYWNlO1xuJHR4dC1mb250LWZhbWlseS0tc2Vjb25kYXJ5OiBcIlRhaG9tYVwiLCBzYW5zLXNlcmlmO1xuXG4kdHh0LWZvbnQtc2l6ZS0taGVhZGVyOiBjYWxjKC4zNWVtICsgMnZtaW4pO1xuXG4kZWxlbWVudC1ob3Zlci0tY29sb3I6ICMwMmZmZGQ7XG5cbiRoZWFkZXItbWF4LWhlaWdodDogMzhweDtcbiRmb290ZXItbWF4LWhlaWdodDogMjhweDtcbiRjb250ZW50LW1pbi1oZWlnaHQ6IGNhbGMoMTAwdmggLSAjeyRoZWFkZXItbWF4LWhlaWdodH0gLSAjeyRmb290ZXItbWF4LWhlaWdodH0gLSAxMHB4KTtcblxuLyogTU9WSUUgTElTVCAqL1xuXG4kY2FyZC1oZWlnaHQtLW1kOiA4OHZoO1xuJGNhcmQtaGVpZ2h0LS1zbTogNDR2aDtcbiRjYXJkLWhlaWdodC0teHM6IDMzdmg7XG5cbiRjYXJkLXdpZHRoLW5vcm1hbC0tbWQ6IGNhbGMoMTAwJSAvIDcuMSk7IFxuJGNhcmQtd2lkdGgtbm9ybWFsLS1zbTogY2FsYygxMDAlIC8gNC4xKTtcbiRjYXJkLXdpZHRoLW5vcm1hbC0teHM6IDEwMCU7XG5cbiRjYXJkLXdpZHRoLWhvdmVyLS1tZDogY2FsYygxMDAlIC8gNyArICgxMDAlIC8gNCkpO1xuXG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLW1kOiA1cHg7XG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLXNtOiAyLjVweDtcbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0teHM6IDFweDtcblxuJGNhcmQtdHh0LWZvbnQtc2l6ZS0tbWQ6IGNhbGMoMWVtICsgMS4yNXZtaW4pO1xuJGNhcmQtdHh0LWZvbnQtc2l6ZS0tc206IGNhbGMoLjM3NWVtICsgMXZtaW4pO1xuJGNhcmQtdHh0LWZvbnQtc2l6ZS0teHM6IGNhbGMoLjVlbSArIDJ2bWluKTsiLCJAaW1wb3J0IFwiZ2xvYmFsL3ZhcmlhYmxlc1wiO1xuXG5vbCB7IGxpc3Qtc3R5bGU6IG5vbmUgfVxuXG5uYXYsXG5vbCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5zZWN0aW9uIHtcbiAgICAvLyBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgLy8gdG9wOiAwO1xuICAgIC8vIHdpZHRoOiAxMDAlO1xuICAgIC8vIHotaW5kZXg6IDEwMDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLW1heC1oZWlnaHQ7XG5cbiAgICBuYXYge1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgXG4gICAgICAgID4gKiB7XG4gICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIH1cblxuICAgICAgICBoMSB7XG4gICAgICAgICAgICBmbGV4LWdyb3c6IDE7XG4gICAgICAgICAgICBmb250LXNpemU6IGNhbGMoI3skdHh0LWZvbnQtc2l6ZS0taGVhZGVyfSArIC44NXZtaW4pO1xuICAgICAgICAgICAgY29sb3I6ICR0eHQtY29sb3ItLWRlZmF1bHQ7XG4gICAgICAgICAgICBmb250LWZhbWlseTogJHR4dC1mb250LWZhbWlseS0tcHJpbWFyeTtcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA0MDA7XG4gICAgICAgICAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgfVxuXG4gICAgICAgIG9sIHtcbiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICAgICAgICAgICAgZmxleC1ncm93OiAxO1xuICAgICAgICAgICAgcGFkZGluZzogMDtcbiAgICBcbiAgICAgICAgICAgID4gKiB7XG4gICAgICAgICAgICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIG1hdC1pY29uIHtcbiAgICAgICAgICAgICAgICBmb250LXNpemU6ICR0eHQtZm9udC1zaXplLS1oZWFkZXI7XG4gICAgICAgICAgICAgICAgd2lkdGg6IHVuc2V0O1xuICAgICAgICAgICAgICAgIGhlaWdodDogdW5zZXQ7XG4gICAgICAgICAgICAgICAgbGluZS1oZWlnaHQ6IHVuc2V0O1xuICAgICAgICAgICAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICAgICAgICAgICAgICBtYXJnaW4tdG9wOiA2cHg7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIGxpIHtcbiAgICAgICAgICAgICAgICBmb250LWZhbWlseTogJHR4dC1mb250LWZhbWlseS0tcHJpbWFyeTtcbiAgICAgICAgICAgICAgICBmb250LXNpemU6ICR0eHQtZm9udC1zaXplLS1oZWFkZXI7XG4gICAgICAgICAgICAgICAgcGFkZGluZzogMCA4Ljc1cHg7XG4gICAgICAgICAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICAgICAgICAgIGxldHRlci1zcGFjaW5nOiAzcHg7XG4gICAgICAgICAgICAgICAgdHJhbnNpdGlvbjogY29sb3IgMTI1bXMgY3ViaWMtYmV6aWVyKC4xNCwuODUsLjE0LC44NSk7XG4gICAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgICAgICAgICAgICAgICBjb2xvcjogJHR4dC1jb2xvci0tZGVmYXVsdDtcbiAgICAgICAgICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gICAgICAgICAgICAgICAgYmFja2dyb3VuZDogIzIwMjAyMDtcblxuICAgICAgICAgICAgICAgICY6aG92ZXIge1xuICAgICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kOiAkdHh0LWNvbG9yLS1ob3ZlcjtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG59XG4iLCIvKiBNT1ZJRSBMSVNUICovXG5vbCB7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG59XG5cbm5hdixcbm9sIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuc2VjdGlvbiB7XG4gIG1heC1oZWlnaHQ6IDM4cHg7XG59XG5zZWN0aW9uIG5hdiB7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cbnNlY3Rpb24gbmF2ID4gKiB7XG4gIG1hcmdpbjogMDtcbn1cbnNlY3Rpb24gbmF2IGgxIHtcbiAgZmxleC1ncm93OiAxO1xuICBmb250LXNpemU6IGNhbGMoY2FsYyguMzVlbSArIDJ2bWluKSArIC44NXZtaW4pO1xuICBjb2xvcjogI2U5ZTllOTtcbiAgZm9udC1mYW1pbHk6IFwiU3RhciBKZWRpXCIsIG1vbm9zcGFjZTtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cbnNlY3Rpb24gbmF2IG9sIHtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIGZsZXgtZ3JvdzogMTtcbiAgcGFkZGluZzogMDtcbn1cbnNlY3Rpb24gbmF2IG9sID4gKiB7XG4gIHVzZXItc2VsZWN0OiBub25lO1xufVxuc2VjdGlvbiBuYXYgb2wgbWF0LWljb24ge1xuICBmb250LXNpemU6IGNhbGMoLjM1ZW0gKyAydm1pbik7XG4gIHdpZHRoOiB1bnNldDtcbiAgaGVpZ2h0OiB1bnNldDtcbiAgbGluZS1oZWlnaHQ6IHVuc2V0O1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1hcmdpbi10b3A6IDZweDtcbn1cbnNlY3Rpb24gbmF2IG9sIGxpIHtcbiAgZm9udC1mYW1pbHk6IFwiU3RhciBKZWRpXCIsIG1vbm9zcGFjZTtcbiAgZm9udC1zaXplOiBjYWxjKC4zNWVtICsgMnZtaW4pO1xuICBwYWRkaW5nOiAwIDguNzVweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBsZXR0ZXItc3BhY2luZzogM3B4O1xuICB0cmFuc2l0aW9uOiBjb2xvciAxMjVtcyBjdWJpYy1iZXppZXIoMC4xNCwgMC44NSwgMC4xNCwgMC44NSk7XG4gIGZvbnQtd2VpZ2h0OiA3MDA7XG4gIGNvbG9yOiAjZTllOWU5O1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGJhY2tncm91bmQ6ICMyMDIwMjA7XG59XG5zZWN0aW9uIG5hdiBvbCBsaTpob3ZlciB7XG4gIGJhY2tncm91bmQ6IGNyaW1zb247XG59Il19 */";
+    __webpack_exports__["default"] = "/* MOVIE LIST */\nol {\n  list-style: none;\n}\nnav,\nol {\n  display: flex;\n  align-items: center;\n}\nsection {\n  max-height: 38px;\n}\nsection nav {\n  justify-content: space-between;\n}\nsection nav > * {\n  margin: 0;\n}\nsection nav h1 {\n  flex-grow: 1;\n  font-size: calc(calc(.35em + 2vmin) + .85vmin);\n  color: #e9e9e9;\n  font-family: \"Star Jedi\", monospace;\n  font-weight: 400;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  cursor: pointer;\n}\nsection nav ol {\n  justify-content: space-around;\n  flex-grow: 1;\n  padding: 0;\n}\nsection nav ol > * {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\nsection nav ol li {\n  font-family: \"Tahoma\", sans-serif;\n  padding: 5px 7.5px;\n  cursor: pointer;\n  transition: background 125ms cubic-bezier(0.14, 0.85, 0.14, 0.85);\n  color: #e9e9e9;\n  text-transform: uppercase;\n  font-weight: 700;\n  position: relative;\n  font-size: 0.95em;\n}\nsection nav ol li:after {\n  content: \"\";\n  position: absolute;\n  background: cyan;\n  width: 0;\n  height: 2px;\n  left: 50%;\n  bottom: 0;\n  transform: translate(-50%, 0);\n  transition: width 250ms cubic-bezier(0.14, 0.85, 0.14, 0.85);\n}\nsection nav ol li:hover:after {\n  width: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9oZWFkZXIvaGVhZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQSxlQUFBO0FDaEJBO0VBQUssZ0JBQUE7QUNDTDtBRENBOztFQUVJLGFBQUE7RUFDQSxtQkFBQTtBQ0VKO0FEQ0E7RUFLSSxnQkREZ0I7QUVEcEI7QURJSTtFQUNJLDhCQUFBO0FDRlI7QURJUTtFQUNJLFNBQUE7QUNGWjtBREtRO0VBQ0ksWUFBQTtFQUNBLDhDQUFBO0VBQ0EsY0R2QlM7RUN3QlQsbUNEckJlO0VDc0JmLGdCQUFBO0VBQ0EseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7RUFDQSxlQUFBO0FDSFo7QURNUTtFQUNJLDZCQUFBO0VBQ0EsWUFBQTtFQUNBLFVBQUE7QUNKWjtBRE1ZO0VBQ0kseUJBQUE7S0FBQSxzQkFBQTtNQUFBLHFCQUFBO1VBQUEsaUJBQUE7QUNKaEI7QURlWTtFQUNJLGlDQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUVBQUE7RUFDQSxjQUFBO0VBQ0EseUJBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7QUNiaEI7QURlZ0I7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLFFBQUE7RUFDQSxXQUFBO0VBQ0EsU0FBQTtFQUNBLFNBQUE7RUFDQSw2QkFBQTtFQUNBLDREQUFBO0FDYnBCO0FEa0JvQjtFQUNJLFVBQUE7QUNoQnhCIiwiZmlsZSI6InNyYy9hcHAvaGVhZGVyL2hlYWRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRiYWNrZ3JvdW5kLWNvbG9yLS1kZWZhdWx0OiAjMDcwNzA3O1xuJGJhY2tncm91bmQtY29sb3ItLXNlY29uZGFyeTogIzAwMDtcblxuLy8gJHR4dC1jb2xvci0tZGVmYXVsdDogIzE3MTcxNTtcbiR0eHQtY29sb3ItLWRlZmF1bHQ6ICNlOWU5ZTk7XG4kdHh0LWNvbG9yLS1ob3ZlcjogY3JpbXNvbjtcblxuJHR4dC1mb250LWZhbWlseS0tcHJpbWFyeTogXCJTdGFyIEplZGlcIiwgbW9ub3NwYWNlO1xuJHR4dC1mb250LWZhbWlseS0tc2Vjb25kYXJ5OiBcIlRhaG9tYVwiLCBzYW5zLXNlcmlmO1xuXG4kdHh0LWZvbnQtc2l6ZS0taGVhZGVyOiBjYWxjKC4zNWVtICsgMnZtaW4pO1xuXG4kZWxlbWVudC1ob3Zlci0tY29sb3I6ICMwMmZmZGQ7XG5cbiRoZWFkZXItbWF4LWhlaWdodDogMzhweDtcbiRmb290ZXItbWF4LWhlaWdodDogMjhweDtcbiRjb250ZW50LW1pbi1oZWlnaHQ6IGNhbGMoMTAwdmggLSAjeyRoZWFkZXItbWF4LWhlaWdodH0gLSAjeyRmb290ZXItbWF4LWhlaWdodH0gLSAxMHB4KTtcblxuLyogTU9WSUUgTElTVCAqL1xuXG4kY2FyZC1oZWlnaHQtLW1kOiA4OHZoO1xuJGNhcmQtaGVpZ2h0LS1zbTogNDR2aDtcbiRjYXJkLWhlaWdodC0teHM6IDMzdmg7XG5cbiRjYXJkLXdpZHRoLW5vcm1hbC0tbWQ6IGNhbGMoMTAwJSAvIDcuMSk7IFxuJGNhcmQtd2lkdGgtbm9ybWFsLS1zbTogY2FsYygxMDAlIC8gNC4xKTtcbiRjYXJkLXdpZHRoLW5vcm1hbC0teHM6IDEwMCU7XG5cbiRjYXJkLXdpZHRoLWhvdmVyLS1tZDogY2FsYygxMDAlIC8gNyArICgxMDAlIC8gNCkpO1xuXG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLW1kOiA1cHg7XG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLXNtOiAyLjVweDtcbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0teHM6IDFweDtcblxuJGNhcmQtdHh0LWZvbnQtc2l6ZS0tbWQ6IGNhbGMoMWVtICsgMS4yNXZtaW4pO1xuJGNhcmQtdHh0LWZvbnQtc2l6ZS0tc206IGNhbGMoLjM3NWVtICsgMXZtaW4pO1xuJGNhcmQtdHh0LWZvbnQtc2l6ZS0teHM6IGNhbGMoLjVlbSArIDJ2bWluKTsiLCJAaW1wb3J0IFwiZ2xvYmFsL3ZhcmlhYmxlc1wiO1xuXG5vbCB7IGxpc3Qtc3R5bGU6IG5vbmUgfVxuXG5uYXYsXG5vbCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG5zZWN0aW9uIHtcbiAgICAvLyBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgLy8gdG9wOiAwO1xuICAgIC8vIHdpZHRoOiAxMDAlO1xuICAgIC8vIHotaW5kZXg6IDEwMDtcbiAgICBtYXgtaGVpZ2h0OiAkaGVhZGVyLW1heC1oZWlnaHQ7XG5cbiAgICBuYXYge1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgXG4gICAgICAgID4gKiB7XG4gICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIH1cblxuICAgICAgICBoMSB7XG4gICAgICAgICAgICBmbGV4LWdyb3c6IDE7XG4gICAgICAgICAgICBmb250LXNpemU6IGNhbGMoI3skdHh0LWZvbnQtc2l6ZS0taGVhZGVyfSArIC44NXZtaW4pO1xuICAgICAgICAgICAgY29sb3I6ICR0eHQtY29sb3ItLWRlZmF1bHQ7XG4gICAgICAgICAgICBmb250LWZhbWlseTogJHR4dC1mb250LWZhbWlseS0tcHJpbWFyeTtcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiA0MDA7XG4gICAgICAgICAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgICAgICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgfVxuXG4gICAgICAgIG9sIHtcbiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICAgICAgICAgICAgZmxleC1ncm93OiAxO1xuICAgICAgICAgICAgcGFkZGluZzogMDtcbiAgICBcbiAgICAgICAgICAgID4gKiB7XG4gICAgICAgICAgICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIC8vIG1hdC1pY29uIHtcbiAgICAgICAgICAgIC8vICAgICB3aWR0aDogdW5zZXQ7XG4gICAgICAgICAgICAvLyAgICAgaGVpZ2h0OiB1bnNldDtcbiAgICAgICAgICAgIC8vICAgICBsaW5lLWhlaWdodDogdW5zZXQ7XG4gICAgICAgICAgICAvLyAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICAgICAgICAgICAgLy8gICAgIGhlaWdodDogMjBweDtcbiAgICAgICAgICAgIC8vIH1cblxuICAgICAgICAgICAgbGkge1xuICAgICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiBcIlRhaG9tYVwiLCBzYW5zLXNlcmlmO1xuICAgICAgICAgICAgICAgIHBhZGRpbmc6IDVweCA3LjVweDtcbiAgICAgICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgICAgICAgICAgICAgdHJhbnNpdGlvbjogYmFja2dyb3VuZCAxMjVtcyBjdWJpYy1iZXppZXIoMC4xNCwgMC44NSwgMC4xNCwgMC44NSk7XG4gICAgICAgICAgICAgICAgY29sb3I6ICNlOWU5ZTk7XG4gICAgICAgICAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICAgICAgICAgICAgICBmb250LXdlaWdodDogNzAwO1xuICAgICAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICAgICAgICBmb250LXNpemU6IC45NWVtO1xuXG4gICAgICAgICAgICAgICAgJjphZnRlciB7XG4gICAgICAgICAgICAgICAgICAgIGNvbnRlbnQ6IFwiXCI7XG4gICAgICAgICAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZDogY3lhbjtcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDA7XG4gICAgICAgICAgICAgICAgICAgIGhlaWdodDogMnB4O1xuICAgICAgICAgICAgICAgICAgICBsZWZ0OiA1MCU7XG4gICAgICAgICAgICAgICAgICAgIGJvdHRvbTogMDtcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgMCk7XG4gICAgICAgICAgICAgICAgICAgIHRyYW5zaXRpb246IHdpZHRoIDI1MG1zIGN1YmljLWJlemllcigwLjE0LCAwLjg1LCAwLjE0LCAwLjg1KTtcbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICAmOmhvdmVyIHtcblxuICAgICAgICAgICAgICAgICAgICAmOmFmdGVyIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICB9XG59XG4iLCIvKiBNT1ZJRSBMSVNUICovXG5vbCB7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG59XG5cbm5hdixcbm9sIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuc2VjdGlvbiB7XG4gIG1heC1oZWlnaHQ6IDM4cHg7XG59XG5zZWN0aW9uIG5hdiB7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cbnNlY3Rpb24gbmF2ID4gKiB7XG4gIG1hcmdpbjogMDtcbn1cbnNlY3Rpb24gbmF2IGgxIHtcbiAgZmxleC1ncm93OiAxO1xuICBmb250LXNpemU6IGNhbGMoY2FsYyguMzVlbSArIDJ2bWluKSArIC44NXZtaW4pO1xuICBjb2xvcjogI2U5ZTllOTtcbiAgZm9udC1mYW1pbHk6IFwiU3RhciBKZWRpXCIsIG1vbm9zcGFjZTtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn1cbnNlY3Rpb24gbmF2IG9sIHtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIGZsZXgtZ3JvdzogMTtcbiAgcGFkZGluZzogMDtcbn1cbnNlY3Rpb24gbmF2IG9sID4gKiB7XG4gIHVzZXItc2VsZWN0OiBub25lO1xufVxuc2VjdGlvbiBuYXYgb2wgbGkge1xuICBmb250LWZhbWlseTogXCJUYWhvbWFcIiwgc2Fucy1zZXJpZjtcbiAgcGFkZGluZzogNXB4IDcuNXB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHRyYW5zaXRpb246IGJhY2tncm91bmQgMTI1bXMgY3ViaWMtYmV6aWVyKDAuMTQsIDAuODUsIDAuMTQsIDAuODUpO1xuICBjb2xvcjogI2U5ZTllOTtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBmb250LXNpemU6IDAuOTVlbTtcbn1cbnNlY3Rpb24gbmF2IG9sIGxpOmFmdGVyIHtcbiAgY29udGVudDogXCJcIjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBiYWNrZ3JvdW5kOiBjeWFuO1xuICB3aWR0aDogMDtcbiAgaGVpZ2h0OiAycHg7XG4gIGxlZnQ6IDUwJTtcbiAgYm90dG9tOiAwO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAwKTtcbiAgdHJhbnNpdGlvbjogd2lkdGggMjUwbXMgY3ViaWMtYmV6aWVyKDAuMTQsIDAuODUsIDAuMTQsIDAuODUpO1xufVxuc2VjdGlvbiBuYXYgb2wgbGk6aG92ZXI6YWZ0ZXIge1xuICB3aWR0aDogNTAlO1xufSJdfQ== */";
     /***/
   },
 
@@ -2055,47 +3519,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _core_services_movie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../core/services/movie.service */
-    "./src/app/core/services/movie.service.ts");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
     var HeaderComponent =
     /*#__PURE__*/
     function () {
-      function HeaderComponent(router, utilService, movieService) {
+      function HeaderComponent(router, utilService) {
         _classCallCheck(this, HeaderComponent);
 
         this.router = router;
         this.utilService = utilService;
-        this.movieService = movieService;
       }
 
       _createClass(HeaderComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
-          this.movies = this.movieService.movies;
-        }
+        value: function ngOnInit() {}
       }, {
-        key: "goToHome",
-        value: function goToHome() {
-          this.router.navigate(['movies']);
+        key: "goTo",
+        value: function goTo(url) {
+          this.router.navigate([url]);
         }
       }, {
         key: "toRoman",
         value: function toRoman(num) {
           return this.utilService.toRoman(num);
-        }
-      }, {
-        key: "goToMovieDetail",
-        value: function goToMovieDetail(position) {
-          this.movieService.movie = this.movies[position - 1];
-          this.router.navigate(['movies', position]);
         }
       }]);
 
@@ -2104,11 +3553,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     HeaderComponent.ctorParameters = function () {
       return [{
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
       }, {
         type: _core_util_service__WEBPACK_IMPORTED_MODULE_2__["UtilService"]
-      }, {
-        type: _core_services_movie_service__WEBPACK_IMPORTED_MODULE_3__["default"]
       }];
     };
 
@@ -2265,7 +3712,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "/* MOVIE LIST */\n.wrapper {\n  background: black;\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 120;\n}\n.wrapper .container {\n  width: 200px;\n  height: 200px;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.wrapper .container .bubble1,\n.wrapper .container .bubble2,\n.wrapper .container .bubble3 {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  border-radius: 100%;\n  opacity: 0;\n}\n.wrapper .container .bubble1 {\n  z-index: 145;\n  width: 200px;\n  height: 200px;\n  -webkit-animation: increase-bb1 3000ms infinite;\n          animation: increase-bb1 3000ms infinite;\n}\n.wrapper .container .bubble2 {\n  z-index: 146;\n  width: 175px;\n  height: 175px;\n  -webkit-animation: increase-bb2 3000ms infinite;\n          animation: increase-bb2 3000ms infinite;\n}\n.wrapper .container .bubble3 {\n  z-index: 147;\n  width: 150px;\n  height: 150px;\n  -webkit-animation: increase-bb3 3000ms infinite;\n          animation: increase-bb3 3000ms infinite;\n}\n.wrapper .container .icon {\n  z-index: 1000;\n  width: 100px;\n  height: 100px;\n  -webkit-animation: bump 3000ms infinite;\n          animation: bump 3000ms infinite;\n  opacity: 1;\n}\n.text {\n  color: #e9e9e9;\n  font-size: 2.5em;\n  margin: 0.5em 0 0 0.25em;\n}\n@-webkit-keyframes increase-bb1 {\n  0% {\n    width: 200px;\n    height: 200px;\n    background: #1766cc;\n    opacity: 0.5;\n  }\n  50% {\n    width: 175px;\n    height: 175px;\n    background: #1766cc;\n    opacity: 0;\n  }\n}\n@keyframes increase-bb1 {\n  0% {\n    width: 200px;\n    height: 200px;\n    background: #1766cc;\n    opacity: 0.5;\n  }\n  50% {\n    width: 175px;\n    height: 175px;\n    background: #1766cc;\n    opacity: 0;\n  }\n}\n@-webkit-keyframes increase-bb2 {\n  0% {\n    opacity: 0;\n  }\n  25% {\n    width: 175px;\n    height: 175px;\n    background: #1493dc;\n    opacity: 0.75;\n  }\n  75% {\n    width: 150px;\n    height: 150px;\n    background: #1493dc;\n    opacity: 0;\n  }\n}\n@keyframes increase-bb2 {\n  0% {\n    opacity: 0;\n  }\n  25% {\n    width: 175px;\n    height: 175px;\n    background: #1493dc;\n    opacity: 0.75;\n  }\n  75% {\n    width: 150px;\n    height: 150px;\n    background: #1493dc;\n    opacity: 0;\n  }\n}\n@-webkit-keyframes increase-bb3 {\n  0% {\n    opacity: 0;\n  }\n  50% {\n    width: 150px;\n    height: 150px;\n    background: #451db3;\n    opacity: 0.25;\n  }\n  100% {\n    width: 200px;\n    height: 200px;\n    background: #451db3;\n    opacity: 0.5;\n  }\n}\n@keyframes increase-bb3 {\n  0% {\n    opacity: 0;\n  }\n  50% {\n    width: 150px;\n    height: 150px;\n    background: #451db3;\n    opacity: 0.25;\n  }\n  100% {\n    width: 200px;\n    height: 200px;\n    background: #451db3;\n    opacity: 0.5;\n  }\n}\n@-webkit-keyframes hide-and-seek {\n  0% {\n    opacity: 0;\n  }\n  15% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 1;\n  }\n  97.5% {\n    opacity: 0;\n  }\n}\n@keyframes hide-and-seek {\n  0% {\n    opacity: 0;\n  }\n  15% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 1;\n  }\n  97.5% {\n    opacity: 0;\n  }\n}\n@-webkit-keyframes bump {\n  5% {\n    width: 100px;\n    height: 100px;\n  }\n  45% {\n    width: 80px;\n    height: 80px;\n  }\n  55% {\n    width: 80px;\n    height: 80px;\n  }\n  95% {\n    width: 100px;\n    height: 100px;\n  }\n}\n@keyframes bump {\n  5% {\n    width: 100px;\n    height: 100px;\n  }\n  45% {\n    width: 80px;\n    height: 80px;\n  }\n  55% {\n    width: 80px;\n    height: 80px;\n  }\n  95% {\n    width: 100px;\n    height: 100px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9sb2FkZXIvbG9hZGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9sb2FkZXIvbG9hZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQSxlQUFBO0FDU0E7RUFDSSxpQkFBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLHdCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsTUFBQTtFQUNBLE9BQUE7RUFDQSxZQUFBO0FDekJKO0FEMkJJO0VBQ0ksWUF6Qkk7RUEwQkosYUExQkk7RUEyQkosa0JBQUE7RUFDQSxhQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtBQ3pCUjtBRDJCUTs7O0VBR0ksV0FBQTtFQTlCUixrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsZ0NBQUE7RUE2QlEsbUJBQUE7RUFDQSxVQUFBO0FDdEJaO0FEeUJRO0VBQ0ksWUFBQTtFQUNBLFlBbERFO0VBbURGLGFBbkRFO0VBb0RGLCtDQUFBO1VBQUEsdUNBQUE7QUN2Qlo7QUR5QlE7RUFDSSxZQUFBO0VBQ0EsWUFyREU7RUFzREYsYUF0REU7RUF1REYsK0NBQUE7VUFBQSx1Q0FBQTtBQ3ZCWjtBRHlCUTtFQUNJLFlBQUE7RUFDQSxZQXhERTtFQXlERixhQXpERTtFQTBERiwrQ0FBQTtVQUFBLHVDQUFBO0FDdkJaO0FEMEJRO0VBQ0ksYUFBQTtFQUNBLFlBN0VBO0VBOEVBLGFBOUVBO0VBK0VBLHVDQUFBO1VBQUEsK0JBQUE7RUFDQSxVQUFBO0FDeEJaO0FEOEJBO0VBQ0ksY0RwRmlCO0VDcUZqQixnQkFBQTtFQUNBLHdCQUFBO0FDM0JKO0FEOEJBO0VBQ0k7SUFBSyxZQXJGSztJQXFGZ0IsYUFyRmhCO0lBcUZzQyxtQkF4RnhDO0lBd0ZnRSxZQUFBO0VDdkIxRTtFRHdCRTtJQUFNLFlBckZFO0lBcUZpQixhQXJGakI7SUFxRnFDLG1CQXpGckM7SUF5RjZELFVBQUE7RUNsQnZFO0FBQ0Y7QURlQTtFQUNJO0lBQUssWUFyRks7SUFxRmdCLGFBckZoQjtJQXFGc0MsbUJBeEZ4QztJQXdGZ0UsWUFBQTtFQ3ZCMUU7RUR3QkU7SUFBTSxZQXJGRTtJQXFGaUIsYUFyRmpCO0lBcUZxQyxtQkF6RnJDO0lBeUY2RCxVQUFBO0VDbEJ2RTtBQUNGO0FEb0JBO0VBQ0k7SUFBSyxVQUFBO0VDakJQO0VEa0JFO0lBQU0sWUF4Rkk7SUF3RmlCLGFBeEZqQjtJQXdGdUMsbUJBL0Z6QztJQStGaUUsYUFBQTtFQ1ozRTtFRGFFO0lBQU0sWUF4RkU7SUF3RmlCLGFBeEZqQjtJQXdGcUMsbUJBaEdyQztJQWdHNkQsVUFBQTtFQ1B2RTtBQUNGO0FER0E7RUFDSTtJQUFLLFVBQUE7RUNqQlA7RURrQkU7SUFBTSxZQXhGSTtJQXdGaUIsYUF4RmpCO0lBd0Z1QyxtQkEvRnpDO0lBK0ZpRSxhQUFBO0VDWjNFO0VEYUU7SUFBTSxZQXhGRTtJQXdGaUIsYUF4RmpCO0lBd0ZxQyxtQkFoR3JDO0lBZ0c2RCxVQUFBO0VDUHZFO0FBQ0Y7QURTQTtFQUNJO0lBQUssVUFBQTtFQ05QO0VET0U7SUFBTSxZQTNGSTtJQTJGaUIsYUEzRmpCO0lBMkZ1QyxtQkFuR3pDO0lBbUdpRSxhQUFBO0VDRDNFO0VERUU7SUFBTyxZQTNGQztJQTJGa0IsYUEzRmxCO0lBMkZzQyxtQkFwR3RDO0lBb0c4RCxZQUFBO0VDSXhFO0FBQ0Y7QURSQTtFQUNJO0lBQUssVUFBQTtFQ05QO0VET0U7SUFBTSxZQTNGSTtJQTJGaUIsYUEzRmpCO0lBMkZ1QyxtQkFuR3pDO0lBbUdpRSxhQUFBO0VDRDNFO0VERUU7SUFBTyxZQTNGQztJQTJGa0IsYUEzRmxCO0lBMkZzQyxtQkFwR3RDO0lBb0c4RCxZQUFBO0VDSXhFO0FBQ0Y7QURGQTtFQUNJO0lBQUssVUFBQTtFQ0tQO0VESkU7SUFBTSxVQUFBO0VDT1I7RURKRTtJQUFNLFVBQUE7RUNPUjtFREpFO0lBQVEsVUFBQTtFQ09WO0FBQ0Y7QURoQkE7RUFDSTtJQUFLLFVBQUE7RUNLUDtFREpFO0lBQU0sVUFBQTtFQ09SO0VESkU7SUFBTSxVQUFBO0VDT1I7RURKRTtJQUFRLFVBQUE7RUNPVjtBQUNGO0FESEE7RUFDSTtJQUFLLFlBM0hHO0lBMkhnQixhQTNIaEI7RUNrSVY7RURORTtJQUFNLFdBQUE7SUFBMEIsWUFBQTtFQ1VsQztFRFRFO0lBQU0sV0FBQTtJQUEwQixZQUFBO0VDYWxDO0VEWkU7SUFBTSxZQTlIRTtJQThIaUIsYUE5SGpCO0VDOElWO0FBQ0Y7QURyQkE7RUFDSTtJQUFLLFlBM0hHO0lBMkhnQixhQTNIaEI7RUNrSVY7RURORTtJQUFNLFdBQUE7SUFBMEIsWUFBQTtFQ1VsQztFRFRFO0lBQU0sV0FBQTtJQUEwQixZQUFBO0VDYWxDO0VEWkU7SUFBTSxZQTlIRTtJQThIaUIsYUE5SGpCO0VDOElWO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9sb2FkZXIvbG9hZGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGJhY2tncm91bmQtY29sb3ItLWRlZmF1bHQ6ICMwNzA3MDc7XG4kYmFja2dyb3VuZC1jb2xvci0tc2Vjb25kYXJ5OiAjMDAwO1xuXG4vLyAkdHh0LWNvbG9yLS1kZWZhdWx0OiAjMTcxNzE1O1xuJHR4dC1jb2xvci0tZGVmYXVsdDogI2U5ZTllOTtcbiR0eHQtY29sb3ItLWhvdmVyOiBjcmltc29uO1xuXG4kdHh0LWZvbnQtZmFtaWx5LS1wcmltYXJ5OiBcIlN0YXIgSmVkaVwiLCBtb25vc3BhY2U7XG4kdHh0LWZvbnQtZmFtaWx5LS1zZWNvbmRhcnk6IFwiVGFob21hXCIsIHNhbnMtc2VyaWY7XG5cbiR0eHQtZm9udC1zaXplLS1oZWFkZXI6IGNhbGMoLjM1ZW0gKyAydm1pbik7XG5cbiRlbGVtZW50LWhvdmVyLS1jb2xvcjogIzAyZmZkZDtcblxuJGhlYWRlci1tYXgtaGVpZ2h0OiAzOHB4O1xuJGZvb3Rlci1tYXgtaGVpZ2h0OiAyOHB4O1xuJGNvbnRlbnQtbWluLWhlaWdodDogY2FsYygxMDB2aCAtICN7JGhlYWRlci1tYXgtaGVpZ2h0fSAtICN7JGZvb3Rlci1tYXgtaGVpZ2h0fSAtIDEwcHgpO1xuXG4vKiBNT1ZJRSBMSVNUICovXG5cbiRjYXJkLWhlaWdodC0tbWQ6IDg4dmg7XG4kY2FyZC1oZWlnaHQtLXNtOiA0NHZoO1xuJGNhcmQtaGVpZ2h0LS14czogMzN2aDtcblxuJGNhcmQtd2lkdGgtbm9ybWFsLS1tZDogY2FsYygxMDAlIC8gNy4xKTsgXG4kY2FyZC13aWR0aC1ub3JtYWwtLXNtOiBjYWxjKDEwMCUgLyA0LjEpO1xuJGNhcmQtd2lkdGgtbm9ybWFsLS14czogMTAwJTtcblxuJGNhcmQtd2lkdGgtaG92ZXItLW1kOiBjYWxjKDEwMCUgLyA3ICsgKDEwMCUgLyA0KSk7XG5cbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0tbWQ6IDVweDtcbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0tc206IDIuNXB4O1xuJGNhcmQtdHh0LWxldHRlci1zcGFjaW5nLS14czogMXB4O1xuXG4kY2FyZC10eHQtZm9udC1zaXplLS1tZDogY2FsYygxZW0gKyAxLjI1dm1pbik7XG4kY2FyZC10eHQtZm9udC1zaXplLS1zbTogY2FsYyguMzc1ZW0gKyAxdm1pbik7XG4kY2FyZC10eHQtZm9udC1zaXplLS14czogY2FsYyguNWVtICsgMnZtaW4pOyIsIiRpY29uLWFyZWEtc2l6ZTogMjAwcHg7XG4kaWNvbi1zaXplOiAxMDBweDtcblxuJGFuaW1hdGlvbi1pbnRlcnZhbDogMzAwMG1zO1xuXG4kY29sb3ItYmIyOiByZ2IoMjAsIDE0NywgMjIwKTtcbiRjb2xvci1iYjE6IHJnYigyMywgMTAyLCAyMDQpO1xuJGNvbG9yLWJiMzogcmdiKDY5LCAyOSwgMTc5KTtcblxuJGluaXRpYWwtYmIxOiAyMDBweDtcbiRmaW5hbC1iYjE6IDE3NXB4O1xuXG4kaW5pdGlhbC1iYjI6IDE3NXB4O1xuJGZpbmFsLWJiMjogMTUwcHg7XG5cbiRpbml0aWFsLWJiMzogMTUwcHg7XG4kZmluYWwtYmIzOiAyMDBweDtcblxuQGltcG9ydCAnZ2xvYmFsL3ZhcmlhYmxlcyc7XG5cbkBtaXhpbiBhYnMtY2VudGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xufVxuXG4ud3JhcHBlciB7XG4gICAgYmFja2dyb3VuZDogYmxhY2s7XG4gICAgd2lkdGg6IDEwMHZ3O1xuICAgIGhlaWdodDogMTAwdmg7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWZsb3c6IGNvbHVtbiBub3dyYXA7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAwO1xuICAgIGxlZnQ6IDA7XG4gICAgei1pbmRleDogMTIwO1xuXG4gICAgLmNvbnRhaW5lciB7XG4gICAgICAgIHdpZHRoOiAkZmluYWwtYmIzO1xuICAgICAgICBoZWlnaHQ6ICRmaW5hbC1iYjM7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG5cbiAgICAgICAgLmJ1YmJsZTEsXG4gICAgICAgIC5idWJibGUyLFxuICAgICAgICAuYnViYmxlMyB7XG4gICAgICAgICAgICBjb250ZW50OiBcIlwiO1xuICAgICAgICAgICAgQGluY2x1ZGUgYWJzLWNlbnRlcjtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gICAgICAgICAgICBvcGFjaXR5OiAwO1xuICAgICAgICB9XG4gICAgICAgIFxuICAgICAgICAuYnViYmxlMSB7XG4gICAgICAgICAgICB6LWluZGV4OiAxNDU7XG4gICAgICAgICAgICB3aWR0aDogJGluaXRpYWwtYmIxO1xuICAgICAgICAgICAgaGVpZ2h0OiAkaW5pdGlhbC1iYjE7XG4gICAgICAgICAgICBhbmltYXRpb246IGluY3JlYXNlLWJiMSAkYW5pbWF0aW9uLWludGVydmFsIGluZmluaXRlO1xuICAgICAgICB9XG4gICAgICAgIC5idWJibGUyIHtcbiAgICAgICAgICAgIHotaW5kZXg6IDE0NjtcbiAgICAgICAgICAgIHdpZHRoOiAkaW5pdGlhbC1iYjI7XG4gICAgICAgICAgICBoZWlnaHQ6ICRpbml0aWFsLWJiMjtcbiAgICAgICAgICAgIGFuaW1hdGlvbjogaW5jcmVhc2UtYmIyICRhbmltYXRpb24taW50ZXJ2YWwgaW5maW5pdGU7XG4gICAgICAgIH0gICAgXG4gICAgICAgIC5idWJibGUzIHtcbiAgICAgICAgICAgIHotaW5kZXg6IDE0NztcbiAgICAgICAgICAgIHdpZHRoOiAkaW5pdGlhbC1iYjM7XG4gICAgICAgICAgICBoZWlnaHQ6ICRpbml0aWFsLWJiMztcbiAgICAgICAgICAgIGFuaW1hdGlvbjogaW5jcmVhc2UtYmIzICRhbmltYXRpb24taW50ZXJ2YWwgaW5maW5pdGU7XG4gICAgICAgIH1cbiAgICAgICAgXG4gICAgICAgIC5pY29uIHtcbiAgICAgICAgICAgIHotaW5kZXg6IDEwMDA7XG4gICAgICAgICAgICB3aWR0aDogJGljb24tc2l6ZTtcbiAgICAgICAgICAgIGhlaWdodDogJGljb24tc2l6ZTtcbiAgICAgICAgICAgIGFuaW1hdGlvbjogYnVtcCAkYW5pbWF0aW9uLWludGVydmFsIGluZmluaXRlO1xuICAgICAgICAgICAgb3BhY2l0eTogMTtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuXG4udGV4dCB7XG4gICAgY29sb3I6ICR0eHQtY29sb3ItLWRlZmF1bHQ7XG4gICAgZm9udC1zaXplOiAyLjVlbTtcbiAgICBtYXJnaW46IC41ZW0gMCAwIC4yNWVtO1xufVxuXG5Aa2V5ZnJhbWVzIGluY3JlYXNlLWJiMSB7XG4gICAgMCUgeyB3aWR0aDogJGluaXRpYWwtYmIxOyBoZWlnaHQ6ICRpbml0aWFsLWJiMTsgYmFja2dyb3VuZDogJGNvbG9yLWJiMTsgb3BhY2l0eTogLjU7IH1cbiAgICA1MCUgeyB3aWR0aDogJGZpbmFsLWJiMTsgaGVpZ2h0OiAkZmluYWwtYmIxOyBiYWNrZ3JvdW5kOiAkY29sb3ItYmIxOyBvcGFjaXR5OiAwOyB9XG59XG5cbkBrZXlmcmFtZXMgaW5jcmVhc2UtYmIyIHtcbiAgICAwJSB7IG9wYWNpdHk6IDAgfVxuICAgIDI1JSB7IHdpZHRoOiAkaW5pdGlhbC1iYjI7IGhlaWdodDogJGluaXRpYWwtYmIyOyBiYWNrZ3JvdW5kOiAkY29sb3ItYmIyOyBvcGFjaXR5OiAuNzU7IH1cbiAgICA3NSUgeyB3aWR0aDogJGZpbmFsLWJiMjsgaGVpZ2h0OiAkZmluYWwtYmIyOyBiYWNrZ3JvdW5kOiAkY29sb3ItYmIyOyBvcGFjaXR5OiAwOyB9XG59XG5cbkBrZXlmcmFtZXMgaW5jcmVhc2UtYmIzIHtcbiAgICAwJSB7IG9wYWNpdHk6IDAgfSBcbiAgICA1MCUgeyB3aWR0aDogJGluaXRpYWwtYmIzOyBoZWlnaHQ6ICRpbml0aWFsLWJiMzsgYmFja2dyb3VuZDogJGNvbG9yLWJiMzsgb3BhY2l0eTogLjI1OyB9XG4gICAgMTAwJSB7IHdpZHRoOiAkZmluYWwtYmIzOyBoZWlnaHQ6ICRmaW5hbC1iYjM7IGJhY2tncm91bmQ6ICRjb2xvci1iYjM7IG9wYWNpdHk6IC41OyB9XG59XG5cbkBrZXlmcmFtZXMgaGlkZS1hbmQtc2VlayB7XG4gICAgMCUgeyBvcGFjaXR5OiAwOyB9XG4gICAgMTUlIHsgb3BhY2l0eTogMTsgXG4gICAgICAgIC8vIHRyYW5zZm9ybTogcm90YXRlKDApO1xuICAgICB9IFxuICAgIDUwJSB7IG9wYWNpdHk6IDE7IFxuICAgICAgICAvLyB0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpO1xuICAgICB9IFxuICAgIDk3LjUlIHsgb3BhY2l0eTogMDsgXG4gICAgICAgIC8vIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZykgXG4gICAgfVxufVxuXG5Aa2V5ZnJhbWVzIGJ1bXAge1xuICAgIDUlIHsgd2lkdGg6ICRpY29uLXNpemU7IGhlaWdodDogJGljb24tc2l6ZTsgfSBcbiAgICA0NSUgeyB3aWR0aDogJGljb24tc2l6ZSAtIDIwcHg7IGhlaWdodDogJGljb24tc2l6ZSAtIDIwcHg7IH1cbiAgICA1NSUgeyB3aWR0aDogJGljb24tc2l6ZSAtIDIwcHg7IGhlaWdodDogJGljb24tc2l6ZSAtIDIwcHg7IH1cbiAgICA5NSUgeyB3aWR0aDogJGljb24tc2l6ZTsgaGVpZ2h0OiAkaWNvbi1zaXplOyB9IFxufVxuXG5cbiIsIi8qIE1PVklFIExJU1QgKi9cbi53cmFwcGVyIHtcbiAgYmFja2dyb3VuZDogYmxhY2s7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1mbG93OiBjb2x1bW4gbm93cmFwO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHotaW5kZXg6IDEyMDtcbn1cbi53cmFwcGVyIC5jb250YWluZXIge1xuICB3aWR0aDogMjAwcHg7XG4gIGhlaWdodDogMjAwcHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4ud3JhcHBlciAuY29udGFpbmVyIC5idWJibGUxLFxuLndyYXBwZXIgLmNvbnRhaW5lciAuYnViYmxlMixcbi53cmFwcGVyIC5jb250YWluZXIgLmJ1YmJsZTMge1xuICBjb250ZW50OiBcIlwiO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogNTAlO1xuICBsZWZ0OiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICBib3JkZXItcmFkaXVzOiAxMDAlO1xuICBvcGFjaXR5OiAwO1xufVxuLndyYXBwZXIgLmNvbnRhaW5lciAuYnViYmxlMSB7XG4gIHotaW5kZXg6IDE0NTtcbiAgd2lkdGg6IDIwMHB4O1xuICBoZWlnaHQ6IDIwMHB4O1xuICBhbmltYXRpb246IGluY3JlYXNlLWJiMSAzMDAwbXMgaW5maW5pdGU7XG59XG4ud3JhcHBlciAuY29udGFpbmVyIC5idWJibGUyIHtcbiAgei1pbmRleDogMTQ2O1xuICB3aWR0aDogMTc1cHg7XG4gIGhlaWdodDogMTc1cHg7XG4gIGFuaW1hdGlvbjogaW5jcmVhc2UtYmIyIDMwMDBtcyBpbmZpbml0ZTtcbn1cbi53cmFwcGVyIC5jb250YWluZXIgLmJ1YmJsZTMge1xuICB6LWluZGV4OiAxNDc7XG4gIHdpZHRoOiAxNTBweDtcbiAgaGVpZ2h0OiAxNTBweDtcbiAgYW5pbWF0aW9uOiBpbmNyZWFzZS1iYjMgMzAwMG1zIGluZmluaXRlO1xufVxuLndyYXBwZXIgLmNvbnRhaW5lciAuaWNvbiB7XG4gIHotaW5kZXg6IDEwMDA7XG4gIHdpZHRoOiAxMDBweDtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgYW5pbWF0aW9uOiBidW1wIDMwMDBtcyBpbmZpbml0ZTtcbiAgb3BhY2l0eTogMTtcbn1cblxuLnRleHQge1xuICBjb2xvcjogI2U5ZTllOTtcbiAgZm9udC1zaXplOiAyLjVlbTtcbiAgbWFyZ2luOiAwLjVlbSAwIDAgMC4yNWVtO1xufVxuXG5Aa2V5ZnJhbWVzIGluY3JlYXNlLWJiMSB7XG4gIDAlIHtcbiAgICB3aWR0aDogMjAwcHg7XG4gICAgaGVpZ2h0OiAyMDBweDtcbiAgICBiYWNrZ3JvdW5kOiAjMTc2NmNjO1xuICAgIG9wYWNpdHk6IDAuNTtcbiAgfVxuICA1MCUge1xuICAgIHdpZHRoOiAxNzVweDtcbiAgICBoZWlnaHQ6IDE3NXB4O1xuICAgIGJhY2tncm91bmQ6ICMxNzY2Y2M7XG4gICAgb3BhY2l0eTogMDtcbiAgfVxufVxuQGtleWZyYW1lcyBpbmNyZWFzZS1iYjIge1xuICAwJSB7XG4gICAgb3BhY2l0eTogMDtcbiAgfVxuICAyNSUge1xuICAgIHdpZHRoOiAxNzVweDtcbiAgICBoZWlnaHQ6IDE3NXB4O1xuICAgIGJhY2tncm91bmQ6ICMxNDkzZGM7XG4gICAgb3BhY2l0eTogMC43NTtcbiAgfVxuICA3NSUge1xuICAgIHdpZHRoOiAxNTBweDtcbiAgICBoZWlnaHQ6IDE1MHB4O1xuICAgIGJhY2tncm91bmQ6ICMxNDkzZGM7XG4gICAgb3BhY2l0eTogMDtcbiAgfVxufVxuQGtleWZyYW1lcyBpbmNyZWFzZS1iYjMge1xuICAwJSB7XG4gICAgb3BhY2l0eTogMDtcbiAgfVxuICA1MCUge1xuICAgIHdpZHRoOiAxNTBweDtcbiAgICBoZWlnaHQ6IDE1MHB4O1xuICAgIGJhY2tncm91bmQ6ICM0NTFkYjM7XG4gICAgb3BhY2l0eTogMC4yNTtcbiAgfVxuICAxMDAlIHtcbiAgICB3aWR0aDogMjAwcHg7XG4gICAgaGVpZ2h0OiAyMDBweDtcbiAgICBiYWNrZ3JvdW5kOiAjNDUxZGIzO1xuICAgIG9wYWNpdHk6IDAuNTtcbiAgfVxufVxuQGtleWZyYW1lcyBoaWRlLWFuZC1zZWVrIHtcbiAgMCUge1xuICAgIG9wYWNpdHk6IDA7XG4gIH1cbiAgMTUlIHtcbiAgICBvcGFjaXR5OiAxO1xuICB9XG4gIDUwJSB7XG4gICAgb3BhY2l0eTogMTtcbiAgfVxuICA5Ny41JSB7XG4gICAgb3BhY2l0eTogMDtcbiAgfVxufVxuQGtleWZyYW1lcyBidW1wIHtcbiAgNSUge1xuICAgIHdpZHRoOiAxMDBweDtcbiAgICBoZWlnaHQ6IDEwMHB4O1xuICB9XG4gIDQ1JSB7XG4gICAgd2lkdGg6IDgwcHg7XG4gICAgaGVpZ2h0OiA4MHB4O1xuICB9XG4gIDU1JSB7XG4gICAgd2lkdGg6IDgwcHg7XG4gICAgaGVpZ2h0OiA4MHB4O1xuICB9XG4gIDk1JSB7XG4gICAgd2lkdGg6IDEwMHB4O1xuICAgIGhlaWdodDogMTAwcHg7XG4gIH1cbn0iXX0= */";
+    __webpack_exports__["default"] = "/* MOVIE LIST */\n.wrapper {\n  background: rgba(0, 0, 0, 0.75);\n  width: 100vw;\n  height: 100vh;\n  display: flex;\n  flex-flow: column nowrap;\n  justify-content: center;\n  align-items: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 120;\n}\n.wrapper .container {\n  width: 200px;\n  height: 200px;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.wrapper .container .bubble1,\n.wrapper .container .bubble2,\n.wrapper .container .bubble3 {\n  content: \"\";\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  border-radius: 100%;\n  opacity: 0;\n}\n.wrapper .container .bubble1 {\n  z-index: 145;\n  width: 200px;\n  height: 200px;\n  -webkit-animation: increase-bb1 3000ms infinite;\n          animation: increase-bb1 3000ms infinite;\n}\n.wrapper .container .bubble2 {\n  z-index: 146;\n  width: 175px;\n  height: 175px;\n  -webkit-animation: increase-bb2 3000ms infinite;\n          animation: increase-bb2 3000ms infinite;\n}\n.wrapper .container .bubble3 {\n  z-index: 147;\n  width: 150px;\n  height: 150px;\n  -webkit-animation: increase-bb3 3000ms infinite;\n          animation: increase-bb3 3000ms infinite;\n}\n.wrapper .container .icon {\n  z-index: 1000;\n  width: 100px;\n  height: 100px;\n  -webkit-animation: bump 3000ms infinite;\n          animation: bump 3000ms infinite;\n  opacity: 1;\n}\n.text {\n  color: #e9e9e9;\n  font-size: 2.5em;\n  margin: 0.5em 0 0 0.25em;\n}\n@-webkit-keyframes increase-bb1 {\n  0% {\n    width: 200px;\n    height: 200px;\n    background: #1766cc;\n    opacity: 0.5;\n  }\n  50% {\n    width: 175px;\n    height: 175px;\n    background: #1766cc;\n    opacity: 0;\n  }\n}\n@keyframes increase-bb1 {\n  0% {\n    width: 200px;\n    height: 200px;\n    background: #1766cc;\n    opacity: 0.5;\n  }\n  50% {\n    width: 175px;\n    height: 175px;\n    background: #1766cc;\n    opacity: 0;\n  }\n}\n@-webkit-keyframes increase-bb2 {\n  0% {\n    opacity: 0;\n  }\n  25% {\n    width: 175px;\n    height: 175px;\n    background: #1493dc;\n    opacity: 0.75;\n  }\n  75% {\n    width: 150px;\n    height: 150px;\n    background: #1493dc;\n    opacity: 0;\n  }\n}\n@keyframes increase-bb2 {\n  0% {\n    opacity: 0;\n  }\n  25% {\n    width: 175px;\n    height: 175px;\n    background: #1493dc;\n    opacity: 0.75;\n  }\n  75% {\n    width: 150px;\n    height: 150px;\n    background: #1493dc;\n    opacity: 0;\n  }\n}\n@-webkit-keyframes increase-bb3 {\n  0% {\n    opacity: 0;\n  }\n  50% {\n    width: 150px;\n    height: 150px;\n    background: #451db3;\n    opacity: 0.25;\n  }\n  100% {\n    width: 200px;\n    height: 200px;\n    background: #451db3;\n    opacity: 0.5;\n  }\n}\n@keyframes increase-bb3 {\n  0% {\n    opacity: 0;\n  }\n  50% {\n    width: 150px;\n    height: 150px;\n    background: #451db3;\n    opacity: 0.25;\n  }\n  100% {\n    width: 200px;\n    height: 200px;\n    background: #451db3;\n    opacity: 0.5;\n  }\n}\n@-webkit-keyframes hide-and-seek {\n  0% {\n    opacity: 0;\n  }\n  15% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 1;\n  }\n  97.5% {\n    opacity: 0;\n  }\n}\n@keyframes hide-and-seek {\n  0% {\n    opacity: 0;\n  }\n  15% {\n    opacity: 1;\n  }\n  50% {\n    opacity: 1;\n  }\n  97.5% {\n    opacity: 0;\n  }\n}\n@-webkit-keyframes bump {\n  5% {\n    width: 100px;\n    height: 100px;\n  }\n  45% {\n    width: 80px;\n    height: 80px;\n  }\n  55% {\n    width: 80px;\n    height: 80px;\n  }\n  95% {\n    width: 100px;\n    height: 100px;\n  }\n}\n@keyframes bump {\n  5% {\n    width: 100px;\n    height: 100px;\n  }\n  45% {\n    width: 80px;\n    height: 80px;\n  }\n  55% {\n    width: 80px;\n    height: 80px;\n  }\n  95% {\n    width: 100px;\n    height: 100px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9sb2FkZXIvbG9hZGVyLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9sb2FkZXIvbG9hZGVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWtCQSxlQUFBO0FDU0E7RUFDSSwrQkFBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLHdCQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsTUFBQTtFQUNBLE9BQUE7RUFDQSxZQUFBO0FDekJKO0FEMkJJO0VBQ0ksWUF6Qkk7RUEwQkosYUExQkk7RUEyQkosa0JBQUE7RUFDQSxhQUFBO0VBQ0EsdUJBQUE7RUFDQSxtQkFBQTtBQ3pCUjtBRDJCUTs7O0VBR0ksV0FBQTtFQTlCUixrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsZ0NBQUE7RUE2QlEsbUJBQUE7RUFDQSxVQUFBO0FDdEJaO0FEeUJRO0VBQ0ksWUFBQTtFQUNBLFlBbERFO0VBbURGLGFBbkRFO0VBb0RGLCtDQUFBO1VBQUEsdUNBQUE7QUN2Qlo7QUR5QlE7RUFDSSxZQUFBO0VBQ0EsWUFyREU7RUFzREYsYUF0REU7RUF1REYsK0NBQUE7VUFBQSx1Q0FBQTtBQ3ZCWjtBRHlCUTtFQUNJLFlBQUE7RUFDQSxZQXhERTtFQXlERixhQXpERTtFQTBERiwrQ0FBQTtVQUFBLHVDQUFBO0FDdkJaO0FEMEJRO0VBQ0ksYUFBQTtFQUNBLFlBN0VBO0VBOEVBLGFBOUVBO0VBK0VBLHVDQUFBO1VBQUEsK0JBQUE7RUFDQSxVQUFBO0FDeEJaO0FEOEJBO0VBQ0ksY0RwRmlCO0VDcUZqQixnQkFBQTtFQUNBLHdCQUFBO0FDM0JKO0FEOEJBO0VBQ0k7SUFBSyxZQXJGSztJQXFGZ0IsYUFyRmhCO0lBcUZzQyxtQkF4RnhDO0lBd0ZnRSxZQUFBO0VDdkIxRTtFRHdCRTtJQUFNLFlBckZFO0lBcUZpQixhQXJGakI7SUFxRnFDLG1CQXpGckM7SUF5RjZELFVBQUE7RUNsQnZFO0FBQ0Y7QURlQTtFQUNJO0lBQUssWUFyRks7SUFxRmdCLGFBckZoQjtJQXFGc0MsbUJBeEZ4QztJQXdGZ0UsWUFBQTtFQ3ZCMUU7RUR3QkU7SUFBTSxZQXJGRTtJQXFGaUIsYUFyRmpCO0lBcUZxQyxtQkF6RnJDO0lBeUY2RCxVQUFBO0VDbEJ2RTtBQUNGO0FEb0JBO0VBQ0k7SUFBSyxVQUFBO0VDakJQO0VEa0JFO0lBQU0sWUF4Rkk7SUF3RmlCLGFBeEZqQjtJQXdGdUMsbUJBL0Z6QztJQStGaUUsYUFBQTtFQ1ozRTtFRGFFO0lBQU0sWUF4RkU7SUF3RmlCLGFBeEZqQjtJQXdGcUMsbUJBaEdyQztJQWdHNkQsVUFBQTtFQ1B2RTtBQUNGO0FER0E7RUFDSTtJQUFLLFVBQUE7RUNqQlA7RURrQkU7SUFBTSxZQXhGSTtJQXdGaUIsYUF4RmpCO0lBd0Z1QyxtQkEvRnpDO0lBK0ZpRSxhQUFBO0VDWjNFO0VEYUU7SUFBTSxZQXhGRTtJQXdGaUIsYUF4RmpCO0lBd0ZxQyxtQkFoR3JDO0lBZ0c2RCxVQUFBO0VDUHZFO0FBQ0Y7QURTQTtFQUNJO0lBQUssVUFBQTtFQ05QO0VET0U7SUFBTSxZQTNGSTtJQTJGaUIsYUEzRmpCO0lBMkZ1QyxtQkFuR3pDO0lBbUdpRSxhQUFBO0VDRDNFO0VERUU7SUFBTyxZQTNGQztJQTJGa0IsYUEzRmxCO0lBMkZzQyxtQkFwR3RDO0lBb0c4RCxZQUFBO0VDSXhFO0FBQ0Y7QURSQTtFQUNJO0lBQUssVUFBQTtFQ05QO0VET0U7SUFBTSxZQTNGSTtJQTJGaUIsYUEzRmpCO0lBMkZ1QyxtQkFuR3pDO0lBbUdpRSxhQUFBO0VDRDNFO0VERUU7SUFBTyxZQTNGQztJQTJGa0IsYUEzRmxCO0lBMkZzQyxtQkFwR3RDO0lBb0c4RCxZQUFBO0VDSXhFO0FBQ0Y7QURGQTtFQUNJO0lBQUssVUFBQTtFQ0tQO0VESkU7SUFBTSxVQUFBO0VDT1I7RURKRTtJQUFNLFVBQUE7RUNPUjtFREpFO0lBQVEsVUFBQTtFQ09WO0FBQ0Y7QURoQkE7RUFDSTtJQUFLLFVBQUE7RUNLUDtFREpFO0lBQU0sVUFBQTtFQ09SO0VESkU7SUFBTSxVQUFBO0VDT1I7RURKRTtJQUFRLFVBQUE7RUNPVjtBQUNGO0FESEE7RUFDSTtJQUFLLFlBM0hHO0lBMkhnQixhQTNIaEI7RUNrSVY7RURORTtJQUFNLFdBQUE7SUFBMEIsWUFBQTtFQ1VsQztFRFRFO0lBQU0sV0FBQTtJQUEwQixZQUFBO0VDYWxDO0VEWkU7SUFBTSxZQTlIRTtJQThIaUIsYUE5SGpCO0VDOElWO0FBQ0Y7QURyQkE7RUFDSTtJQUFLLFlBM0hHO0lBMkhnQixhQTNIaEI7RUNrSVY7RURORTtJQUFNLFdBQUE7SUFBMEIsWUFBQTtFQ1VsQztFRFRFO0lBQU0sV0FBQTtJQUEwQixZQUFBO0VDYWxDO0VEWkU7SUFBTSxZQTlIRTtJQThIaUIsYUE5SGpCO0VDOElWO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9sb2FkZXIvbG9hZGVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiJGJhY2tncm91bmQtY29sb3ItLWRlZmF1bHQ6ICMwNzA3MDc7XG4kYmFja2dyb3VuZC1jb2xvci0tc2Vjb25kYXJ5OiAjMDAwO1xuXG4vLyAkdHh0LWNvbG9yLS1kZWZhdWx0OiAjMTcxNzE1O1xuJHR4dC1jb2xvci0tZGVmYXVsdDogI2U5ZTllOTtcbiR0eHQtY29sb3ItLWhvdmVyOiBjcmltc29uO1xuXG4kdHh0LWZvbnQtZmFtaWx5LS1wcmltYXJ5OiBcIlN0YXIgSmVkaVwiLCBtb25vc3BhY2U7XG4kdHh0LWZvbnQtZmFtaWx5LS1zZWNvbmRhcnk6IFwiVGFob21hXCIsIHNhbnMtc2VyaWY7XG5cbiR0eHQtZm9udC1zaXplLS1oZWFkZXI6IGNhbGMoLjM1ZW0gKyAydm1pbik7XG5cbiRlbGVtZW50LWhvdmVyLS1jb2xvcjogIzAyZmZkZDtcblxuJGhlYWRlci1tYXgtaGVpZ2h0OiAzOHB4O1xuJGZvb3Rlci1tYXgtaGVpZ2h0OiAyOHB4O1xuJGNvbnRlbnQtbWluLWhlaWdodDogY2FsYygxMDB2aCAtICN7JGhlYWRlci1tYXgtaGVpZ2h0fSAtICN7JGZvb3Rlci1tYXgtaGVpZ2h0fSAtIDEwcHgpO1xuXG4vKiBNT1ZJRSBMSVNUICovXG5cbiRjYXJkLWhlaWdodC0tbWQ6IDg4dmg7XG4kY2FyZC1oZWlnaHQtLXNtOiA0NHZoO1xuJGNhcmQtaGVpZ2h0LS14czogMzN2aDtcblxuJGNhcmQtd2lkdGgtbm9ybWFsLS1tZDogY2FsYygxMDAlIC8gNy4xKTsgXG4kY2FyZC13aWR0aC1ub3JtYWwtLXNtOiBjYWxjKDEwMCUgLyA0LjEpO1xuJGNhcmQtd2lkdGgtbm9ybWFsLS14czogMTAwJTtcblxuJGNhcmQtd2lkdGgtaG92ZXItLW1kOiBjYWxjKDEwMCUgLyA3ICsgKDEwMCUgLyA0KSk7XG5cbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0tbWQ6IDVweDtcbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0tc206IDIuNXB4O1xuJGNhcmQtdHh0LWxldHRlci1zcGFjaW5nLS14czogMXB4O1xuXG4kY2FyZC10eHQtZm9udC1zaXplLS1tZDogY2FsYygxZW0gKyAxLjI1dm1pbik7XG4kY2FyZC10eHQtZm9udC1zaXplLS1zbTogY2FsYyguMzc1ZW0gKyAxdm1pbik7XG4kY2FyZC10eHQtZm9udC1zaXplLS14czogY2FsYyguNWVtICsgMnZtaW4pOyIsIiRpY29uLWFyZWEtc2l6ZTogMjAwcHg7XG4kaWNvbi1zaXplOiAxMDBweDtcblxuJGFuaW1hdGlvbi1pbnRlcnZhbDogMzAwMG1zO1xuXG4kY29sb3ItYmIyOiByZ2IoMjAsIDE0NywgMjIwKTtcbiRjb2xvci1iYjE6IHJnYigyMywgMTAyLCAyMDQpO1xuJGNvbG9yLWJiMzogcmdiKDY5LCAyOSwgMTc5KTtcblxuJGluaXRpYWwtYmIxOiAyMDBweDtcbiRmaW5hbC1iYjE6IDE3NXB4O1xuXG4kaW5pdGlhbC1iYjI6IDE3NXB4O1xuJGZpbmFsLWJiMjogMTUwcHg7XG5cbiRpbml0aWFsLWJiMzogMTUwcHg7XG4kZmluYWwtYmIzOiAyMDBweDtcblxuQGltcG9ydCAnZ2xvYmFsL3ZhcmlhYmxlcyc7XG5cbkBtaXhpbiBhYnMtY2VudGVyIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xufVxuXG4ud3JhcHBlciB7XG4gICAgYmFja2dyb3VuZDogcmdiYSgwLDAsMCwwLjc1KTtcbiAgICB3aWR0aDogMTAwdnc7XG4gICAgaGVpZ2h0OiAxMDB2aDtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDtcbiAgICB6LWluZGV4OiAxMjA7XG5cbiAgICAuY29udGFpbmVyIHtcbiAgICAgICAgd2lkdGg6ICRmaW5hbC1iYjM7XG4gICAgICAgIGhlaWdodDogJGZpbmFsLWJiMztcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcblxuICAgICAgICAuYnViYmxlMSxcbiAgICAgICAgLmJ1YmJsZTIsXG4gICAgICAgIC5idWJibGUzIHtcbiAgICAgICAgICAgIGNvbnRlbnQ6IFwiXCI7XG4gICAgICAgICAgICBAaW5jbHVkZSBhYnMtY2VudGVyO1xuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogMTAwJTtcbiAgICAgICAgICAgIG9wYWNpdHk6IDA7XG4gICAgICAgIH1cbiAgICAgICAgXG4gICAgICAgIC5idWJibGUxIHtcbiAgICAgICAgICAgIHotaW5kZXg6IDE0NTtcbiAgICAgICAgICAgIHdpZHRoOiAkaW5pdGlhbC1iYjE7XG4gICAgICAgICAgICBoZWlnaHQ6ICRpbml0aWFsLWJiMTtcbiAgICAgICAgICAgIGFuaW1hdGlvbjogaW5jcmVhc2UtYmIxICRhbmltYXRpb24taW50ZXJ2YWwgaW5maW5pdGU7XG4gICAgICAgIH1cbiAgICAgICAgLmJ1YmJsZTIge1xuICAgICAgICAgICAgei1pbmRleDogMTQ2O1xuICAgICAgICAgICAgd2lkdGg6ICRpbml0aWFsLWJiMjtcbiAgICAgICAgICAgIGhlaWdodDogJGluaXRpYWwtYmIyO1xuICAgICAgICAgICAgYW5pbWF0aW9uOiBpbmNyZWFzZS1iYjIgJGFuaW1hdGlvbi1pbnRlcnZhbCBpbmZpbml0ZTtcbiAgICAgICAgfSAgICBcbiAgICAgICAgLmJ1YmJsZTMge1xuICAgICAgICAgICAgei1pbmRleDogMTQ3O1xuICAgICAgICAgICAgd2lkdGg6ICRpbml0aWFsLWJiMztcbiAgICAgICAgICAgIGhlaWdodDogJGluaXRpYWwtYmIzO1xuICAgICAgICAgICAgYW5pbWF0aW9uOiBpbmNyZWFzZS1iYjMgJGFuaW1hdGlvbi1pbnRlcnZhbCBpbmZpbml0ZTtcbiAgICAgICAgfVxuICAgICAgICBcbiAgICAgICAgLmljb24ge1xuICAgICAgICAgICAgei1pbmRleDogMTAwMDtcbiAgICAgICAgICAgIHdpZHRoOiAkaWNvbi1zaXplO1xuICAgICAgICAgICAgaGVpZ2h0OiAkaWNvbi1zaXplO1xuICAgICAgICAgICAgYW5pbWF0aW9uOiBidW1wICRhbmltYXRpb24taW50ZXJ2YWwgaW5maW5pdGU7XG4gICAgICAgICAgICBvcGFjaXR5OiAxO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5cbi50ZXh0IHtcbiAgICBjb2xvcjogJHR4dC1jb2xvci0tZGVmYXVsdDtcbiAgICBmb250LXNpemU6IDIuNWVtO1xuICAgIG1hcmdpbjogLjVlbSAwIDAgLjI1ZW07XG59XG5cbkBrZXlmcmFtZXMgaW5jcmVhc2UtYmIxIHtcbiAgICAwJSB7IHdpZHRoOiAkaW5pdGlhbC1iYjE7IGhlaWdodDogJGluaXRpYWwtYmIxOyBiYWNrZ3JvdW5kOiAkY29sb3ItYmIxOyBvcGFjaXR5OiAuNTsgfVxuICAgIDUwJSB7IHdpZHRoOiAkZmluYWwtYmIxOyBoZWlnaHQ6ICRmaW5hbC1iYjE7IGJhY2tncm91bmQ6ICRjb2xvci1iYjE7IG9wYWNpdHk6IDA7IH1cbn1cblxuQGtleWZyYW1lcyBpbmNyZWFzZS1iYjIge1xuICAgIDAlIHsgb3BhY2l0eTogMCB9XG4gICAgMjUlIHsgd2lkdGg6ICRpbml0aWFsLWJiMjsgaGVpZ2h0OiAkaW5pdGlhbC1iYjI7IGJhY2tncm91bmQ6ICRjb2xvci1iYjI7IG9wYWNpdHk6IC43NTsgfVxuICAgIDc1JSB7IHdpZHRoOiAkZmluYWwtYmIyOyBoZWlnaHQ6ICRmaW5hbC1iYjI7IGJhY2tncm91bmQ6ICRjb2xvci1iYjI7IG9wYWNpdHk6IDA7IH1cbn1cblxuQGtleWZyYW1lcyBpbmNyZWFzZS1iYjMge1xuICAgIDAlIHsgb3BhY2l0eTogMCB9IFxuICAgIDUwJSB7IHdpZHRoOiAkaW5pdGlhbC1iYjM7IGhlaWdodDogJGluaXRpYWwtYmIzOyBiYWNrZ3JvdW5kOiAkY29sb3ItYmIzOyBvcGFjaXR5OiAuMjU7IH1cbiAgICAxMDAlIHsgd2lkdGg6ICRmaW5hbC1iYjM7IGhlaWdodDogJGZpbmFsLWJiMzsgYmFja2dyb3VuZDogJGNvbG9yLWJiMzsgb3BhY2l0eTogLjU7IH1cbn1cblxuQGtleWZyYW1lcyBoaWRlLWFuZC1zZWVrIHtcbiAgICAwJSB7IG9wYWNpdHk6IDA7IH1cbiAgICAxNSUgeyBvcGFjaXR5OiAxOyBcbiAgICAgICAgLy8gdHJhbnNmb3JtOiByb3RhdGUoMCk7XG4gICAgIH0gXG4gICAgNTAlIHsgb3BhY2l0eTogMTsgXG4gICAgICAgIC8vIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XG4gICAgIH0gXG4gICAgOTcuNSUgeyBvcGFjaXR5OiAwOyBcbiAgICAgICAgLy8gdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKSBcbiAgICB9XG59XG5cbkBrZXlmcmFtZXMgYnVtcCB7XG4gICAgNSUgeyB3aWR0aDogJGljb24tc2l6ZTsgaGVpZ2h0OiAkaWNvbi1zaXplOyB9IFxuICAgIDQ1JSB7IHdpZHRoOiAkaWNvbi1zaXplIC0gMjBweDsgaGVpZ2h0OiAkaWNvbi1zaXplIC0gMjBweDsgfVxuICAgIDU1JSB7IHdpZHRoOiAkaWNvbi1zaXplIC0gMjBweDsgaGVpZ2h0OiAkaWNvbi1zaXplIC0gMjBweDsgfVxuICAgIDk1JSB7IHdpZHRoOiAkaWNvbi1zaXplOyBoZWlnaHQ6ICRpY29uLXNpemU7IH0gXG59XG5cblxuIiwiLyogTU9WSUUgTElTVCAqL1xuLndyYXBwZXIge1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogMTAwdmg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICB6LWluZGV4OiAxMjA7XG59XG4ud3JhcHBlciAuY29udGFpbmVyIHtcbiAgd2lkdGg6IDIwMHB4O1xuICBoZWlnaHQ6IDIwMHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuLndyYXBwZXIgLmNvbnRhaW5lciAuYnViYmxlMSxcbi53cmFwcGVyIC5jb250YWluZXIgLmJ1YmJsZTIsXG4ud3JhcHBlciAuY29udGFpbmVyIC5idWJibGUzIHtcbiAgY29udGVudDogXCJcIjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDUwJTtcbiAgbGVmdDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgYm9yZGVyLXJhZGl1czogMTAwJTtcbiAgb3BhY2l0eTogMDtcbn1cbi53cmFwcGVyIC5jb250YWluZXIgLmJ1YmJsZTEge1xuICB6LWluZGV4OiAxNDU7XG4gIHdpZHRoOiAyMDBweDtcbiAgaGVpZ2h0OiAyMDBweDtcbiAgYW5pbWF0aW9uOiBpbmNyZWFzZS1iYjEgMzAwMG1zIGluZmluaXRlO1xufVxuLndyYXBwZXIgLmNvbnRhaW5lciAuYnViYmxlMiB7XG4gIHotaW5kZXg6IDE0NjtcbiAgd2lkdGg6IDE3NXB4O1xuICBoZWlnaHQ6IDE3NXB4O1xuICBhbmltYXRpb246IGluY3JlYXNlLWJiMiAzMDAwbXMgaW5maW5pdGU7XG59XG4ud3JhcHBlciAuY29udGFpbmVyIC5idWJibGUzIHtcbiAgei1pbmRleDogMTQ3O1xuICB3aWR0aDogMTUwcHg7XG4gIGhlaWdodDogMTUwcHg7XG4gIGFuaW1hdGlvbjogaW5jcmVhc2UtYmIzIDMwMDBtcyBpbmZpbml0ZTtcbn1cbi53cmFwcGVyIC5jb250YWluZXIgLmljb24ge1xuICB6LWluZGV4OiAxMDAwO1xuICB3aWR0aDogMTAwcHg7XG4gIGhlaWdodDogMTAwcHg7XG4gIGFuaW1hdGlvbjogYnVtcCAzMDAwbXMgaW5maW5pdGU7XG4gIG9wYWNpdHk6IDE7XG59XG5cbi50ZXh0IHtcbiAgY29sb3I6ICNlOWU5ZTk7XG4gIGZvbnQtc2l6ZTogMi41ZW07XG4gIG1hcmdpbjogMC41ZW0gMCAwIDAuMjVlbTtcbn1cblxuQGtleWZyYW1lcyBpbmNyZWFzZS1iYjEge1xuICAwJSB7XG4gICAgd2lkdGg6IDIwMHB4O1xuICAgIGhlaWdodDogMjAwcHg7XG4gICAgYmFja2dyb3VuZDogIzE3NjZjYztcbiAgICBvcGFjaXR5OiAwLjU7XG4gIH1cbiAgNTAlIHtcbiAgICB3aWR0aDogMTc1cHg7XG4gICAgaGVpZ2h0OiAxNzVweDtcbiAgICBiYWNrZ3JvdW5kOiAjMTc2NmNjO1xuICAgIG9wYWNpdHk6IDA7XG4gIH1cbn1cbkBrZXlmcmFtZXMgaW5jcmVhc2UtYmIyIHtcbiAgMCUge1xuICAgIG9wYWNpdHk6IDA7XG4gIH1cbiAgMjUlIHtcbiAgICB3aWR0aDogMTc1cHg7XG4gICAgaGVpZ2h0OiAxNzVweDtcbiAgICBiYWNrZ3JvdW5kOiAjMTQ5M2RjO1xuICAgIG9wYWNpdHk6IDAuNzU7XG4gIH1cbiAgNzUlIHtcbiAgICB3aWR0aDogMTUwcHg7XG4gICAgaGVpZ2h0OiAxNTBweDtcbiAgICBiYWNrZ3JvdW5kOiAjMTQ5M2RjO1xuICAgIG9wYWNpdHk6IDA7XG4gIH1cbn1cbkBrZXlmcmFtZXMgaW5jcmVhc2UtYmIzIHtcbiAgMCUge1xuICAgIG9wYWNpdHk6IDA7XG4gIH1cbiAgNTAlIHtcbiAgICB3aWR0aDogMTUwcHg7XG4gICAgaGVpZ2h0OiAxNTBweDtcbiAgICBiYWNrZ3JvdW5kOiAjNDUxZGIzO1xuICAgIG9wYWNpdHk6IDAuMjU7XG4gIH1cbiAgMTAwJSB7XG4gICAgd2lkdGg6IDIwMHB4O1xuICAgIGhlaWdodDogMjAwcHg7XG4gICAgYmFja2dyb3VuZDogIzQ1MWRiMztcbiAgICBvcGFjaXR5OiAwLjU7XG4gIH1cbn1cbkBrZXlmcmFtZXMgaGlkZS1hbmQtc2VlayB7XG4gIDAlIHtcbiAgICBvcGFjaXR5OiAwO1xuICB9XG4gIDE1JSB7XG4gICAgb3BhY2l0eTogMTtcbiAgfVxuICA1MCUge1xuICAgIG9wYWNpdHk6IDE7XG4gIH1cbiAgOTcuNSUge1xuICAgIG9wYWNpdHk6IDA7XG4gIH1cbn1cbkBrZXlmcmFtZXMgYnVtcCB7XG4gIDUlIHtcbiAgICB3aWR0aDogMTAwcHg7XG4gICAgaGVpZ2h0OiAxMDBweDtcbiAgfVxuICA0NSUge1xuICAgIHdpZHRoOiA4MHB4O1xuICAgIGhlaWdodDogODBweDtcbiAgfVxuICA1NSUge1xuICAgIHdpZHRoOiA4MHB4O1xuICAgIGhlaWdodDogODBweDtcbiAgfVxuICA5NSUge1xuICAgIHdpZHRoOiAxMDBweDtcbiAgICBoZWlnaHQ6IDEwMHB4O1xuICB9XG59Il19 */";
     /***/
   },
 
@@ -2348,7 +3795,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "/* MOVIE LIST */\nh5,\nh3,\nh2,\np {\n  color: #e9e9e9;\n}\n.movie .content {\n  padding: 25px;\n  background: #000;\n  border-radius: 25px;\n}\n.movie .content .section-data {\n  display: flex;\n  flex-flow: row nowrap;\n  justify-content: space-between;\n}\n@media screen and (max-width: 820px) {\n  .movie .content .section-data {\n    flex-flow: column-reverse nowrap;\n  }\n  .movie .content .section-data .image-container {\n    width: 100%;\n    height: 350px;\n    overflow: hidden;\n    position: relative;\n    margin: 5px 0 20px;\n  }\n  .movie .content .section-data .image-container img {\n    position: absolute;\n    top: 50%;\n    width: 100%;\n    transform: translateY(-50%);\n  }\n}\n.movie .content .section-data .column-left {\n  flex-basis: 66%;\n}\n.movie .content .section-data .column-left .title,\n.movie .content .section-data .column-left .subtitle {\n  margin: 0;\n  font-family: \"Tahoma\", sans-serif;\n}\n.movie .content .section-data .column-left .title {\n  font-size: 2em;\n}\n.movie .content .section-data .column-left .subtitle {\n  color: #face51;\n  font-weight: 700;\n  font-size: 1.25em;\n}\n.movie .content .section-data .column-left .production p {\n  margin: 7.5px 0;\n  color: #e9e9e9;\n}\n.movie .content .section-data .column-left .row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.movie .content .section-data .column-left .row h3 {\n  margin: 10px 0;\n}\n.movie .content .section-data .column-left .opening-txt {\n  line-height: 1.4;\n}\n@media screen and (min-width: 820px) {\n  .movie .content .section-data .column-right {\n    flex-basis: 30%;\n  }\n  .movie .content .section-data .column-right .image-container {\n    max-width: 250px;\n  }\n  .movie .content .section-data .column-right img {\n    width: 100%;\n    height: auto;\n  }\n}\n.mv-25 {\n  margin: 25px 0;\n}\nhr {\n  border-color: #666;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9tb3ZpZXMvbW92aWUtZGV0YWlsL21vdmllLWRldGFpbC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbW92aWVzL21vdmllLWRldGFpbC9tb3ZpZS1kZXRhaWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBa0JBLGVBQUE7QUNoQkE7Ozs7RUFJSSxjREZpQjtBRUVyQjtBREtJO0VBQ0ksYUFBQTtFQUNBLGdCRFpzQjtFQ2F0QixtQkFBQTtBQ0ZSO0FES1E7RUFDSSxhQUFBO0VBQ0EscUJBQUE7RUFDQSw4QkFBQTtBQ0haO0FES1k7RUFMSjtJQU1RLGdDQUFBO0VDRmQ7RURJYztJQUNJLFdBQUE7SUFDQSxhQUFBO0lBQ0EsZ0JBQUE7SUFDQSxrQkFBQTtJQUNBLGtCQUFBO0VDRmxCO0VESWtCO0lBQ0ksa0JBQUE7SUFDQSxRQUFBO0lBQ0EsV0FBQTtJQUNBLDJCQUFBO0VDRnRCO0FBQ0Y7QURNWTtFQUNJLGVBQUE7QUNKaEI7QURNZ0I7O0VBRUksU0FBQTtFQUNBLGlDRHZDUztBRW1DN0I7QURPZ0I7RUFDSSxjQUFBO0FDTHBCO0FET2dCO0VBQ0ksY0FBQTtFQUNBLGdCQUFBO0VBQ0EsaUJBQUE7QUNMcEI7QURVb0I7RUFDSSxlQUFBO0VBQ0EsY0QzREg7QUVtRHJCO0FEWWdCO0VBQ0ksYUFBQTtFQUNBLDhCQUFBO0VBQ0EsbUJBQUE7QUNWcEI7QURZb0I7RUFDSSxjQUFBO0FDVnhCO0FEY2dCO0VBQ0ksZ0JBQUE7QUNacEI7QURrQmdCO0VBRko7SUFHUSxlQUFBO0VDZmxCO0VEaUJrQjtJQUNJLGdCQUFBO0VDZnRCO0VEa0JrQjtJQUNJLFdBQUE7SUFDQSxZQUFBO0VDaEJ0QjtBQUNGO0FEd0JBO0VBQ0ksY0FBQTtBQ3JCSjtBRHdCQTtFQUNJLGtCQUFBO0FDckJKIiwiZmlsZSI6InNyYy9hcHAvbW92aWVzL21vdmllLWRldGFpbC9tb3ZpZS1kZXRhaWwuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkYmFja2dyb3VuZC1jb2xvci0tZGVmYXVsdDogIzA3MDcwNztcbiRiYWNrZ3JvdW5kLWNvbG9yLS1zZWNvbmRhcnk6ICMwMDA7XG5cbi8vICR0eHQtY29sb3ItLWRlZmF1bHQ6ICMxNzE3MTU7XG4kdHh0LWNvbG9yLS1kZWZhdWx0OiAjZTllOWU5O1xuJHR4dC1jb2xvci0taG92ZXI6IGNyaW1zb247XG5cbiR0eHQtZm9udC1mYW1pbHktLXByaW1hcnk6IFwiU3RhciBKZWRpXCIsIG1vbm9zcGFjZTtcbiR0eHQtZm9udC1mYW1pbHktLXNlY29uZGFyeTogXCJUYWhvbWFcIiwgc2Fucy1zZXJpZjtcblxuJHR4dC1mb250LXNpemUtLWhlYWRlcjogY2FsYyguMzVlbSArIDJ2bWluKTtcblxuJGVsZW1lbnQtaG92ZXItLWNvbG9yOiAjMDJmZmRkO1xuXG4kaGVhZGVyLW1heC1oZWlnaHQ6IDM4cHg7XG4kZm9vdGVyLW1heC1oZWlnaHQ6IDI4cHg7XG4kY29udGVudC1taW4taGVpZ2h0OiBjYWxjKDEwMHZoIC0gI3skaGVhZGVyLW1heC1oZWlnaHR9IC0gI3skZm9vdGVyLW1heC1oZWlnaHR9IC0gMTBweCk7XG5cbi8qIE1PVklFIExJU1QgKi9cblxuJGNhcmQtaGVpZ2h0LS1tZDogODh2aDtcbiRjYXJkLWhlaWdodC0tc206IDQ0dmg7XG4kY2FyZC1oZWlnaHQtLXhzOiAzM3ZoO1xuXG4kY2FyZC13aWR0aC1ub3JtYWwtLW1kOiBjYWxjKDEwMCUgLyA3LjEpOyBcbiRjYXJkLXdpZHRoLW5vcm1hbC0tc206IGNhbGMoMTAwJSAvIDQuMSk7XG4kY2FyZC13aWR0aC1ub3JtYWwtLXhzOiAxMDAlO1xuXG4kY2FyZC13aWR0aC1ob3Zlci0tbWQ6IGNhbGMoMTAwJSAvIDcgKyAoMTAwJSAvIDQpKTtcblxuJGNhcmQtdHh0LWxldHRlci1zcGFjaW5nLS1tZDogNXB4O1xuJGNhcmQtdHh0LWxldHRlci1zcGFjaW5nLS1zbTogMi41cHg7XG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLXhzOiAxcHg7XG5cbiRjYXJkLXR4dC1mb250LXNpemUtLW1kOiBjYWxjKDFlbSArIDEuMjV2bWluKTtcbiRjYXJkLXR4dC1mb250LXNpemUtLXNtOiBjYWxjKC4zNzVlbSArIDF2bWluKTtcbiRjYXJkLXR4dC1mb250LXNpemUtLXhzOiBjYWxjKC41ZW0gKyAydm1pbik7IiwiQGltcG9ydCAnZ2xvYmFsL3ZhcmlhYmxlcyc7XG5cbmg1LFxuaDMsXG5oMixcbnAge1xuICAgIGNvbG9yOiAkdHh0LWNvbG9yLS1kZWZhdWx0O1xufVxuXG4ubW92aWUge1xuXG4gICAgLmNvbnRlbnQge1xuICAgICAgICBwYWRkaW5nOiAyNXB4O1xuICAgICAgICBiYWNrZ3JvdW5kOiAkYmFja2dyb3VuZC1jb2xvci0tc2Vjb25kYXJ5O1xuICAgICAgICBib3JkZXItcmFkaXVzOiAyNXB4O1xuXG4gICAgICAgIFxuICAgICAgICAuc2VjdGlvbi1kYXRhIHtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICBmbGV4LWZsb3c6IHJvdyBub3dyYXA7XG4gICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG5cbiAgICAgICAgICAgIEBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDgyMHB4KSB7XG4gICAgICAgICAgICAgICAgZmxleC1mbG93OiBjb2x1bW4tcmV2ZXJzZSBub3dyYXA7XG5cbiAgICAgICAgICAgICAgICAuaW1hZ2UtY29udGFpbmVyIHtcbiAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICAgICAgICAgIGhlaWdodDogMzUwcHg7XG4gICAgICAgICAgICAgICAgICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgICAgICAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICAgICAgICAgICAgbWFyZ2luOiA1cHggMCAyMHB4O1xuXG4gICAgICAgICAgICAgICAgICAgIGltZyB7XG4gICAgICAgICAgICAgICAgICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgICAgICAgICAgICAgICAgICB0b3A6IDUwJTtcbiAgICAgICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgICAgICAgICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC01MCUpO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICAgICAgXG4gICAgICAgICAgICAuY29sdW1uLWxlZnQge1xuICAgICAgICAgICAgICAgIGZsZXgtYmFzaXM6IDY2JTtcblxuICAgICAgICAgICAgICAgIC50aXRsZSxcbiAgICAgICAgICAgICAgICAuc3VidGl0bGUge1xuICAgICAgICAgICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiAkdHh0LWZvbnQtZmFtaWx5LS1zZWNvbmRhcnk7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgIC50aXRsZSB7XG4gICAgICAgICAgICAgICAgICAgIGZvbnQtc2l6ZTogMmVtO1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAuc3VidGl0bGUge1xuICAgICAgICAgICAgICAgICAgICBjb2xvcjogI2ZhY2U1MTtcbiAgICAgICAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxLjI1ZW07XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICBcbiAgICAgICAgICAgICAgICAucHJvZHVjdGlvbiB7XG4gICAgICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICBwIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcmdpbjogNy41cHggMDtcbiAgICAgICAgICAgICAgICAgICAgICAgIGNvbG9yOiAkdHh0LWNvbG9yLS1kZWZhdWx0XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICAucm93IHtcbiAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgICAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgICAgICAgICAgICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuXG4gICAgICAgICAgICAgICAgICAgIGgzIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcmdpbjogMTBweCAwO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuXG4gICAgICAgICAgICAgICAgLm9wZW5pbmctdHh0IHtcbiAgICAgICAgICAgICAgICAgICAgbGluZS1oZWlnaHQ6IDEuNDtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIC5jb2x1bW4tcmlnaHQge1xuXG4gICAgICAgICAgICAgICAgQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogODIwcHgpIHtcbiAgICAgICAgICAgICAgICAgICAgZmxleC1iYXNpczogMzAlO1xuXG4gICAgICAgICAgICAgICAgICAgIC5pbWFnZS1jb250YWluZXIge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWF4LXdpZHRoOiAyNTBweDtcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgaW1nIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgfVxuICAgICAgICB9XG5cbiAgICB9XG59XG5cbi5tdi0yNSB7XG4gICAgbWFyZ2luOiAyNXB4IDA7XG59XG5cbmhyIHtcbiAgICBib3JkZXItY29sb3I6ICM2NjY7XG59IiwiLyogTU9WSUUgTElTVCAqL1xuaDUsXG5oMyxcbmgyLFxucCB7XG4gIGNvbG9yOiAjZTllOWU5O1xufVxuXG4ubW92aWUgLmNvbnRlbnQge1xuICBwYWRkaW5nOiAyNXB4O1xuICBiYWNrZ3JvdW5kOiAjMDAwO1xuICBib3JkZXItcmFkaXVzOiAyNXB4O1xufVxuLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWZsb3c6IHJvdyBub3dyYXA7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDgyMHB4KSB7XG4gIC5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIHtcbiAgICBmbGV4LWZsb3c6IGNvbHVtbi1yZXZlcnNlIG5vd3JhcDtcbiAgfVxuICAubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuaW1hZ2UtY29udGFpbmVyIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDM1MHB4O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIG1hcmdpbjogNXB4IDAgMjBweDtcbiAgfVxuICAubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuaW1hZ2UtY29udGFpbmVyIGltZyB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogNTAlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNTAlKTtcbiAgfVxufVxuLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmNvbHVtbi1sZWZ0IHtcbiAgZmxleC1iYXNpczogNjYlO1xufVxuLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmNvbHVtbi1sZWZ0IC50aXRsZSxcbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAuc3VidGl0bGUge1xuICBtYXJnaW46IDA7XG4gIGZvbnQtZmFtaWx5OiBcIlRhaG9tYVwiLCBzYW5zLXNlcmlmO1xufVxuLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmNvbHVtbi1sZWZ0IC50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMmVtO1xufVxuLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmNvbHVtbi1sZWZ0IC5zdWJ0aXRsZSB7XG4gIGNvbG9yOiAjZmFjZTUxO1xuICBmb250LXdlaWdodDogNzAwO1xuICBmb250LXNpemU6IDEuMjVlbTtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAucHJvZHVjdGlvbiBwIHtcbiAgbWFyZ2luOiA3LjVweCAwO1xuICBjb2xvcjogI2U5ZTllOTtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAucm93IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmNvbHVtbi1sZWZ0IC5yb3cgaDMge1xuICBtYXJnaW46IDEwcHggMDtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAub3BlbmluZy10eHQge1xuICBsaW5lLWhlaWdodDogMS40O1xufVxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogODIwcHgpIHtcbiAgLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmNvbHVtbi1yaWdodCB7XG4gICAgZmxleC1iYXNpczogMzAlO1xuICB9XG4gIC5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tcmlnaHQgLmltYWdlLWNvbnRhaW5lciB7XG4gICAgbWF4LXdpZHRoOiAyNTBweDtcbiAgfVxuICAubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuY29sdW1uLXJpZ2h0IGltZyB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiBhdXRvO1xuICB9XG59XG5cbi5tdi0yNSB7XG4gIG1hcmdpbjogMjVweCAwO1xufVxuXG5ociB7XG4gIGJvcmRlci1jb2xvcjogIzY2Njtcbn0iXX0= */";
+    __webpack_exports__["default"] = "/* MOVIE LIST */\n.movie .content {\n  padding: 25px;\n  background: #000;\n  border-radius: 25px;\n  height: calc(calc(100vh - 38px - 28px - 10px) - 50px);\n}\n.movie .content .section-data {\n  display: flex;\n  flex-flow: row nowrap;\n  justify-content: space-between;\n}\n@media screen and (max-width: 820px) {\n  .movie .content .section-data {\n    flex-flow: column-reverse nowrap;\n  }\n  .movie .content .section-data .image-container {\n    width: 100%;\n    height: 350px;\n    overflow: hidden;\n    position: relative;\n    margin: 5px 0 20px;\n  }\n  .movie .content .section-data .image-container img {\n    position: absolute;\n    top: 50%;\n    width: 100%;\n    transform: translateY(-50%);\n  }\n}\n.movie .content .section-data .column-left {\n  flex-basis: 66%;\n}\n.movie .content .section-data .column-left .title,\n.movie .content .section-data .column-left .subtitle {\n  margin: 0;\n  font-family: \"Tahoma\", sans-serif;\n}\n.movie .content .section-data .column-left .title {\n  font-size: 2em;\n}\n.movie .content .section-data .column-left .subtitle {\n  color: #face51;\n  font-weight: 700;\n  font-size: 1.25em;\n}\n.movie .content .section-data .column-left .production p {\n  margin: 7.5px 0;\n  color: #e9e9e9;\n}\n.movie .content .section-data .column-left .row {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.movie .content .section-data .column-left .row h3 {\n  margin: 10px 0;\n}\n.movie .content .section-data .column-left .opening-txt {\n  line-height: 1.4;\n}\n@media screen and (min-width: 820px) {\n  .movie .content .section-data .column-right {\n    flex-basis: 30%;\n  }\n  .movie .content .section-data .column-right .image-container {\n    max-width: 250px;\n  }\n  .movie .content .section-data .column-right img {\n    width: 100%;\n    height: auto;\n  }\n}\n.mv-25 {\n  margin: 25px 0;\n}\nhr {\n  border-color: #666;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2Fzc2V0cy9zYXNzL2dsb2JhbC92YXJpYWJsZXMuc2NzcyIsIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9tb3ZpZXMvbW92aWUtZGV0YWlsL21vdmllLWRldGFpbC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvbW92aWVzL21vdmllLWRldGFpbC9tb3ZpZS1kZXRhaWwuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBa0JBLGVBQUE7QUNkSTtFQUNJLGFBQUE7RUFDQSxnQkRMc0I7RUNNdEIsbUJBQUE7RUFDQSxxREFBQTtBQ0ZSO0FESVE7RUFDSSxhQUFBO0VBQ0EscUJBQUE7RUFDQSw4QkFBQTtBQ0ZaO0FESVk7RUFMSjtJQU1RLGdDQUFBO0VDRGQ7RURHYztJQUNJLFdBQUE7SUFDQSxhQUFBO0lBQ0EsZ0JBQUE7SUFDQSxrQkFBQTtJQUNBLGtCQUFBO0VDRGxCO0VER2tCO0lBQ0ksa0JBQUE7SUFDQSxRQUFBO0lBQ0EsV0FBQTtJQUNBLDJCQUFBO0VDRHRCO0FBQ0Y7QURLWTtFQUNJLGVBQUE7QUNIaEI7QURLZ0I7O0VBRUksU0FBQTtFQUNBLGlDRGhDUztBRTZCN0I7QURNZ0I7RUFDSSxjQUFBO0FDSnBCO0FETWdCO0VBQ0ksY0FBQTtFQUNBLGdCQUFBO0VBQ0EsaUJBQUE7QUNKcEI7QURTb0I7RUFDSSxlQUFBO0VBQ0EsY0RwREg7QUU2Q3JCO0FEV2dCO0VBQ0ksYUFBQTtFQUNBLDhCQUFBO0VBQ0EsbUJBQUE7QUNUcEI7QURXb0I7RUFDSSxjQUFBO0FDVHhCO0FEYWdCO0VBQ0ksZ0JBQUE7QUNYcEI7QURpQmdCO0VBRko7SUFHUSxlQUFBO0VDZGxCO0VEZ0JrQjtJQUNJLGdCQUFBO0VDZHRCO0VEaUJrQjtJQUNJLFdBQUE7SUFDQSxZQUFBO0VDZnRCO0FBQ0Y7QUR1QkE7RUFDSSxjQUFBO0FDcEJKO0FEdUJBO0VBQ0ksa0JBQUE7QUNwQkoiLCJmaWxlIjoic3JjL2FwcC9tb3ZpZXMvbW92aWUtZGV0YWlsL21vdmllLWRldGFpbC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiRiYWNrZ3JvdW5kLWNvbG9yLS1kZWZhdWx0OiAjMDcwNzA3O1xuJGJhY2tncm91bmQtY29sb3ItLXNlY29uZGFyeTogIzAwMDtcblxuLy8gJHR4dC1jb2xvci0tZGVmYXVsdDogIzE3MTcxNTtcbiR0eHQtY29sb3ItLWRlZmF1bHQ6ICNlOWU5ZTk7XG4kdHh0LWNvbG9yLS1ob3ZlcjogY3JpbXNvbjtcblxuJHR4dC1mb250LWZhbWlseS0tcHJpbWFyeTogXCJTdGFyIEplZGlcIiwgbW9ub3NwYWNlO1xuJHR4dC1mb250LWZhbWlseS0tc2Vjb25kYXJ5OiBcIlRhaG9tYVwiLCBzYW5zLXNlcmlmO1xuXG4kdHh0LWZvbnQtc2l6ZS0taGVhZGVyOiBjYWxjKC4zNWVtICsgMnZtaW4pO1xuXG4kZWxlbWVudC1ob3Zlci0tY29sb3I6ICMwMmZmZGQ7XG5cbiRoZWFkZXItbWF4LWhlaWdodDogMzhweDtcbiRmb290ZXItbWF4LWhlaWdodDogMjhweDtcbiRjb250ZW50LW1pbi1oZWlnaHQ6IGNhbGMoMTAwdmggLSAjeyRoZWFkZXItbWF4LWhlaWdodH0gLSAjeyRmb290ZXItbWF4LWhlaWdodH0gLSAxMHB4KTtcblxuLyogTU9WSUUgTElTVCAqL1xuXG4kY2FyZC1oZWlnaHQtLW1kOiA4OHZoO1xuJGNhcmQtaGVpZ2h0LS1zbTogNDR2aDtcbiRjYXJkLWhlaWdodC0teHM6IDMzdmg7XG5cbiRjYXJkLXdpZHRoLW5vcm1hbC0tbWQ6IGNhbGMoMTAwJSAvIDcuMSk7IFxuJGNhcmQtd2lkdGgtbm9ybWFsLS1zbTogY2FsYygxMDAlIC8gNC4xKTtcbiRjYXJkLXdpZHRoLW5vcm1hbC0teHM6IDEwMCU7XG5cbiRjYXJkLXdpZHRoLWhvdmVyLS1tZDogY2FsYygxMDAlIC8gNyArICgxMDAlIC8gNCkpO1xuXG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLW1kOiA1cHg7XG4kY2FyZC10eHQtbGV0dGVyLXNwYWNpbmctLXNtOiAyLjVweDtcbiRjYXJkLXR4dC1sZXR0ZXItc3BhY2luZy0teHM6IDFweDtcblxuJGNhcmQtdHh0LWZvbnQtc2l6ZS0tbWQ6IGNhbGMoMWVtICsgMS4yNXZtaW4pO1xuJGNhcmQtdHh0LWZvbnQtc2l6ZS0tc206IGNhbGMoLjM3NWVtICsgMXZtaW4pO1xuJGNhcmQtdHh0LWZvbnQtc2l6ZS0teHM6IGNhbGMoLjVlbSArIDJ2bWluKTsiLCJAaW1wb3J0ICdnbG9iYWwvdmFyaWFibGVzJztcblxuLm1vdmllIHtcblxuICAgIC5jb250ZW50IHtcbiAgICAgICAgcGFkZGluZzogMjVweDtcbiAgICAgICAgYmFja2dyb3VuZDogJGJhY2tncm91bmQtY29sb3ItLXNlY29uZGFyeTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMjVweDtcbiAgICAgICAgaGVpZ2h0OiBjYWxjKCN7JGNvbnRlbnQtbWluLWhlaWdodH0gLSA1MHB4KTtcbiAgICAgICAgXG4gICAgICAgIC5zZWN0aW9uLWRhdGEge1xuICAgICAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgICAgIGZsZXgtZmxvdzogcm93IG5vd3JhcDtcbiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcblxuICAgICAgICAgICAgQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogODIwcHgpIHtcbiAgICAgICAgICAgICAgICBmbGV4LWZsb3c6IGNvbHVtbi1yZXZlcnNlIG5vd3JhcDtcblxuICAgICAgICAgICAgICAgIC5pbWFnZS1jb250YWluZXIge1xuICAgICAgICAgICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAzNTBweDtcbiAgICAgICAgICAgICAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICAgICAgICAgICAgICBtYXJnaW46IDVweCAwIDIwcHg7XG5cbiAgICAgICAgICAgICAgICAgICAgaW1nIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgICAgICAgICAgICAgIHRvcDogNTAlO1xuICAgICAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICAgICAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTUwJSk7XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBcbiAgICAgICAgICAgIC5jb2x1bW4tbGVmdCB7XG4gICAgICAgICAgICAgICAgZmxleC1iYXNpczogNjYlO1xuXG4gICAgICAgICAgICAgICAgLnRpdGxlLFxuICAgICAgICAgICAgICAgIC5zdWJ0aXRsZSB7XG4gICAgICAgICAgICAgICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgICAgICAgICAgICAgZm9udC1mYW1pbHk6ICR0eHQtZm9udC1mYW1pbHktLXNlY29uZGFyeTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgLnRpdGxlIHtcbiAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAyZW07XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIC5zdWJ0aXRsZSB7XG4gICAgICAgICAgICAgICAgICAgIGNvbG9yOiAjZmFjZTUxO1xuICAgICAgICAgICAgICAgICAgICBmb250LXdlaWdodDogNzAwO1xuICAgICAgICAgICAgICAgICAgICBmb250LXNpemU6IDEuMjVlbTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgIFxuICAgICAgICAgICAgICAgIC5wcm9kdWN0aW9uIHtcbiAgICAgICAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgIHAge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luOiA3LjVweCAwO1xuICAgICAgICAgICAgICAgICAgICAgICAgY29sb3I6ICR0eHQtY29sb3ItLWRlZmF1bHRcbiAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIC5yb3cge1xuICAgICAgICAgICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgICAgICAgICAgICAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG5cbiAgICAgICAgICAgICAgICAgICAgaDMge1xuICAgICAgICAgICAgICAgICAgICAgICAgbWFyZ2luOiAxMHB4IDA7XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICAub3BlbmluZy10eHQge1xuICAgICAgICAgICAgICAgICAgICBsaW5lLWhlaWdodDogMS40O1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgLmNvbHVtbi1yaWdodCB7XG5cbiAgICAgICAgICAgICAgICBAbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA4MjBweCkge1xuICAgICAgICAgICAgICAgICAgICBmbGV4LWJhc2lzOiAzMCU7XG5cbiAgICAgICAgICAgICAgICAgICAgLmltYWdlLWNvbnRhaW5lciB7XG4gICAgICAgICAgICAgICAgICAgICAgICBtYXgtd2lkdGg6IDI1MHB4O1xuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICBpbWcge1xuICAgICAgICAgICAgICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICAgICAgICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgIH1cblxuICAgIH1cbn1cblxuLm12LTI1IHtcbiAgICBtYXJnaW46IDI1cHggMDtcbn1cblxuaHIge1xuICAgIGJvcmRlci1jb2xvcjogIzY2Njtcbn0iLCIvKiBNT1ZJRSBMSVNUICovXG4ubW92aWUgLmNvbnRlbnQge1xuICBwYWRkaW5nOiAyNXB4O1xuICBiYWNrZ3JvdW5kOiAjMDAwO1xuICBib3JkZXItcmFkaXVzOiAyNXB4O1xuICBoZWlnaHQ6IGNhbGMoY2FsYygxMDB2aCAtIDM4cHggLSAyOHB4IC0gMTBweCkgLSA1MHB4KTtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1mbG93OiByb3cgbm93cmFwO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59XG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA4MjBweCkge1xuICAubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSB7XG4gICAgZmxleC1mbG93OiBjb2x1bW4tcmV2ZXJzZSBub3dyYXA7XG4gIH1cbiAgLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmltYWdlLWNvbnRhaW5lciB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAzNTBweDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBtYXJnaW46IDVweCAwIDIwcHg7XG4gIH1cbiAgLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmltYWdlLWNvbnRhaW5lciBpbWcge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDUwJTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTUwJSk7XG4gIH1cbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCB7XG4gIGZsZXgtYmFzaXM6IDY2JTtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAudGl0bGUsXG4ubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuY29sdW1uLWxlZnQgLnN1YnRpdGxlIHtcbiAgbWFyZ2luOiAwO1xuICBmb250LWZhbWlseTogXCJUYWhvbWFcIiwgc2Fucy1zZXJpZjtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAudGl0bGUge1xuICBmb250LXNpemU6IDJlbTtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAuc3VidGl0bGUge1xuICBjb2xvcjogI2ZhY2U1MTtcbiAgZm9udC13ZWlnaHQ6IDcwMDtcbiAgZm9udC1zaXplOiAxLjI1ZW07XG59XG4ubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuY29sdW1uLWxlZnQgLnByb2R1Y3Rpb24gcCB7XG4gIG1hcmdpbjogNy41cHggMDtcbiAgY29sb3I6ICNlOWU5ZTk7XG59XG4ubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuY29sdW1uLWxlZnQgLnJvdyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tbGVmdCAucm93IGgzIHtcbiAgbWFyZ2luOiAxMHB4IDA7XG59XG4ubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuY29sdW1uLWxlZnQgLm9wZW5pbmctdHh0IHtcbiAgbGluZS1oZWlnaHQ6IDEuNDtcbn1cbkBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDgyMHB4KSB7XG4gIC5tb3ZpZSAuY29udGVudCAuc2VjdGlvbi1kYXRhIC5jb2x1bW4tcmlnaHQge1xuICAgIGZsZXgtYmFzaXM6IDMwJTtcbiAgfVxuICAubW92aWUgLmNvbnRlbnQgLnNlY3Rpb24tZGF0YSAuY29sdW1uLXJpZ2h0IC5pbWFnZS1jb250YWluZXIge1xuICAgIG1heC13aWR0aDogMjUwcHg7XG4gIH1cbiAgLm1vdmllIC5jb250ZW50IC5zZWN0aW9uLWRhdGEgLmNvbHVtbi1yaWdodCBpbWcge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogYXV0bztcbiAgfVxufVxuXG4ubXYtMjUge1xuICBtYXJnaW46IDI1cHggMDtcbn1cblxuaHIge1xuICBib3JkZXItY29sb3I6ICM2NjY7XG59Il19 */";
     /***/
   },
 
@@ -2418,7 +3865,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MovieDetailComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this4 = this;
+          var _this9 = this;
 
           var movie = this.movieService.movie || null;
 
@@ -2430,8 +3877,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.movieId = this.movie.episode_id || 0;
           this.movieService.observeMovieChange().subscribe(function (movie) {
-            _this4.movie = movie;
-            _this4.movieId = movie.episode_id;
+            _this9.movie = movie;
+            _this9.movieId = movie.episode_id;
           });
           this.activateStopTextTimer();
         }
@@ -2632,74 +4079,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/movies/movies.component.scss":
-  /*!**********************************************!*\
-    !*** ./src/app/movies/movies.component.scss ***!
-    \**********************************************/
-
-  /*! exports provided: default */
-
-  /***/
-  function srcAppMoviesMoviesComponentScss(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vdmllcy9tb3ZpZXMuY29tcG9uZW50LnNjc3MifQ== */";
-    /***/
-  },
-
-  /***/
-  "./src/app/movies/movies.component.ts":
-  /*!********************************************!*\
-    !*** ./src/app/movies/movies.component.ts ***!
-    \********************************************/
-
-  /*! exports provided: MoviesComponent */
-
-  /***/
-  function srcAppMoviesMoviesComponentTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "MoviesComponent", function () {
-      return MoviesComponent;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-
-    var MoviesComponent = function MoviesComponent() {
-      _classCallCheck(this, MoviesComponent);
-    };
-
-    MoviesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'sw-movies',
-      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./movies.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/movies/movies.component.html")).default,
-      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./movies.component.scss */
-      "./src/app/movies/movies.component.scss")).default]
-    })], MoviesComponent);
-    /***/
-  },
-
-  /***/
   "./src/app/movies/movies.module.ts":
   /*!*****************************************!*\
     !*** ./src/app/movies/movies.module.ts ***!
@@ -2745,35 +4124,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _movies_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./movies.component */
-    "./src/app/movies/movies.component.ts");
+    var _opening_crawl_opening_crawl_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../opening-crawl/opening-crawl.component */
+    "./src/app/opening-crawl/opening-crawl.component.ts");
     /* harmony import */
 
 
     var _movie_detail_movie_detail_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./movie-detail/movie-detail.component */
     "./src/app/movies/movie-detail/movie-detail.component.ts");
-    /* harmony import */
-
-
-    var _characters_character_list_character_list_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ../characters/character-list/character-list.component */
-    "./src/app/characters/character-list/character-list.component.ts");
-    /* harmony import */
-
-
-    var _opening_crawl_opening_crawl_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ../opening-crawl/opening-crawl.component */
-    "./src/app/opening-crawl/opening-crawl.component.ts");
 
     var MoviesModule = function MoviesModule() {
       _classCallCheck(this, MoviesModule);
     };
 
     MoviesModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      declarations: [_opening_crawl_opening_crawl_component__WEBPACK_IMPORTED_MODULE_7__["OpeningCrawlComponent"], _characters_character_list_character_list_component__WEBPACK_IMPORTED_MODULE_6__["CharacterListComponent"], _movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_3__["MovieListComponent"], _movies_component__WEBPACK_IMPORTED_MODULE_4__["MoviesComponent"], _movie_detail_movie_detail_component__WEBPACK_IMPORTED_MODULE_5__["MovieDetailComponent"]],
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]]
+      declarations: [_movie_list_movie_list_component__WEBPACK_IMPORTED_MODULE_3__["MovieListComponent"], _movie_detail_movie_detail_component__WEBPACK_IMPORTED_MODULE_5__["MovieDetailComponent"], _opening_crawl_opening_crawl_component__WEBPACK_IMPORTED_MODULE_4__["OpeningCrawlComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+      exports: [_opening_crawl_opening_crawl_component__WEBPACK_IMPORTED_MODULE_4__["OpeningCrawlComponent"]]
     })], MoviesModule);
     /***/
   },
@@ -2880,6 +4248,1719 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /*! ./opening-crawl.component.scss */
       "./src/app/opening-crawl/opening-crawl.component.scss")).default]
     })], OpeningCrawlComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/planets/planet-detail/planet-detail.component.scss":
+  /*!********************************************************************!*\
+    !*** ./src/app/planets/planet-detail/planet-detail.component.scss ***!
+    \********************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPlanetsPlanetDetailPlanetDetailComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BsYW5ldHMvcGxhbmV0LWRldGFpbC9wbGFuZXQtZGV0YWlsLmNvbXBvbmVudC5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/planets/planet-detail/planet-detail.component.ts":
+  /*!******************************************************************!*\
+    !*** ./src/app/planets/planet-detail/planet-detail.component.ts ***!
+    \******************************************************************/
+
+  /*! exports provided: PlanetDetailComponent */
+
+  /***/
+  function srcAppPlanetsPlanetDetailPlanetDetailComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PlanetDetailComponent", function () {
+      return PlanetDetailComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var PlanetDetailComponent =
+    /*#__PURE__*/
+    function () {
+      function PlanetDetailComponent() {
+        _classCallCheck(this, PlanetDetailComponent);
+      }
+
+      _createClass(PlanetDetailComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return PlanetDetailComponent;
+    }();
+
+    PlanetDetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-planet-detail',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./planet-detail.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/planets/planet-detail/planet-detail.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./planet-detail.component.scss */
+      "./src/app/planets/planet-detail/planet-detail.component.scss")).default]
+    })], PlanetDetailComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/planets/planet-list/planet-list.component.scss":
+  /*!****************************************************************!*\
+    !*** ./src/app/planets/planet-list/planet-list.component.scss ***!
+    \****************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPlanetsPlanetListPlanetListComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BsYW5ldHMvcGxhbmV0LWxpc3QvcGxhbmV0LWxpc3QuY29tcG9uZW50LnNjc3MifQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/planets/planet-list/planet-list.component.ts":
+  /*!**************************************************************!*\
+    !*** ./src/app/planets/planet-list/planet-list.component.ts ***!
+    \**************************************************************/
+
+  /*! exports provided: PlanetListComponent */
+
+  /***/
+  function srcAppPlanetsPlanetListPlanetListComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PlanetListComponent", function () {
+      return PlanetListComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/core/util.service */
+    "./src/app/core/util.service.ts");
+    /* harmony import */
+
+
+    var src_app_core_services_planet_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/core/services/planet.service */
+    "./src/app/core/services/planet.service.ts");
+
+    var PlanetListComponent =
+    /*#__PURE__*/
+    function () {
+      function PlanetListComponent(activatedRoute, planetService, utilService, router) {
+        _classCallCheck(this, PlanetListComponent);
+
+        this.activatedRoute = activatedRoute;
+        this.planetService = planetService;
+        this.utilService = utilService;
+        this.router = router;
+        this.pageable = {
+          next: null,
+          previous: null,
+          page: 1
+        };
+        this.planets = [];
+      }
+
+      _createClass(PlanetListComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var response = this.activatedRoute.snapshot.parent.data['planets'];
+          this.planets = response.results;
+          this.pageable.next = response.next;
+          this.pageable.previous = response.previous;
+          this.planetService.savePage(this.planets, this.pageable.page);
+        }
+      }, {
+        key: "request",
+        value: function request() {
+          var planets = this.planetService.getPage(this.pageable.page);
+
+          if (planets.length > 0) {
+            this.planets = planets;
+          } else {
+            this.update();
+          }
+        }
+      }, {
+        key: "update",
+        value: function update() {
+          var _this10 = this;
+
+          this.planetService.requestPage(this.pageable.page).subscribe(function (response) {
+            _this10.planets = response.results;
+            _this10.pageable.next = response.next;
+            _this10.pageable.previous = response.previous;
+
+            _this10.planetService.savePage(response.results, _this10.pageable.page);
+          });
+        }
+      }, {
+        key: "getImage",
+        value: function getImage(url) {
+          return this.utilService.getEntityImage(url, this.actualEntity);
+        }
+      }, {
+        key: "getId",
+        value: function getId(planet) {
+          return this.utilService.getEntityId(planet.url);
+        }
+      }, {
+        key: "goToDetail",
+        value: function goToDetail(position) {
+          var planet = this.planets[position];
+          this.planetService.planet = planet;
+          this.router.navigate(['planets', this.getId(planet)]);
+        }
+      }]);
+
+      return PlanetListComponent;
+    }();
+
+    PlanetListComponent.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: src_app_core_services_planet_service__WEBPACK_IMPORTED_MODULE_4__["PlanetService"]
+      }, {
+        type: src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
+    };
+
+    PlanetListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-planet-list',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./planet-list.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/planets/planet-list/planet-list.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./planet-list.component.scss */
+      "./src/app/planets/planet-list/planet-list.component.scss")).default]
+    })], PlanetListComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/planets/planets.module.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/planets/planets.module.ts ***!
+    \*******************************************/
+
+  /*! exports provided: PlanetsModule */
+
+  /***/
+  function srcAppPlanetsPlanetsModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PlanetsModule", function () {
+      return PlanetsModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _planet_detail_planet_detail_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./planet-detail/planet-detail.component */
+    "./src/app/planets/planet-detail/planet-detail.component.ts");
+    /* harmony import */
+
+
+    var _planet_list_planet_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./planet-list/planet-list.component */
+    "./src/app/planets/planet-list/planet-list.component.ts");
+    /* harmony import */
+
+
+    var _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../shared/components/paginator/paginator.module */
+    "./src/app/shared/components/paginator/paginator.module.ts");
+    /* harmony import */
+
+
+    var _shared_components_cards_card_card_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/components/cards/card/card.module */
+    "./src/app/shared/components/cards/card/card.module.ts");
+    /* harmony import */
+
+
+    var _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../shared/components/cards/card-list/card-list.module */
+    "./src/app/shared/components/cards/card-list/card-list.module.ts");
+
+    var PlanetsModule = function PlanetsModule() {
+      _classCallCheck(this, PlanetsModule);
+    };
+
+    PlanetsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_planet_detail_planet_detail_component__WEBPACK_IMPORTED_MODULE_3__["PlanetDetailComponent"], _planet_list_planet_list_component__WEBPACK_IMPORTED_MODULE_4__["PlanetListComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__["PaginatorModule"], _shared_components_cards_card_card_module__WEBPACK_IMPORTED_MODULE_6__["CardModule"], _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_7__["CardListModule"]]
+    })], PlanetsModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/cards/card-list/card-list.component.scss":
+  /*!****************************************************************************!*\
+    !*** ./src/app/shared/components/cards/card-list/card-list.component.scss ***!
+    \****************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppSharedComponentsCardsCardListCardListComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "ul {\n  display: flex;\n  flex-flow: row wrap;\n}\n\nli {\n  list-style-type: none;\n  min-width: calc(100% / 6);\n  max-width: calc(100% / 6);\n  border: 1px solid white;\n}\n\nli:not(:first-child) {\n  margin-left: 10px;\n}\n\nli:not(:last-child) {\n  margin-right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9jYXJkcy9jYXJkLWxpc3QvY2FyZC1saXN0LmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9jYXJkcy9jYXJkLWxpc3QvY2FyZC1saXN0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBQTtFQUNBLG1CQUFBO0FDQ0o7O0FERUE7RUFDSSxxQkFBQTtFQUNBLHlCQUFBO0VBQ0EseUJBQUE7RUFDQSx1QkFBQTtBQ0NKOztBRENJO0VBQ0ksaUJBQUE7QUNDUjs7QURDSTtFQUNJLGtCQUFBO0FDQ1IiLCJmaWxlIjoic3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9jYXJkcy9jYXJkLWxpc3QvY2FyZC1saXN0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsidWwge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1mbG93OiByb3cgd3JhcDtcbn1cblxubGkge1xuICAgIGxpc3Qtc3R5bGUtdHlwZTogbm9uZTtcbiAgICBtaW4td2lkdGg6IGNhbGMoMTAwJSAvIDYpO1xuICAgIG1heC13aWR0aDogY2FsYygxMDAlIC8gNik7XG4gICAgYm9yZGVyOiAxcHggc29saWQgd2hpdGU7XG5cbiAgICAmOm5vdCg6Zmlyc3QtY2hpbGQpIHtcbiAgICAgICAgbWFyZ2luLWxlZnQ6IDEwcHg7XG4gICAgfVxuICAgICY6bm90KDpsYXN0LWNoaWxkKSB7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTBweDtcbiAgICB9ICAgXG59XG4iLCJ1bCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogcm93IHdyYXA7XG59XG5cbmxpIHtcbiAgbGlzdC1zdHlsZS10eXBlOiBub25lO1xuICBtaW4td2lkdGg6IGNhbGMoMTAwJSAvIDYpO1xuICBtYXgtd2lkdGg6IGNhbGMoMTAwJSAvIDYpO1xuICBib3JkZXI6IDFweCBzb2xpZCB3aGl0ZTtcbn1cbmxpOm5vdCg6Zmlyc3QtY2hpbGQpIHtcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XG59XG5saTpub3QoOmxhc3QtY2hpbGQpIHtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xufSJdfQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/cards/card-list/card-list.component.ts":
+  /*!**************************************************************************!*\
+    !*** ./src/app/shared/components/cards/card-list/card-list.component.ts ***!
+    \**************************************************************************/
+
+  /*! exports provided: CardListComponent */
+
+  /***/
+  function srcAppSharedComponentsCardsCardListCardListComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CardListComponent", function () {
+      return CardListComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var CardListComponent =
+    /*#__PURE__*/
+    function () {
+      function CardListComponent() {
+        _classCallCheck(this, CardListComponent);
+
+        this.items = [];
+        this.onClick = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+      }
+
+      _createClass(CardListComponent, [{
+        key: "click",
+        value: function click(position) {
+          this.onClick.emit(position);
+        }
+      }]);
+
+      return CardListComponent;
+    }();
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], CardListComponent.prototype, "items", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()], CardListComponent.prototype, "onClick", void 0);
+    CardListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-card-list',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./card-list.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/cards/card-list/card-list.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./card-list.component.scss */
+      "./src/app/shared/components/cards/card-list/card-list.component.scss")).default]
+    })], CardListComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/cards/card-list/card-list.module.ts":
+  /*!***********************************************************************!*\
+    !*** ./src/app/shared/components/cards/card-list/card-list.module.ts ***!
+    \***********************************************************************/
+
+  /*! exports provided: CardListModule */
+
+  /***/
+  function srcAppSharedComponentsCardsCardListCardListModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CardListModule", function () {
+      return CardListModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _card_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./card-list.component */
+    "./src/app/shared/components/cards/card-list/card-list.component.ts");
+    /* harmony import */
+
+
+    var _card_card_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../card/card.module */
+    "./src/app/shared/components/cards/card/card.module.ts");
+
+    var CardListModule = function CardListModule() {
+      _classCallCheck(this, CardListModule);
+    };
+
+    CardListModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_card_list_component__WEBPACK_IMPORTED_MODULE_3__["CardListComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _card_card_module__WEBPACK_IMPORTED_MODULE_4__["CardModule"]],
+      exports: [_card_list_component__WEBPACK_IMPORTED_MODULE_3__["CardListComponent"]]
+    })], CardListModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/cards/card/card.component.scss":
+  /*!******************************************************************!*\
+    !*** ./src/app/shared/components/cards/card/card.component.scss ***!
+    \******************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppSharedComponentsCardsCardCardComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".card {\n  display: flex;\n  flex-flow: column nowrap;\n}\n.card .image-container {\n  max-width: 100px;\n}\n.card .image-container img {\n  width: 100%;\n  height: auto;\n}\n.card .body {\n  padding: 0 25px;\n}\n.card .body .name {\n  font-size: 1em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9jYXJkcy9jYXJkL2NhcmQuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL2NhcmRzL2NhcmQvY2FyZC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQUE7RUFDQSx3QkFBQTtBQ0NKO0FEQ0k7RUFDSSxnQkFBQTtBQ0NSO0FEQ1E7RUFDSSxXQUFBO0VBQ0EsWUFBQTtBQ0NaO0FER0k7RUFDSSxlQUFBO0FDRFI7QURHUTtFQUNJLGNBQUE7QUNEWiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL2NhcmRzL2NhcmQvY2FyZC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jYXJkIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcblxuICAgIC5pbWFnZS1jb250YWluZXIge1xuICAgICAgICBtYXgtd2lkdGg6IDEwMHB4O1xuICAgIFxuICAgICAgICBpbWcge1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICBoZWlnaHQ6IGF1dG87XG4gICAgICAgIH1cbiAgICB9XG4gICAgXG4gICAgLmJvZHkge1xuICAgICAgICBwYWRkaW5nOiAwIDI1cHg7XG4gICAgICAgIFxuICAgICAgICAubmFtZSB7XG4gICAgICAgICAgICBmb250LXNpemU6IDFlbTtcbiAgICAgICAgfVxuICAgIH1cbn0iLCIuY2FyZCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogY29sdW1uIG5vd3JhcDtcbn1cbi5jYXJkIC5pbWFnZS1jb250YWluZXIge1xuICBtYXgtd2lkdGg6IDEwMHB4O1xufVxuLmNhcmQgLmltYWdlLWNvbnRhaW5lciBpbWcge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiBhdXRvO1xufVxuLmNhcmQgLmJvZHkge1xuICBwYWRkaW5nOiAwIDI1cHg7XG59XG4uY2FyZCAuYm9keSAubmFtZSB7XG4gIGZvbnQtc2l6ZTogMWVtO1xufSJdfQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/cards/card/card.component.ts":
+  /*!****************************************************************!*\
+    !*** ./src/app/shared/components/cards/card/card.component.ts ***!
+    \****************************************************************/
+
+  /*! exports provided: CardComponent */
+
+  /***/
+  function srcAppSharedComponentsCardsCardCardComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CardComponent", function () {
+      return CardComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var CardComponent = function CardComponent() {
+      _classCallCheck(this, CardComponent);
+    };
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], CardComponent.prototype, "image", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], CardComponent.prototype, "title", void 0);
+    CardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-card',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./card.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/cards/card/card.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./card.component.scss */
+      "./src/app/shared/components/cards/card/card.component.scss")).default]
+    })], CardComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/cards/card/card.module.ts":
+  /*!*************************************************************!*\
+    !*** ./src/app/shared/components/cards/card/card.module.ts ***!
+    \*************************************************************/
+
+  /*! exports provided: CardModule */
+
+  /***/
+  function srcAppSharedComponentsCardsCardCardModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CardModule", function () {
+      return CardModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _card_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./card.component */
+    "./src/app/shared/components/cards/card/card.component.ts");
+
+    var CardModule = function CardModule() {
+      _classCallCheck(this, CardModule);
+    };
+
+    CardModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_card_component__WEBPACK_IMPORTED_MODULE_3__["CardComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+      exports: [_card_component__WEBPACK_IMPORTED_MODULE_3__["CardComponent"]]
+    })], CardModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/paginator/paginator.component.scss":
+  /*!**********************************************************************!*\
+    !*** ./src/app/shared/components/paginator/paginator.component.scss ***!
+    \**********************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppSharedComponentsPaginatorPaginatorComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".row {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  float: right;\n  clear: right;\n}\n.row span {\n  font-size: 1.1em;\n  margin: 0 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZW5jYXIvZGV2L3N0YXItZ3VpZGUvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9wYWdpbmF0b3IvcGFnaW5hdG9yLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9wYWdpbmF0b3IvcGFnaW5hdG9yLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBQTtFQUNBLG1CQUFBO0VBQ0EsOEJBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtBQ0NKO0FEQ0k7RUFDSSxnQkFBQTtFQUNBLGNBQUE7QUNDUiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL3BhZ2luYXRvci9wYWdpbmF0b3IuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucm93IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgIGZsb2F0OiByaWdodDtcbiAgICBjbGVhcjogcmlnaHQ7XG5cbiAgICBzcGFuIHtcbiAgICAgICAgZm9udC1zaXplOiAxLjFlbTtcbiAgICAgICAgbWFyZ2luOiAwIDIwcHg7XG4gICAgfVxufSIsIi5yb3cge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGZsb2F0OiByaWdodDtcbiAgY2xlYXI6IHJpZ2h0O1xufVxuLnJvdyBzcGFuIHtcbiAgZm9udC1zaXplOiAxLjFlbTtcbiAgbWFyZ2luOiAwIDIwcHg7XG59Il19 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/paginator/paginator.component.ts":
+  /*!********************************************************************!*\
+    !*** ./src/app/shared/components/paginator/paginator.component.ts ***!
+    \********************************************************************/
+
+  /*! exports provided: PaginatorComponent */
+
+  /***/
+  function srcAppSharedComponentsPaginatorPaginatorComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PaginatorComponent", function () {
+      return PaginatorComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var PaginatorComponent =
+    /*#__PURE__*/
+    function () {
+      function PaginatorComponent() {
+        _classCallCheck(this, PaginatorComponent);
+
+        this.onChange = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.pageable = {
+          page: 1,
+          next: null,
+          previous: null
+        };
+      }
+
+      _createClass(PaginatorComponent, [{
+        key: "nextPage",
+        value: function nextPage() {
+          if (this.pageable.next) {
+            this.pageable.page++;
+            this.onChange.emit('next');
+          }
+        }
+      }, {
+        key: "previousPage",
+        value: function previousPage() {
+          if (this.pageable.previous && this.pageable.page > 1) {
+            this.pageable.page--;
+            this.onChange.emit('previous');
+          }
+        }
+      }]);
+
+      return PaginatorComponent;
+    }();
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], PaginatorComponent.prototype, "pageable", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()], PaginatorComponent.prototype, "onChange", void 0);
+    PaginatorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-paginator',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./paginator.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/paginator/paginator.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./paginator.component.scss */
+      "./src/app/shared/components/paginator/paginator.component.scss")).default]
+    })], PaginatorComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/shared/components/paginator/paginator.module.ts":
+  /*!*****************************************************************!*\
+    !*** ./src/app/shared/components/paginator/paginator.module.ts ***!
+    \*****************************************************************/
+
+  /*! exports provided: PaginatorModule */
+
+  /***/
+  function srcAppSharedComponentsPaginatorPaginatorModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PaginatorModule", function () {
+      return PaginatorModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _paginator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./paginator.component */
+    "./src/app/shared/components/paginator/paginator.component.ts");
+
+    var PaginatorModule = function PaginatorModule() {
+      _classCallCheck(this, PaginatorModule);
+    };
+
+    PaginatorModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_paginator_component__WEBPACK_IMPORTED_MODULE_3__["PaginatorComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
+      exports: [_paginator_component__WEBPACK_IMPORTED_MODULE_3__["PaginatorComponent"]]
+    })], PaginatorModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/species/specie-detail/specie-detail.component.scss":
+  /*!********************************************************************!*\
+    !*** ./src/app/species/specie-detail/specie-detail.component.scss ***!
+    \********************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppSpeciesSpecieDetailSpecieDetailComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NwZWNpZXMvc3BlY2llLWRldGFpbC9zcGVjaWUtZGV0YWlsLmNvbXBvbmVudC5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/species/specie-detail/specie-detail.component.ts":
+  /*!******************************************************************!*\
+    !*** ./src/app/species/specie-detail/specie-detail.component.ts ***!
+    \******************************************************************/
+
+  /*! exports provided: SpecieDetailComponent */
+
+  /***/
+  function srcAppSpeciesSpecieDetailSpecieDetailComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SpecieDetailComponent", function () {
+      return SpecieDetailComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var SpecieDetailComponent =
+    /*#__PURE__*/
+    function () {
+      function SpecieDetailComponent() {
+        _classCallCheck(this, SpecieDetailComponent);
+      }
+
+      _createClass(SpecieDetailComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return SpecieDetailComponent;
+    }();
+
+    SpecieDetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-specie-detail',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./specie-detail.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/species/specie-detail/specie-detail.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./specie-detail.component.scss */
+      "./src/app/species/specie-detail/specie-detail.component.scss")).default]
+    })], SpecieDetailComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/species/specie-list/specie-list.component.scss":
+  /*!****************************************************************!*\
+    !*** ./src/app/species/specie-list/specie-list.component.scss ***!
+    \****************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppSpeciesSpecieListSpecieListComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NwZWNpZXMvc3BlY2llLWxpc3Qvc3BlY2llLWxpc3QuY29tcG9uZW50LnNjc3MifQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/species/specie-list/specie-list.component.ts":
+  /*!**************************************************************!*\
+    !*** ./src/app/species/specie-list/specie-list.component.ts ***!
+    \**************************************************************/
+
+  /*! exports provided: SpecieListComponent */
+
+  /***/
+  function srcAppSpeciesSpecieListSpecieListComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SpecieListComponent", function () {
+      return SpecieListComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_core_services_specie_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/core/services/specie.service */
+    "./src/app/core/services/specie.service.ts");
+    /* harmony import */
+
+
+    var src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/core/util.service */
+    "./src/app/core/util.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+
+    var SpecieListComponent =
+    /*#__PURE__*/
+    function () {
+      function SpecieListComponent(activatedRoute, specieService, utilService, router) {
+        _classCallCheck(this, SpecieListComponent);
+
+        this.activatedRoute = activatedRoute;
+        this.specieService = specieService;
+        this.utilService = utilService;
+        this.router = router;
+        this.pageable = {
+          next: null,
+          previous: null,
+          page: 1
+        };
+        this.species = [];
+      }
+
+      _createClass(SpecieListComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var response = this.activatedRoute.snapshot.parent.data['species'];
+          this.species = response.results;
+          this.pageable.next = response.next;
+          this.pageable.previous = response.previous;
+          this.specieService.savePage(this.species, this.pageable.page);
+        }
+      }, {
+        key: "request",
+        value: function request() {
+          var species = this.specieService.getPage(this.pageable.page);
+
+          if (species.length > 0) {
+            this.species = species;
+          } else {
+            this.update();
+          }
+        }
+      }, {
+        key: "update",
+        value: function update() {
+          var _this11 = this;
+
+          this.specieService.requestPage(this.pageable.page).subscribe(function (response) {
+            _this11.species = response.results;
+            _this11.pageable.next = response.next;
+            _this11.pageable.previous = response.previous;
+
+            _this11.specieService.savePage(response.results, _this11.pageable.page);
+          });
+        }
+      }, {
+        key: "getImage",
+        value: function getImage(url) {
+          return this.utilService.getEntityImage(url, this.actualEntity);
+        }
+      }, {
+        key: "getId",
+        value: function getId(specie) {
+          return this.utilService.getEntityId(specie.url);
+        }
+      }, {
+        key: "goToDetail",
+        value: function goToDetail(position) {
+          var specie = this.specieService[position];
+          this.specieService.specie = specie;
+          this.router.navigate(['species', this.getId(specie)]);
+        }
+      }]);
+
+      return SpecieListComponent;
+    }();
+
+    SpecieListComponent.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]
+      }, {
+        type: src_app_core_services_specie_service__WEBPACK_IMPORTED_MODULE_2__["SpecieService"]
+      }, {
+        type: src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+      }];
+    };
+
+    SpecieListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-specie-list',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./specie-list.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/species/specie-list/specie-list.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./specie-list.component.scss */
+      "./src/app/species/specie-list/specie-list.component.scss")).default]
+    })], SpecieListComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/species/species.module.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/species/species.module.ts ***!
+    \*******************************************/
+
+  /*! exports provided: SpeciesModule */
+
+  /***/
+  function srcAppSpeciesSpeciesModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SpeciesModule", function () {
+      return SpeciesModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _specie_list_specie_list_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./specie-list/specie-list.component */
+    "./src/app/species/specie-list/specie-list.component.ts");
+    /* harmony import */
+
+
+    var _specie_detail_specie_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./specie-detail/specie-detail.component */
+    "./src/app/species/specie-detail/specie-detail.component.ts");
+    /* harmony import */
+
+
+    var _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../shared/components/paginator/paginator.module */
+    "./src/app/shared/components/paginator/paginator.module.ts");
+    /* harmony import */
+
+
+    var _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/components/cards/card-list/card-list.module */
+    "./src/app/shared/components/cards/card-list/card-list.module.ts");
+
+    var SpeciesModule = function SpeciesModule() {
+      _classCallCheck(this, SpeciesModule);
+    };
+
+    SpeciesModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_specie_list_specie_list_component__WEBPACK_IMPORTED_MODULE_3__["SpecieListComponent"], _specie_detail_specie_detail_component__WEBPACK_IMPORTED_MODULE_4__["SpecieDetailComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__["PaginatorModule"], _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_6__["CardListModule"]]
+    })], SpeciesModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/starships/starship-detail/starship-detail.component.scss":
+  /*!**************************************************************************!*\
+    !*** ./src/app/starships/starship-detail/starship-detail.component.scss ***!
+    \**************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppStarshipsStarshipDetailStarshipDetailComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0YXJzaGlwcy9zdGFyc2hpcC1kZXRhaWwvc3RhcnNoaXAtZGV0YWlsLmNvbXBvbmVudC5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/starships/starship-detail/starship-detail.component.ts":
+  /*!************************************************************************!*\
+    !*** ./src/app/starships/starship-detail/starship-detail.component.ts ***!
+    \************************************************************************/
+
+  /*! exports provided: StarshipDetailComponent */
+
+  /***/
+  function srcAppStarshipsStarshipDetailStarshipDetailComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "StarshipDetailComponent", function () {
+      return StarshipDetailComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var StarshipDetailComponent =
+    /*#__PURE__*/
+    function () {
+      function StarshipDetailComponent() {
+        _classCallCheck(this, StarshipDetailComponent);
+      }
+
+      _createClass(StarshipDetailComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return StarshipDetailComponent;
+    }();
+
+    StarshipDetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-starship-detail',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./starship-detail.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/starships/starship-detail/starship-detail.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./starship-detail.component.scss */
+      "./src/app/starships/starship-detail/starship-detail.component.scss")).default]
+    })], StarshipDetailComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/starships/starship-list/starship-list.component.scss":
+  /*!**********************************************************************!*\
+    !*** ./src/app/starships/starship-list/starship-list.component.scss ***!
+    \**********************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppStarshipsStarshipListStarshipListComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N0YXJzaGlwcy9zdGFyc2hpcC1saXN0L3N0YXJzaGlwLWxpc3QuY29tcG9uZW50LnNjc3MifQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/starships/starship-list/starship-list.component.ts":
+  /*!********************************************************************!*\
+    !*** ./src/app/starships/starship-list/starship-list.component.ts ***!
+    \********************************************************************/
+
+  /*! exports provided: StarshipListComponent */
+
+  /***/
+  function srcAppStarshipsStarshipListStarshipListComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "StarshipListComponent", function () {
+      return StarshipListComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/core/util.service */
+    "./src/app/core/util.service.ts");
+    /* harmony import */
+
+
+    var src_app_core_services_starship_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/core/services/starship.service */
+    "./src/app/core/services/starship.service.ts");
+
+    var StarshipListComponent =
+    /*#__PURE__*/
+    function () {
+      function StarshipListComponent(activatedRoute, starshipService, utilService, router) {
+        _classCallCheck(this, StarshipListComponent);
+
+        this.activatedRoute = activatedRoute;
+        this.starshipService = starshipService;
+        this.utilService = utilService;
+        this.router = router;
+        this.pageable = {
+          next: null,
+          previous: null,
+          page: 1
+        };
+        this.starships = [];
+      }
+
+      _createClass(StarshipListComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var response = this.activatedRoute.snapshot.parent.data['starships'];
+          this.starships = response.results;
+          this.pageable.next = response.next;
+          this.pageable.previous = response.previous;
+          this.starshipService.savePage(this.starships, this.pageable.page);
+        }
+      }, {
+        key: "request",
+        value: function request() {
+          var starships = this.starshipService.getPage(this.pageable.page);
+
+          if (starships.length > 0) {
+            this.starships = starships;
+          } else {
+            this.update();
+          }
+        }
+      }, {
+        key: "update",
+        value: function update() {
+          var _this12 = this;
+
+          this.starshipService.requestPage(this.pageable.page).subscribe(function (response) {
+            _this12.starships = response.results;
+            _this12.pageable.next = response.next;
+            _this12.pageable.previous = response.previous;
+
+            _this12.starshipService.savePage(response.results, _this12.pageable.page);
+          });
+        }
+      }, {
+        key: "getImage",
+        value: function getImage(url) {
+          return this.utilService.getEntityImage(url, this.actualEntity);
+        }
+      }, {
+        key: "getId",
+        value: function getId(starship) {
+          return this.utilService.getEntityId(starship.url);
+        }
+      }, {
+        key: "goToDetail",
+        value: function goToDetail(position) {
+          var starship = this.starships[position];
+          this.starshipService.starship = starship;
+          this.router.navigate(['starships', this.getId(starship)]);
+        }
+      }]);
+
+      return StarshipListComponent;
+    }();
+
+    StarshipListComponent.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: src_app_core_services_starship_service__WEBPACK_IMPORTED_MODULE_4__["StarshipService"]
+      }, {
+        type: src_app_core_util_service__WEBPACK_IMPORTED_MODULE_3__["UtilService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
+    };
+
+    StarshipListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-starship-list',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./starship-list.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/starships/starship-list/starship-list.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./starship-list.component.scss */
+      "./src/app/starships/starship-list/starship-list.component.scss")).default]
+    })], StarshipListComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/starships/starships.module.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/starships/starships.module.ts ***!
+    \***********************************************/
+
+  /*! exports provided: StarshipsModule */
+
+  /***/
+  function srcAppStarshipsStarshipsModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "StarshipsModule", function () {
+      return StarshipsModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _starship_detail_starship_detail_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./starship-detail/starship-detail.component */
+    "./src/app/starships/starship-detail/starship-detail.component.ts");
+    /* harmony import */
+
+
+    var _starship_list_starship_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./starship-list/starship-list.component */
+    "./src/app/starships/starship-list/starship-list.component.ts");
+    /* harmony import */
+
+
+    var _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../shared/components/cards/card-list/card-list.module */
+    "./src/app/shared/components/cards/card-list/card-list.module.ts");
+    /* harmony import */
+
+
+    var _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/components/paginator/paginator.module */
+    "./src/app/shared/components/paginator/paginator.module.ts");
+
+    var StarshipsModule = function StarshipsModule() {
+      _classCallCheck(this, StarshipsModule);
+    };
+
+    StarshipsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_starship_detail_starship_detail_component__WEBPACK_IMPORTED_MODULE_3__["StarshipDetailComponent"], _starship_list_starship_list_component__WEBPACK_IMPORTED_MODULE_4__["StarshipListComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_5__["CardListModule"], _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_6__["PaginatorModule"]]
+    })], StarshipsModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/vehicles/vehicle-detail/vehicle-detail.component.scss":
+  /*!***********************************************************************!*\
+    !*** ./src/app/vehicles/vehicle-detail/vehicle-detail.component.scss ***!
+    \***********************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppVehiclesVehicleDetailVehicleDetailComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZlaGljbGVzL3ZlaGljbGUtZGV0YWlsL3ZlaGljbGUtZGV0YWlsLmNvbXBvbmVudC5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/vehicles/vehicle-detail/vehicle-detail.component.ts":
+  /*!*********************************************************************!*\
+    !*** ./src/app/vehicles/vehicle-detail/vehicle-detail.component.ts ***!
+    \*********************************************************************/
+
+  /*! exports provided: VehicleDetailComponent */
+
+  /***/
+  function srcAppVehiclesVehicleDetailVehicleDetailComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "VehicleDetailComponent", function () {
+      return VehicleDetailComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var VehicleDetailComponent =
+    /*#__PURE__*/
+    function () {
+      function VehicleDetailComponent() {
+        _classCallCheck(this, VehicleDetailComponent);
+      }
+
+      _createClass(VehicleDetailComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return VehicleDetailComponent;
+    }();
+
+    VehicleDetailComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-vehicle-detail',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./vehicle-detail.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/vehicles/vehicle-detail/vehicle-detail.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./vehicle-detail.component.scss */
+      "./src/app/vehicles/vehicle-detail/vehicle-detail.component.scss")).default]
+    })], VehicleDetailComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/vehicles/vehicle-list/vehicle-list.component.scss":
+  /*!*******************************************************************!*\
+    !*** ./src/app/vehicles/vehicle-list/vehicle-list.component.scss ***!
+    \*******************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppVehiclesVehicleListVehicleListComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZlaGljbGVzL3ZlaGljbGUtbGlzdC92ZWhpY2xlLWxpc3QuY29tcG9uZW50LnNjc3MifQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/vehicles/vehicle-list/vehicle-list.component.ts":
+  /*!*****************************************************************!*\
+    !*** ./src/app/vehicles/vehicle-list/vehicle-list.component.ts ***!
+    \*****************************************************************/
+
+  /*! exports provided: VehicleListComponent */
+
+  /***/
+  function srcAppVehiclesVehicleListVehicleListComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "VehicleListComponent", function () {
+      return VehicleListComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_core_services_vehicle_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/core/services/vehicle.service */
+    "./src/app/core/services/vehicle.service.ts");
+    /* harmony import */
+
+
+    var src_app_core_util_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/core/util.service */
+    "./src/app/core/util.service.ts");
+
+    var VehicleListComponent =
+    /*#__PURE__*/
+    function () {
+      function VehicleListComponent(activatedRoute, vehicleService, utilService, router) {
+        _classCallCheck(this, VehicleListComponent);
+
+        this.activatedRoute = activatedRoute;
+        this.vehicleService = vehicleService;
+        this.utilService = utilService;
+        this.router = router;
+        this.pageable = {
+          next: null,
+          previous: null,
+          page: 1
+        };
+        this.vehicles = [];
+      }
+
+      _createClass(VehicleListComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var response = this.activatedRoute.snapshot.parent.data['vehicles'];
+          this.vehicles = response.results;
+          this.pageable.next = response.next;
+          this.pageable.previous = response.previous;
+          this.vehicleService.savePage(this.vehicles, this.pageable.page);
+        }
+      }, {
+        key: "request",
+        value: function request() {
+          var vehicles = this.vehicleService.getPage(this.pageable.page);
+
+          if (vehicles.length > 0) {
+            this.vehicles = vehicles;
+          } else {
+            this.update();
+          }
+        }
+      }, {
+        key: "update",
+        value: function update() {
+          var _this13 = this;
+
+          this.vehicleService.requestPage(this.pageable.page).subscribe(function (response) {
+            _this13.vehicles = response.results;
+            _this13.pageable.next = response.next;
+            _this13.pageable.previous = response.previous;
+
+            _this13.vehicleService.savePage(response.results, _this13.pageable.page);
+          });
+        }
+      }, {
+        key: "getImage",
+        value: function getImage(url) {
+          return this.utilService.getEntityImage(url, this.actualEntity);
+        }
+      }, {
+        key: "getId",
+        value: function getId(vehicle) {
+          return this.utilService.getEntityId(vehicle.url);
+        }
+      }, {
+        key: "goToDetail",
+        value: function goToDetail(position) {
+          var vehicle = this.vehicleService[position];
+          this.vehicleService.vehicle = vehicle;
+          this.router.navigate(['vehicles', this.getId(vehicle)]);
+        }
+      }]);
+
+      return VehicleListComponent;
+    }();
+
+    VehicleListComponent.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: src_app_core_services_vehicle_service__WEBPACK_IMPORTED_MODULE_3__["VehicleService"]
+      }, {
+        type: src_app_core_util_service__WEBPACK_IMPORTED_MODULE_4__["UtilService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
+    };
+
+    VehicleListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'sw-vehicle-list',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./vehicle-list.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/vehicles/vehicle-list/vehicle-list.component.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./vehicle-list.component.scss */
+      "./src/app/vehicles/vehicle-list/vehicle-list.component.scss")).default]
+    })], VehicleListComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/vehicles/vehicles.module.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/vehicles/vehicles.module.ts ***!
+    \*********************************************/
+
+  /*! exports provided: VehiclesModule */
+
+  /***/
+  function srcAppVehiclesVehiclesModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "VehiclesModule", function () {
+      return VehiclesModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _vehicle_detail_vehicle_detail_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./vehicle-detail/vehicle-detail.component */
+    "./src/app/vehicles/vehicle-detail/vehicle-detail.component.ts");
+    /* harmony import */
+
+
+    var _vehicle_list_vehicle_list_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./vehicle-list/vehicle-list.component */
+    "./src/app/vehicles/vehicle-list/vehicle-list.component.ts");
+    /* harmony import */
+
+
+    var _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../shared/components/paginator/paginator.module */
+    "./src/app/shared/components/paginator/paginator.module.ts");
+    /* harmony import */
+
+
+    var _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../shared/components/cards/card-list/card-list.module */
+    "./src/app/shared/components/cards/card-list/card-list.module.ts");
+
+    var VehiclesModule = function VehiclesModule() {
+      _classCallCheck(this, VehiclesModule);
+    };
+
+    VehiclesModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      declarations: [_vehicle_detail_vehicle_detail_component__WEBPACK_IMPORTED_MODULE_3__["VehicleDetailComponent"], _vehicle_list_vehicle_list_component__WEBPACK_IMPORTED_MODULE_4__["VehicleListComponent"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _shared_components_cards_card_list_card_list_module__WEBPACK_IMPORTED_MODULE_6__["CardListModule"], _shared_components_paginator_paginator_module__WEBPACK_IMPORTED_MODULE_5__["PaginatorModule"]]
+    })], VehiclesModule);
     /***/
   },
 
@@ -3018,7 +6099,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var environment = {
       production: false,
-      url: "https://cors-anywhere.herokuapp.com/https://swapi.co/api"
+      // url: "https://cors-anywhere.herokuapp.com/https://swapi.co/api"
+      url: "https://swapi.co/api"
     };
     /*
      * For easier debugging in development mode, you can import the following file
