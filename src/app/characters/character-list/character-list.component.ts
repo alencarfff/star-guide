@@ -6,6 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EntityEnum } from 'src/app/core/models/entity.enum';
 import { UtilService } from 'src/app/core/util.service';
 import RouteInterface from 'src/app/core/interfaces/route.interface';
+import SearchInterface from 'src/app/core/interfaces/search.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sw-character-list',
@@ -13,8 +15,8 @@ import RouteInterface from 'src/app/core/interfaces/route.interface';
   styleUrls: ['./character-list.component.scss']
 })
 export class CharacterListComponent implements OnInit, RouteInterface {
-  private readonly actualEntity = EntityEnum.CHARACTER;
-
+  private readonly actualEntity: EntityEnum = EntityEnum.CHARACTER;
+  private searchValue: string = null;
   private characters: CharacterModel[] = [];
   private pageable: PageableModel;
 
@@ -45,13 +47,27 @@ export class CharacterListComponent implements OnInit, RouteInterface {
     }
   }
 
+  search(value: string){
+    this.searchValue = value;
+    this.characterService
+      .search(value, this.actualEntity)
+      .subscribe(response => {
+        this.characters = response.results;
+        this.pageable.next = response.next;
+        this.pageable.previous = response.previous;
+        this.pageable.page = 1; 
+      });
+  }
+
   update(){
-    this.characterService.requestPage(this.pageable.page).subscribe(response => {
+    this.characterService.requestPage(this.pageable.page, this.searchValue).subscribe(response => {
       this.characters = response.results;
       this.pageable.next = response.next;
       this.pageable.previous = response.previous;      
 
-      this.characterService.savePage(response.results, this.pageable.page);
+      if( !this.searchValue ){
+        this.characterService.savePage(response.results, this.pageable.page);
+      }
     });
   }
 
@@ -64,7 +80,7 @@ export class CharacterListComponent implements OnInit, RouteInterface {
   }
 
   goToDetail(position: number){
-    const character = this.characters[position];
+    const character = Object.freeze(this.characters[position]);
     this.characterService.character = character;
 
     this.router.navigate(['characters', this.getId(character)]);

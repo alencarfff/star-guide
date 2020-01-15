@@ -13,8 +13,8 @@ import { UtilService } from 'src/app/core/util.service';
   styleUrls: ['./vehicle-list.component.scss']
 })
 export class VehicleListComponent implements OnInit, RouteInterface {
-  private readonly actualEntity: EntityEnum.VEHICLE;
-
+  private readonly actualEntity: EntityEnum = EntityEnum.VEHICLE;
+  private searchValue: string = null; 
   private pageable: PageableModel = { next: null, previous: null, page: 1 };
   private vehicles: VehicleModel[] = [];
   
@@ -44,7 +44,7 @@ export class VehicleListComponent implements OnInit, RouteInterface {
   }
 
   update(){
-    this.vehicleService.requestPage(this.pageable.page).subscribe(response => {
+    this.vehicleService.requestPage(this.pageable.page, null).subscribe(response => {
       this.vehicles = response.results;
       this.pageable.next = response.next;
       this.pageable.previous = response.previous;      
@@ -53,6 +53,18 @@ export class VehicleListComponent implements OnInit, RouteInterface {
     });
   }
 
+  search(value: string){
+    this.searchValue = value;
+    this.vehicleService
+      .search(value, this.actualEntity)
+      .subscribe(response => {
+        this.vehicles = response.results;
+        this.pageable.next = response.next;
+        this.pageable.previous = response.previous;
+        this.pageable.page = 1; 
+      });
+  }
+  
   getImage(url: string) : string {
     return this.utilService.getEntityImage(url, this.actualEntity);
   }

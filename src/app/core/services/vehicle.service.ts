@@ -7,21 +7,10 @@ import VehicleModel from '../models/vehicle.model';
 @Injectable({ providedIn: 'root' })
 export class VehicleService extends CachedPagination {
   private url: string = environment.url + "/vehicles";
-
-  private _vehicles: VehicleModel[][] = new Array();
   private _vehicle: VehicleModel;
 
-  requestPage(page: number) : Observable<any>{
-    return super.requestPage(page, this.url);
-  }
-  requestByUrl(url: string) : Observable<VehicleModel>{
-    return super.requestByUrl(url);
-  }
-  savePage(vehicles: VehicleModel[], page: number) {
-    super.savePage(vehicles, page);
-  }
-  getPage(page: number) : VehicleModel[]{
-    return super.getPage(page);
+  requestPage(page: number, search: string) : Observable<any>{
+    return super.requestPage(page, search, this.url);
   }
 
   set vehicle(vehicle: VehicleModel){

@@ -1,4 +1,7 @@
-<h3>Species</h3>
+<div class="row">
+    <h3 class="header-title">Species</h3> 
+    <sw-search (onSearch)="search($event)"></sw-search>    
+</div>
 
 <sw-card-list [items]="species" (onClick)="goToDetail($event)"></sw-card-list>
 

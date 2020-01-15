@@ -7,38 +7,6 @@
     position: relative;
     overflow: hidden;
 
-    //desktop devices
-    @media screen and (min-width: 1024px){
-
-        .movie-item:hover {
-            width: $card-width-hover--md;
-
-            p {
-                z-index: 10;
-                opacity: 1;
-                font-size: $card-txt-font-size--md;
-            }
-
-            img { filter: brightness(35%) }
-
-            .episode { 
-                opacity: .25;
-                bottom: 5%;
-            }
-        }
-
-        @for $i from 1 through 7 {
-            .movie-item-animated:nth-child(#{$i}){
-                animation: bottom-to-up calc((#{$i} - 0.35) * 425ms);
-            }
-        }
-    }
-
-    @keyframes bottom-to-up {
-        0% { bottom: -110% }
-        100% { bottom: 0 }
-    }
-
     //small devices
     @media screen and (max-width: 1024px){
         .movie-list {
@@ -123,11 +91,11 @@
     width: calc(100vw - 10%);
     position: relative;
     background: $background-color--default;
-    background: linear-gradient(180deg, transparentize($background-color--default, 0) 0%, 
-                                        transparentize($background-color--default, 1) 10%, 
-                                        transparentize($background-color--default, 1) 90%, 
-                                        transparentize($background-color--default, 0) 100%);
-
+    background: linear-gradient(180deg, 
+                    transparentize($background-color--default, 0) 0%, 
+                    transparentize($background-color--default, 1) 10%, 
+                    transparentize($background-color--default, 1) 90%, 
+                    transparentize($background-color--default, 0) 100%);
 
     .movie-item {
         display: flex;
@@ -139,11 +107,32 @@
         width: $card-width-normal--md;
         cursor: pointer;
         user-select: none;
-        transition: width 400ms ease-in-out,
+        transition: bottom 400ms ease-in-out,
+                    width 400ms ease-in-out,
                     box-shadow 2s;
         margin: 0 1px;
         z-index: 10;
         
+        //desktop devices
+        @media screen and (min-width: 1024px){
+            &:hover {
+                width: $card-width-hover--md;
+
+                p {
+                    z-index: 10;
+                    opacity: 1;
+                    font-size: $card-txt-font-size--md;
+                }
+
+                img { filter: brightness(35%) }
+
+                .episode { 
+                    opacity: .25;
+                    bottom: 5%;
+                }
+            }
+        }
+
         .episode {
             position: absolute;
             bottom: 0;
@@ -187,4 +176,16 @@
             transition: filter 250ms ease-in-out;
         }
     }
+
+    @for $i from 1 through 7 {
+        .movie-item-animated:nth-child(#{$i}){
+            bottom: 0;
+            animation: bottom-to-up calc((#{$i} - 0.35) * 425ms);
+        }
+    }
+    @keyframes bottom-to-up {
+        0% { bottom: -110% }
+        100% { bottom: 0 }
+    }
+
 }

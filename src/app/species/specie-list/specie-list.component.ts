@@ -13,8 +13,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./specie-list.component.scss']
 })
 export class SpecieListComponent implements OnInit, RouteInterface {
-  private readonly actualEntity: EntityEnum.SPECIE;
-
+  private readonly actualEntity: EntityEnum = EntityEnum.SPECIE;
+  private searchValue: string = null;
   private pageable: PageableModel = { next: null, previous: null, page: 1 };
   private species: SpecieModel[] = [];
   
@@ -44,13 +44,25 @@ export class SpecieListComponent implements OnInit, RouteInterface {
   }
 
   update(){
-    this.specieService.requestPage(this.pageable.page).subscribe(response => {
+    this.specieService.requestPage(this.pageable.page, null).subscribe(response => {
       this.species = response.results;
       this.pageable.next = response.next;
       this.pageable.previous = response.previous;      
 
       this.specieService.savePage(response.results, this.pageable.page);
     });
+  }
+
+  search(value: string){
+    this.searchValue = value;
+    this.specieService
+      .search(value, this.actualEntity)
+      .subscribe(response => {
+        this.species = response.results;
+        this.pageable.next = response.next;
+        this.pageable.previous = response.previous;
+        this.pageable.page = 1; 
+      });
   }
 
   getImage(url: string) : string {

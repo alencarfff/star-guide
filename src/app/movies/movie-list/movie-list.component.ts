@@ -23,7 +23,28 @@ export class MovieListComponent implements OnInit {
      this.movies = this.movieService.movies; 
   
     let self = this;
-    setTimeout(() => self.toAnimate = false, this.warningService.timeInMs);  
+    setTimeout(() => {
+      self.toAnimate = false 
+    }, this.warningService.timeInMs);  
+
+    // const results = [];
+    // for(let i = 0; i <= 15; i++){
+    //   this.movieService.find(`starships?page=${i}`).subscribe(a => {
+    //     var b: any = a;
+        
+    //     if( b.next ){
+    //       results.push(b.results);
+    //     }
+    //     else {
+    //       results.forEach(result => {
+    //         var temp = result.map(chara => chara.name)
+    //         temp.forEach(name => {
+    //             console.log(name)
+    //         });
+    //       });
+    //     }
+    //   });
+    // }
   }
 
   toRoman(num: number) : string {

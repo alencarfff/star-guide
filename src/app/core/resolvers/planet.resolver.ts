@@ -10,6 +10,6 @@ export class PlanetResolve implements Resolve<PlanetModel> {
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot) : Observable<PlanetModel[]> | Promise<any> | any {
-        return this.planetService.requestPage(1);
+        return this.planetService.requestPage(1, null);
     }
 }

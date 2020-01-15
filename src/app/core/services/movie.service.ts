@@ -28,6 +28,10 @@ export default class MovieService {
         return movies.sort((a: MovieModel, b: MovieModel) => a.episode_id - b.episode_id);
     }
 
+    find(a){
+        return this.http.get(`${this.url}/${a}`);
+    }
+
     get movies() : MovieModel[] {
         return this._movies;
     }
@@ -46,4 +50,6 @@ export default class MovieService {
     get movie() : MovieModel { 
         return this._movie;
     }
+
+    getMovieFromRoute = (position: number) => this.movies[position - 1];
 }

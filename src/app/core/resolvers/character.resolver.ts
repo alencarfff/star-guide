@@ -10,6 +10,6 @@ export class CharacterResolver implements Resolve<CharacterModel> {
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot) : Observable<CharacterModel[]> | Promise<any> | any {
-        return this.characterService.requestPage(1);
+        return this.characterService.requestPage(1, null);
     }
 }

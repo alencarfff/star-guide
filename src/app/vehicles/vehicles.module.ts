@@ -4,6 +4,7 @@ import { VehicleDetailComponent } from './vehicle-detail/vehicle-detail.componen
 import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 import { PaginatorModule } from '../shared/components/paginator/paginator.module';
 import { CardListModule } from '../shared/components/cards/card-list/card-list.module';
+import { SearchModule } from '../shared/components/search/search.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CardListModule } from '../shared/components/cards/card-list/card-list.m
     CommonModule,
     CardListModule,
     PaginatorModule,
+    SearchModule
   ]
 })
 export class VehiclesModule { }

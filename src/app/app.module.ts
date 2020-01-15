@@ -19,6 +19,7 @@ import { PlanetsModule } from './planets/planets.module';
 import { VehiclesModule } from './vehicles/vehicles.module';
 import { SpeciesModule } from './species/species.module';
 import { StarshipsModule } from './starships/starships.module';
+import { SearchComponent } from './shared/components/search/search.component';
 
 @NgModule({
   declarations: [
