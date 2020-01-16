@@ -2,39 +2,27 @@
     display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
-    min-height: 163px * 2;
-    margin: 10px 0 30px;
+    min-height: calc(calc(135px + 3.5vmax) * 2);
+    margin: 15px 0 30px;
 
     ul {
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
-        margin: 10px 0;
-        padding: 0 20px;
+        margin: 7.5px 0;
         padding: 0;
 
         li {
-            $card-width: calc(100% / 5.6);
+            $card-width: calc(100% / 6);
             list-style-type: none;
             min-width: $card-width;
             max-width: $card-width;
             cursor: pointer;
-            margin: 0 calc(#{$card-width} / 7) 0 0;
-
-            &:hover {
-
-            }
+            margin: 0 calc(#{$card-width} / 4.1) 0 0;
 
             &:last-child {
                 margin: 0;
             }
-
-            // &:not(:first-child) {
-            //     margin-left: 10px;
-            // }
-            // &:not(:last-child) {
-            //     margin-right: 10px;
-            // }   
         }
     }
 }

@@ -6,8 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EntityEnum } from 'src/app/core/models/entity.enum';
 import { UtilService } from 'src/app/core/util.service';
 import RouteInterface from 'src/app/core/interfaces/route.interface';
-import SearchInterface from 'src/app/core/interfaces/search.interface';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sw-character-list',
@@ -24,6 +22,7 @@ export class CharacterListComponent implements OnInit, RouteInterface {
     private router: Router,
     private utilService: UtilService,
     private characterService: CharacterService) {
+
     this.pageable = { next: null, previous: null, page: 1 }
   }
 
@@ -80,9 +79,8 @@ export class CharacterListComponent implements OnInit, RouteInterface {
   }
 
   goToDetail(position: number){
-    const character = Object.freeze(this.characters[position]);
+    const character = this.characters[position];
     this.characterService.character = character;
-
     this.router.navigate(['characters', this.getId(character)]);
   }
 }

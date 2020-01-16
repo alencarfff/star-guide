@@ -1,6 +1,6 @@
 <div class="character">    
     <div class="content">
-        <div class="section-data">
+        <div class="section-data" *ngIf="character">
             <div class="column-left">
                 <div class="header">
                     <h2 class="title">{{ character.name }} </h2>
@@ -10,25 +10,28 @@
                 <div class="production mv-25">
                     <p><span class="bold">Height:</span> {{ character.height }}</p>
                     <p><span class="bold">Mass:</span> {{ character.mass }}</p>
-                    <p><span class="bold">Hair color:</span> {{ character.hair_color }}</p>
+                    <p><span class="bold">Hair color:</span> {{ character.hair_color != "n/a" ? character.hair_color : "no hair"  }}</p>
                     <p><span class="bold">Skin color:</span> {{ character.skin_color }}</p>
-                    <p><span class="bold">Gender:</span> {{ character.gender }}</p>
+                    <p *ngIf="character.gender != 'n/a'"><span class="bold">Gender:</span>{{ character.gender }}</p>
                     <p><span class="bold">Birth year:</span> {{ character.birth_year }}</p>
                 </div>
                 
                 <hr class="mv-25" />
 
-                <div class="mv-25">
+                <div class="mv-25" *ngIf="homeworld">
                     <p><span class="bold">Homeworld:</span> {{ homeworld.name }}</p>
                 </div>    
 
                 <div class="mv-25">
-                    <p *ngFor="let movie of relatedMovies">Episode {{ movie.episode_id }} - {{ movie.title }}</p>
+                    <p *ngFor="let movie of relatedMovies">
+                        Episode {{ movie.episode_id }} - {{ movie.title }}
+                    </p>
                 </div>    
             </div>
             <div class="column-right">
                 <div class="image-container">
-                    <img *ngIf="characterId" [src]="'/assets/img/characters/' + characterId + '.jpg'" />
+                    <!-- <img *ngIf="characterId" [src]="'/assets/img/characters/' + characterId + '.jpg'" /> -->
+                    <img [src]="'/assets/img/default.jpg'" />
                 </div>
             </div>
         </div>

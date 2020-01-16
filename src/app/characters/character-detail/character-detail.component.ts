@@ -39,7 +39,9 @@ export class CharacterDetailComponent implements OnInit {
     }
   }
 
-  toRoman = (num: number) => this.utilService.toRoman(num);
+  toRoman(num: number){
+    return this.utilService.toRoman(num);
+  } 
 
   request(){
     const id = +this.activatedRoute.snapshot.params['id']
@@ -47,6 +49,7 @@ export class CharacterDetailComponent implements OnInit {
       .requestById(id, EntityEnum.CHARACTER)
       .subscribe(character => {
         this.character = character;
+        console.log(this.character)
         this.characterId = this.utilService.getEntityId(character.url);
         this.updateHomeworld(character.homeworld);
         this.relatedMovies = this.utilService.getEntityRelatedMovies(this.movieService, character);        

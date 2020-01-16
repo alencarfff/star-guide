@@ -3,7 +3,10 @@
     <sw-search (onSearch)="search($event)"></sw-search>    
 </div>
 
-<sw-card-list [items]="vehicles" (onClick)="goToDetail($event)"></sw-card-list>
+<sw-card-list 
+    [items]="vehicles" 
+    (onClick)="goToDetail($event)">
+</sw-card-list>
 
 <sw-paginator
     (onChange)="request()"

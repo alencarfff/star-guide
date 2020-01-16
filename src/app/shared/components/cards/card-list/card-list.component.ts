@@ -42,10 +42,14 @@ export class CardListComponent implements OnInit, OnChanges {
   }
 
   getCardImagePath(entityCard: any){
-    return `${this.assetsPath}/${this.actualEntity}/${this.getObjectId(entityCard)}.jpeg`;
+    // return `${this.assetsPath}/${this.actualEntity}/${this.getObjectId(entityCard)}.jpeg`;
+    return `${this.assetsPath}/default.jpeg`;
   }
 
-  click(position: number){
-    this.onClick.emit(position);
+  click(cardIndex: number, isLastRow: boolean){
+    if( isLastRow ) 
+      cardIndex += 5;
+
+    this.onClick.emit(cardIndex);
   }
 }
