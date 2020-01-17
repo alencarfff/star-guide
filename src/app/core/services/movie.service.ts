@@ -1,55 +1,41 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter, Injector } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import MovieModel from '../models/movie.model';
+import CacheTools from '../classes/cache-tools.class';
+import Page from '../models/page.model';
+import { EntityEnum } from '../models/entity.enum';
 
 @Injectable({
     providedIn: "root"
 })
-export default class MovieService {
-    private url: string = environment.url;
-
-    private _movies: MovieModel[];
-    private _movie: MovieModel;
+export default class MovieService extends CacheTools {
+    private url: string = environment.url + "/films/";
     private movieUpdated = new EventEmitter<MovieModel>();
 
-    constructor(private http: HttpClient){}
-
-    requestMovies() : Observable<MovieModel[]>{
-        return this.http.get<MovieModel[]>(`${this.url}/films`);
+    constructor(injector: Injector){ 
+        super(injector)
     }
 
+    requestMovies() : Observable<Page>{
+        return super.requestPage(1, null, `${this.url}`);
+    }
+    requestById(id: number) : Observable<MovieModel>{
+        return super.requestById(id, EntityEnum.MOVIE);
+    }
     getMovieByUrl(url: string) : Observable<MovieModel> {
-        return this.http.get<MovieModel>(url);
+        return super.requestByUrl(url);
     }
-
     sortByEpisodeId(movies: MovieModel[]){
         return movies.sort((a: MovieModel, b: MovieModel) => a.episode_id - b.episode_id);
     }
-
-    find(a){
-        return this.http.get(`${this.url}/${a}`);
-    }
-
-    get movies() : MovieModel[] {
-        return this._movies;
-    }
-    set movies(movies: MovieModel[]) {
-        this._movies = movies;
-    }
-
     observeMovieChange(){
         return this.movieUpdated.asObservable();
     }
+    getMovieFromRoute = (position: number) => {
+        const movies = this.getPage(1);
 
-    set movie (movie: MovieModel){ 
-        this._movie = movie;
-        this.movieUpdated.emit(movie);
+        return movies[position - 1];
     }
-    get movie() : MovieModel { 
-        return this._movie;
-    }
-
-    getMovieFromRoute = (position: number) => this.movies[position - 1];
 }

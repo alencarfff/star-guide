@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import CharacterModel from '../models/character.model';
-import { CharacterService } from '../services/character.service';
+import CharacterService from '../services/character.service';
 
 @Injectable({ providedIn: 'root' })
 export class CharacterResolver implements Resolve<CharacterModel> {

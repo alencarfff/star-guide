@@ -4,7 +4,7 @@ import { EntityEnum } from 'src/app/core/models/entity.enum';
 import { PageableModel } from 'src/app/core/models/pageable.model';
 import SpecieModel from 'src/app/core/models/specie.model';
 import { SpecieService } from 'src/app/core/services/specie.service';
-import { UtilService } from 'src/app/core/util.service';
+import UtilService  from 'src/app/core/util.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,10 +12,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './specie-list.component.html',
   styleUrls: ['./specie-list.component.scss']
 })
-export class SpecieListComponent implements OnInit, RouteInterface {
+export class SpecieListComponent implements OnInit {
+  private pageable: PageableModel = { next: null, previous: null, page: 1 };
   private readonly actualEntity: EntityEnum = EntityEnum.SPECIE;
   private searchValue: string = null;
-  private pageable: PageableModel = { next: null, previous: null, page: 1 };
   private species: SpecieModel[] = [];
   
   constructor(private activatedRoute: ActivatedRoute, 
@@ -29,14 +29,14 @@ export class SpecieListComponent implements OnInit, RouteInterface {
     this.species = response.results;
     this.pageable.next = response.next;
     this.pageable.previous = response.previous;
-    this.specieService.savePage(this.species, this.pageable.page);
+    this.specieService.savePage(response, this.pageable.page);
   }
 
   request(){
-    const species = this.specieService.getPage(this.pageable.page);
+    const page = this.specieService.getPage(this.pageable.page);
 
-    if( species.length > 0 ){
-      this.species = species;
+    if( page ){
+      this.species = page.results;
     }
     else {
       this.update();
@@ -74,7 +74,9 @@ export class SpecieListComponent implements OnInit, RouteInterface {
   }
 
   goToDetail(position: number){
-    const specie = this.specieService[position];
+    const page = this.specieService.getPage(this.pageable.page);
+    const specie = page.results[position]
+
     this.specieService.specie = specie;
 
     this.router.navigate(['species', this.getId(specie)]);

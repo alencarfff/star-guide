@@ -1,3 +1,3 @@
 export default interface RouteInterface {
-    goToDetail(id: number);
+    goToDetail(path: string, id: number);
 }

@@ -1,1 +1,20 @@
-<p>vehicle-detail works!</p>
+<sw-entity-detail *ngIf="vehicle"
+    [title]="vehicle.name" 
+    imagePath="'/assets/img/default.jpg'" 
+    entity="Vehicle">
+
+    <p><span class="bold">Model: </span> {{ vehicle.model }}</p>
+    <p><span class="bold">Manufacturer: </span> {{ vehicle.manufacturer }}</p>
+    <p><span class="bold">Length: </span>{{ vehicle.length != "unknown" ? (vehicle.length | number: '1.0-2') + 'm' : "unknown" }}</p>
+    <p><span class="bold">Cost: </span> {{ vehicle.cost_in_credits != "unknown" ? ((vehicle.cost_in_credits | number: '1.0-2') + " credits" ) : 'unknown' }}</p>
+    <p><span class="bold">Vehicle class: </span> {{ vehicle.vehicle_class }}</p>
+
+    <hr class="mv-25" />
+
+    <p><span class="bold">Crew: </span> {{ vehicle.crew }}</p>
+    <p><span class="bold">Passengers: </span> {{ vehicle.passengers }}</p>
+    <p><span class="bold">Cargo capacity: </span> {{ vehicle.cargo_capacity != "unknown" ? ((vehicle.cargo_capacity | number: '1.0-2') + "kg") : vehicle.cargo_capacity }}</p>
+    <p><span class="bold">Max aftmosphering speed: </span> {{ vehicle.max_atmosphering_speed }}</p> 
+    <p><span class="bold">Consumables: </span> {{ vehicle.consumables }}</p> 
+    
+</sw-entity-detail>

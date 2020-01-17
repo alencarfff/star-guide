@@ -33,7 +33,11 @@
         text-align: center;
 
         .name {
-            margin: 10px 0 15px;
+            margin: 0;
+            padding: 10px 10px 15px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
         }   
     }
 }

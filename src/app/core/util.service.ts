@@ -3,7 +3,7 @@ import MovieService from './services/movie.service';
 import MovieModel from './models/movie.model';
 
 @Injectable({ providedIn: 'root' })
-export class UtilService {
+export default class UtilService {
   private readonly assetsPath: string = "/src/assets/img/";
     
   toRoman(num) {
@@ -35,9 +35,9 @@ export class UtilService {
 
     if( filmsUrls ){
       var movies = filmsUrls.map(movieUrl => {
-        return movieService.getMovieFromRoute(
-          this.getEntityId(movieUrl)
-        )
+        const id = this.getEntityId(movieUrl);
+
+        return movieService.getMovieFromRoute(id)
       });
       
       return movieService.sortByEpisodeId(movies);

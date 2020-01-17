@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageableModel } from 'src/app/core/models/pageable.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UtilService } from 'src/app/core/util.service';
+import UtilService  from 'src/app/core/util.service';
 import { EntityEnum } from 'src/app/core/models/entity.enum';
 import PlanetModel from 'src/app/core/models/planet.model';
 import { PlanetService } from 'src/app/core/services/planet.service';
@@ -13,7 +13,7 @@ import SearchInterface from 'src/app/core/interfaces/search.interface';
   templateUrl: './planet-list.component.html',
   styleUrls: ['./planet-list.component.scss']
 })
-export class PlanetListComponent implements OnInit, RouteInterface {
+export class PlanetListComponent implements OnInit {
   private readonly actualEntity: EntityEnum = EntityEnum.PLANET;
   private searchValue: string = null;
   private pageable: PageableModel = { next: null, previous: null, page: 1 };
@@ -30,14 +30,14 @@ export class PlanetListComponent implements OnInit, RouteInterface {
     this.planets = response.results;
     this.pageable.next = response.next;
     this.pageable.previous = response.previous;
-    this.planetService.savePage(this.planets, this.pageable.page);
+    this.planetService.savePage(response, this.pageable.page);
   }
 
   request(){
-    const planets = this.planetService.getPage(this.pageable.page);
+    const page = this.planetService.getPage(this.pageable.page);
 
-    if( planets.length > 0 ){
-      this.planets = planets;
+    if( page ){
+      this.planets = page.results;
     }
     else {
       this.update();

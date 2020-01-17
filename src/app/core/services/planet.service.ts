@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import PlanetModel from '../models/planet.model';
 import { environment } from 'src/environments/environment'
 import { Observable } from 'rxjs';
-import CachedPagination from '../classes/cached-pagination.class';
+import CachedPagination from './cached-pagination.service';
 
 @Injectable({ providedIn: 'root' })
 export class PlanetService extends CachedPagination {
-  private url: string = environment.url + "/planets";
+  private url: string = environment.url + "/planets/";
   private _planet: PlanetModel;
 
   requestPage(page: number, search: string) : Observable<any>{

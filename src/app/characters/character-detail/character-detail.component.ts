@@ -1,61 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 import MovieModel from 'src/app/core/models/movie.model';
-import CharacterModel from 'src/app/core/models/character.model';
-import MovieService from 'src/app/core/services/movie.service';
-import { UtilService } from 'src/app/core/util.service';
-import { ActivatedRoute } from '@angular/router';
-import { CharacterService } from 'src/app/core/services/character.service';
-import { EntityEnum } from 'src/app/core/models/entity.enum';
-import { PlanetService } from 'src/app/core/services/planet.service';
 import PlanetModel from 'src/app/core/models/planet.model';
+import CharacterModel from 'src/app/core/models/character.model';
+import { EntityEnum } from 'src/app/core/models/entity.enum';
+
+import CharacterService from 'src/app/core/services/character.service';
+import { PlanetService } from 'src/app/core/services/planet.service';
+import { EntityDetailComponent } from 'src/app/shared/components/entity-detail/entity-detail.component';
+import EntityInfo from 'src/app/core/models/entity-info.model';
 
 @Component({
   selector: 'sw-character-detail',
   templateUrl: './character-detail.component.html',
-  styleUrls: ['./character-detail.component.scss']
+  styleUrls: [
+    './character-detail.component.scss', 
+  ]
 })
-export class CharacterDetailComponent implements OnInit {
+export class CharacterDetailComponent extends EntityDetailComponent implements OnInit {
   private character: CharacterModel;
   private characterId: number;
   private relatedMovies: MovieModel[] = [];
   private homeworld: PlanetModel = null;
 
-  constructor(private movieService: MovieService,
-              private characterService: CharacterService,
-              private utilService: UtilService,
-              private planetService: PlanetService,
-              private activatedRoute: ActivatedRoute) { }
+  constructor(injector: Injector, 
+    private characterService: CharacterService,
+    private planetService: PlanetService) { 
+    
+    super(injector);
+  }
 
   ngOnInit() {
-    const character = this.characterService.character || null;
-    
-    if( character ) {
-      this.character = character;
-      this.characterId = this.utilService.getEntityId(character.url);
-      this.relatedMovies = this.utilService.getEntityRelatedMovies(this.movieService, character);        
+    super.loadFromCacheOrRequestEntity(this.characterService, EntityEnum.CHARACTER, this.fill.bind(this));
+  }
+
+  fill(info: EntityInfo, subscription: Subscription) {
+    this.character = info.entity;
+    this.characterId = info.id;
+    this.relatedMovies = info.relatedMovies;
+
+    if( subscription ) {
+      subscription.unsubscribe();
     }
-    else {
-      this.request();
-    }
+
+    // this.updateHomeworld(this.character.homeworld);
   }
 
   toRoman(num: number){
     return this.utilService.toRoman(num);
   } 
-
-  request(){
-    const id = +this.activatedRoute.snapshot.params['id']
-    this.characterService
-      .requestById(id, EntityEnum.CHARACTER)
-      .subscribe(character => {
-        this.character = character;
-        console.log(this.character)
-        this.characterId = this.utilService.getEntityId(character.url);
-        this.updateHomeworld(character.homeworld);
-        this.relatedMovies = this.utilService.getEntityRelatedMovies(this.movieService, character);        
-      });
-  }
-
+  
   updateHomeworld(url: string) {
     this.planetService
       .requestByUrl(url)

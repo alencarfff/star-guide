@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { EntityEnum } from 'src/app/core/models/entity.enum';
-import { UtilService } from 'src/app/core/util.service';
+import UtilService  from 'src/app/core/util.service';
 
 @Component({
   selector: 'sw-card-list',
@@ -8,11 +8,12 @@ import { UtilService } from 'src/app/core/util.service';
   styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit, OnChanges {
+  @Output() private onClick = new EventEmitter;
+  @Input() private actualEntity: EntityEnum;
+  @Input() private items: any[];
+
   private readonly assetsPath: string = "assets/img"
   private readonly rowSize: number = 5;
-  @Output() onClick = new EventEmitter;
-  @Input() actualEntity: EntityEnum;
-  @Input() items: any[];
   private rows: any[][];
 
   constructor(private utilService: UtilService){}

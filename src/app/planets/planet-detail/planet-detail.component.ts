@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import MovieModel from 'src/app/core/models/movie.model';
 import PlanetModel from 'src/app/core/models/planet.model';
 import MovieService from 'src/app/core/services/movie.service';
-import { UtilService } from 'src/app/core/util.service';
+import UtilService  from 'src/app/core/util.service';
 import { PlanetService } from 'src/app/core/services/planet.service';
 import { ActivatedRoute } from '@angular/router';
 import { EntityEnum } from 'src/app/core/models/entity.enum';
@@ -10,7 +10,9 @@ import { EntityEnum } from 'src/app/core/models/entity.enum';
 @Component({
   selector: 'sw-planet-detail',
   templateUrl: './planet-detail.component.html',
-  styleUrls: ['./planet-detail.component.scss']
+  styleUrls: [
+    './planet-detail.component.scss',
+  ]
 })
 export class PlanetDetailComponent implements OnInit {
   private planet: PlanetModel;

@@ -8,8 +8,8 @@
                 </div>
 
                 <div class="production mv-25">
-                    <p><span class="bold">Height:</span> {{ character.height }}</p>
-                    <p><span class="bold">Mass:</span> {{ character.mass }}</p>
+                    <p><span class="bold">Height:</span> {{ character.height + "cm" }}</p>
+                    <p><span class="bold">Mass:</span> {{ character.mass + "kg" }}</p>
                     <p><span class="bold">Hair color:</span> {{ character.hair_color != "n/a" ? character.hair_color : "no hair"  }}</p>
                     <p><span class="bold">Skin color:</span> {{ character.skin_color }}</p>
                     <p *ngIf="character.gender != 'n/a'"><span class="bold">Gender:</span>{{ character.gender }}</p>

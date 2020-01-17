@@ -7,7 +7,22 @@
     margin-top: 0;
 
     span {
-        font-size: 1.1em;
-        margin: 0 20px;
+        border-radius: 3px;
+        padding: 3px 7.5px;
+        margin: 0 5px;
+        font-weight: 500;
+        user-select: none;
+        border: 2px solid transparent;
+        background: #eee;
+        color: #000;
+    }
+
+    .disabled {
+        color: #666;
+        border-color: #666;
+
+        &:hover {
+            background: none;
+        }
     }
 }

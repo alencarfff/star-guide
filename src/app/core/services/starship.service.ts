@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment'
 import { Observable } from 'rxjs';
-import CachedPagination from '../classes/cached-pagination.class';
+import CachedPagination from './cached-pagination.service';
 import StarshipModel from '../models/starship.model';
 
 @Injectable({ providedIn: 'root' })
 export class StarshipService extends CachedPagination {
-  private url: string = environment.url + "/starships";
+  private url: string = environment.url + "/starships/";
   private _starship: StarshipModel;
 
   requestPage(page: number, search: string) : Observable<any>{
