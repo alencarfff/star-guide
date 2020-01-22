@@ -1,35 +1,19 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import CharacterModel from '../models/character.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment'
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import CachedPagination from '../classes/cached-pagination.class';
+import { environment } from 'src/environments/environment'
+
+import { EntityEnum } from '../models/entity.enum';
+import CharacterModel from '../models/character.model';
+import CacheTools from '../classes/cache-tools.class';
 
 @Injectable({ providedIn: 'root' })
-export class CharacterService extends CachedPagination {
-  private url: string = environment.url + "/people";
-
-  private _characters: CharacterModel[][] = new Array();
-  private _character: CharacterModel;
-  // private characterUpdate = new EventEmitter<CharacterModel>();
-
-  requestPage(page: number) : Observable<any>{
-    return super.requestPage(page, this.url);
+export default class CharacterService extends CacheTools {
+  private url: string = environment.url + "/people/";
+  
+  requestPage(page: number, search: string) : Observable<any>{
+    return super.requestPage(page, search, this.url);
   }
-  requestByUrl(url: string) : Observable<CharacterModel>{
-    return super.requestByUrl(url);
-  }
-  savePage(characters: CharacterModel[], page: number) {
-    super.savePage(characters, page);
-  }
-  getPage(page: number) : CharacterModel[]{
-    return super.getPage(page);
-  }
-
-  set character(character: CharacterModel){
-    this._character = character;
-  }
-  get character(){
-    return this._character;
+  requestById(id: number, entity: EntityEnum) : Observable<CharacterModel> {
+    return super.requestById(id, entity)
   }
 }

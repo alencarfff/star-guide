@@ -9,6 +9,6 @@ export class StarshipResolve implements Resolve<StarshipResolve> {
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot) : Observable<StarshipResolve[]> | Promise<any> | any {
-        return this.starshipService.requestPage(1);
+        return this.starshipService.requestPage(1, null);
     }
 }

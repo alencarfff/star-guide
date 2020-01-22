@@ -1,27 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment'
 import { Observable } from 'rxjs';
-import CachedPagination from '../classes/cached-pagination.class';
+import CachedPagination from './cached-pagination.service';
 import SpecieModel from '../models/specie.model';
 
 @Injectable({ providedIn: 'root' })
 export class SpecieService extends CachedPagination {
-  private url: string = environment.url + "/species";
-
-  private _species: SpecieModel[][] = new Array();
+  private url: string = environment.url + "/species/";
   private _specie: SpecieModel;
 
-  requestPage(page: number) : Observable<any>{
-    return super.requestPage(page, this.url);
-  }
-  requestByUrl(url: string) : Observable<SpecieModel>{
-    return super.requestByUrl(url);
-  }
-  savePage(species: SpecieModel[], page: number) {
-    super.savePage(species, page);
-  }
-  getPage(page: number) : SpecieModel[]{
-    return super.getPage(page);
+  requestPage(page: number, search: string) : Observable<any>{
+    return super.requestPage(page, search, this.url);
   }
 
   set specie(specie: SpecieModel){

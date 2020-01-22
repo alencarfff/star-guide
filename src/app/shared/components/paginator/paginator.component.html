@@ -1,5 +1,15 @@
 <div class="row">
-    <button (click)="previousPage()">Previous</button>
+    <button 
+        (click)="previousPage()"
+        [ngClass]="!pageable.previous ? 'disabled' : ''">
+        Previous
+    </button>
+
     <span>{{ pageable.page }}</span>
-    <button (click)="nextPage()">Next</button>
+
+    <button 
+        (click)="nextPage()" 
+        [ngClass]="!pageable.next ? 'disabled' : ''">
+        Next
+    </button>
 </div>

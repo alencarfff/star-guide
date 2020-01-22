@@ -10,6 +10,6 @@ export class SpecieResolver implements Resolve<SpecieModel> {
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot) : Observable<SpecieModel[]> | Promise<any> | any {
-        return this.SpecieService.requestPage(1);
+        return this.SpecieService.requestPage(1, null);
     }
 }

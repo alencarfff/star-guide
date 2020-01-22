@@ -1,5 +1,5 @@
 export enum EntityEnum {
-    MOVIE = "movies",
+    MOVIE = "films",
     CHARACTER = "people",
     PLANET = "planets",
     SPECIE = "species",

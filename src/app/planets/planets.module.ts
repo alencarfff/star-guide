@@ -5,6 +5,7 @@ import { PlanetListComponent } from './planet-list/planet-list.component';
 import { PaginatorModule } from '../shared/components/paginator/paginator.module';
 import { CardModule } from '../shared/components/cards/card/card.module';
 import { CardListModule } from '../shared/components/cards/card-list/card-list.module';
+import { SearchModule } from '../shared/components/search/search.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CardListModule } from '../shared/components/cards/card-list/card-list.m
     CommonModule,
     PaginatorModule,
     CardModule,
-    CardListModule
+    CardListModule,
+    SearchModule
   ]
 })
 export class PlanetsModule { }

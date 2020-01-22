@@ -1,1 +1,20 @@
-<p>starship-detail works!</p>
+<sw-entity-detail *ngIf="starship"
+    [title]="starship.name" 
+    imagePath="'/assets/img/default.jpg'" 
+    entity="Starship">
+    
+    <p><span class="bold">Model: </span> {{ starship.model }}</p>
+    <p><span class="bold">Manufacturer: </span> {{ starship.manufacturer }}</p>
+    <p><span class="bold">Cost: </span> {{ starship.cost_in_credits != "unknown" ? ((starship.cost_in_credits | number: '1.0-2') + " credits" ) : "unknown" }}</p>
+    <p><span class="bold">Length: </span>{{ starship.length ? (starship.length | number: '1.0-2') + 'm' : starship.length }}</p>
+    <p><span class="bold">Starship class: </span> {{ starship.starship_class }}</p>
+    <p><span class="bold">MGLT: </span> {{ starship.MGLT }}</p>
+    
+    <hr class="mv-25" />
+    
+    <p><span class="bold">Crew: </span> {{ starship.crew }}</p>
+    <p><span class="bold">Passengers: </span> {{ starship.passengers }}</p>
+    <p><span class="bold">Cargo capacity: </span> {{ starship.cargo_capacity ? ((starship.cargo_capacity | number: '1.0-2') + "kg") : starship.cargo_capacity }}</p>
+    <p><span class="bold">Max aftmosphering speed: </span> {{ starship.max_atmosphering_speed }}</p>
+    <p><span class="bold">Consumables: </span> {{ starship.consumables }}</p>
+</sw-entity-detail>

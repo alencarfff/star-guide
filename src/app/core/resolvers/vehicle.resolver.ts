@@ -10,6 +10,6 @@ export class VehicleResolver implements Resolve<VehicleModel> {
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot) : Observable<VehicleModel[]> | Promise<any> | any {
-        return this.VehicleService.requestPage(1);
+        return this.VehicleService.requestPage(1, null);
     }
 }

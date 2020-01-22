@@ -1,6 +1,10 @@
 @import 'global/variables';
 
-.content {
-    min-height: $content-min-height;
-    padding: 5px 0;
+.section-wrapper {
+    margin: 5px 0 25px;
+ 
+    .content {
+        min-height: $content-min-height;
+        padding: 5px 0;
+    }
 }

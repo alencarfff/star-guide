@@ -3,7 +3,7 @@ import { EntityEnum } from 'src/app/core/models/entity.enum';
 import { PageableModel } from 'src/app/core/models/pageable.model';
 import StarshipModel from 'src/app/core/models/starship.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UtilService } from 'src/app/core/util.service';
+import UtilService  from 'src/app/core/util.service';
 import { StarshipService } from 'src/app/core/services/starship.service';
 
 @Component({
@@ -12,8 +12,8 @@ import { StarshipService } from 'src/app/core/services/starship.service';
   styleUrls: ['./starship-list.component.scss']
 })
 export class StarshipListComponent implements OnInit {
-  private readonly actualEntity: EntityEnum.STARSHIP;
-
+  private readonly actualEntity: EntityEnum = EntityEnum.STARSHIP;
+  private searchValue: string = null;
   private pageable: PageableModel = { next: null, previous: null, page: 1 };
   private starships: StarshipModel[] = [];
   
@@ -28,14 +28,14 @@ export class StarshipListComponent implements OnInit {
     this.starships = response.results;
     this.pageable.next = response.next;
     this.pageable.previous = response.previous;
-    this.starshipService.savePage(this.starships, this.pageable.page);
+    this.starshipService.savePage(response, this.pageable.page);
   }
 
   request(){
-    const starships = this.starshipService.getPage(this.pageable.page);
+    const response = this.starshipService.getPage(this.pageable.page);
 
-    if( starships.length > 0 ){
-      this.starships = starships;
+    if( response ){
+      this.starships = response.results;
     }
     else {
       this.update();
@@ -43,13 +43,25 @@ export class StarshipListComponent implements OnInit {
   }
 
   update(){
-    this.starshipService.requestPage(this.pageable.page).subscribe(response => {
+    this.starshipService.requestPage(this.pageable.page, this.searchValue).subscribe(response => {
       this.starships = response.results;
       this.pageable.next = response.next;
       this.pageable.previous = response.previous;      
 
       this.starshipService.savePage(response.results, this.pageable.page);
     });
+  }
+
+  search(value: string){
+    this.searchValue = value;
+    this.starshipService
+      .search(value, this.actualEntity)
+      .subscribe(response => {
+        this.starships = response.results;
+        this.pageable.next = response.next;
+        this.pageable.previous = response.previous;
+        this.pageable.page = 1; 
+      });
   }
 
   getImage(url: string) : string {

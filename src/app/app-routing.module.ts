@@ -23,10 +23,10 @@ import { VehicleResolver } from './core/resolvers/vehicle.resolver';
 import { SpecieResolver } from './core/resolvers/specie.resolver';
 
 const routes: Routes = [
-  { 
-    path: "", 
+  {
+    path: "",
     component: HomeComponent,
-    resolve: { 
+    resolve: {
       movies: MovieResolver,
       characters: CharacterResolver,
       planets: PlanetResolve,
@@ -38,22 +38,22 @@ const routes: Routes = [
       { path: "", pathMatch: "full", redirectTo: "movies" },
 
       { path: "movies", component: MovieListComponent },
-      { path: "movies/:id", component: MovieDetailComponent }, 
+      { path: "movies/:id", component: MovieDetailComponent },
 
       { path: "characters", component: CharacterListComponent },
-      { path: "characters/:id", component: CharacterDetailComponent }, 
-      
+      { path: "characters/:id", component: CharacterDetailComponent },
+
       { path: "planets", component: PlanetListComponent },
-      { path: "planets/:id", component: PlanetDetailComponent }, 
-      
+      { path: "planets/:id", component: PlanetDetailComponent },
+
       { path: "starships", component: StarshipListComponent },
-      { path: "starships/:id", component: StarshipDetailComponent }, 
+      { path: "starships/:id", component: StarshipDetailComponent },
 
       { path: "vehicles", component: VehicleListComponent },
-      { path: "vehicles/:id", component: VehicleDetailComponent }, 
+      { path: "vehicles/:id", component: VehicleDetailComponent },
 
       { path: "species", component: SpecieListComponent },
-      { path: "species/:id", component: SpecieDetailComponent }, 
+      { path: "species/:id", component: SpecieDetailComponent },
     ]
   },
   { path: "**", component: ErrorPageComponent }

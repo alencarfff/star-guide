@@ -1,1 +1,41 @@
-<p>planet-detail works!</p>
+<div class="planet">    
+    <div class="content">
+        <div class="section-data" *ngIf="planet">
+            <div class="column-left">
+                <div class="header">
+                    <h2 class="title">{{ planet.name }}</h2>
+                    <p class="subtitle">Planet</p>
+                </div>
+
+                <div class="production mv-25">
+                    <p><span class="bold">Rotation Period: </span> {{ planet.rotation_period + ' hours' }}</p>
+                    <p><span class="bold">Orbital Period: </span> {{ planet.orbital_period + ' days' }}</p>
+                    <p><span class="bold">Diameter: </span> {{ planet.diameter + 'km' }}</p>
+                    <p><span class="bold">Gravity: </span>{{ planet.gravity }}</p>
+
+                    <hr class="mv-25" />
+
+                    <p><span class="bold">Climate: </span> {{ planet.climate }}</p>
+                    <p><span class="bold">Terrain: </span> {{ planet.terrain }}</p>
+                    <p><span class="bold">Surface water: </span> {{ planet.surface_water + '%' }}</p>
+
+                    <br>
+
+                    <p><span class="bold">Population: </span> {{ planet.population != "unknown" ? (planet.population | number: '1.0-2') : planet.population }}</p>
+                </div>
+                
+                <div class="mv-25">
+                    <p *ngFor="let movie of relatedMovies">
+                        Episode {{ movie.episode_id }} - {{ movie.title }}
+                    </p>
+                </div>    
+            </div>
+            <div class="column-right">
+                <div class="image-container">
+                    <!-- <img *ngIf="planetId" [src]="'/assets/img/planets/' + planetId + '.jpg'" /> -->
+                    <img [src]="'/assets/img/default.jpg'" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

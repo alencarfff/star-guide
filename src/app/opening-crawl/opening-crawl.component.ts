@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import MovieModel from '../core/models/movie.model';
-import { UtilService } from '../core/util.service';
+import UtilService  from '../core/util.service';
 
 @Component({
   selector: 'sw-opening-crawl',
