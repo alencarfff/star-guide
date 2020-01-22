@@ -1,0 +1,11 @@
+<div class="row">
+    <h3 class="header-title">Starships</h3> 
+    <sw-search (onSearch)="search($event)"></sw-search>    
+</div>
+
+<sw-card-list [items]="starships" (onClick)="goToDetail($event)"></sw-card-list>
+
+<sw-paginator
+    (onChange)="request()"
+    [pageable]="pageable">
+</sw-paginator>

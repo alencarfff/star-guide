@@ -5,7 +5,7 @@
         <sw-opening-crawl [movie]="movie"></sw-opening-crawl>
     </div>
     
-    <div class="content">
+    <div class="content" *ngIf="movie">
         <div class="section-data">
             <div class="column-left">
                 <div class="header">
@@ -32,36 +32,9 @@
             </div>
             <div class="column-right">
                 <div class="image-container">
-                    <img [src]="'/assets/img/movies/' + toRoman(movieId) + '/bg.jpg'" />
+                    <img [src]="'/assets/img/movies/' + toRoman(movieId) + '.jpg'" />
                 </div>
             </div>
-        </div>
-        
-        <div>
-            <sw-character-list
-                [characterUrls]="movie.characters"
-                [movieId]="movie.episode_id">
-            </sw-character-list>
-        </div>
-        
-        <div>
-            <h3>Planets</h3>
-            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
-        </div>
-        
-        <div>
-            <h3>Starships</h3>
-            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
-        </div>
-        
-        <div>
-            <h3>Vehicles</h3>
-            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
-        </div>
-        
-        <div>
-            <h3>Species</h3>
-            <!-- <sw-character-list [movieCharacters]="movie.characters"></sw-character-list> -->
         </div>
     </div>
 </div>

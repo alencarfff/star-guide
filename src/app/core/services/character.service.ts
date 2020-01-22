@@ -1,38 +1,19 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import CharacterModel from '../models/character.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment'
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment'
+
+import { EntityEnum } from '../models/entity.enum';
+import CharacterModel from '../models/character.model';
+import CacheTools from '../classes/cache-tools.class';
 
 @Injectable({ providedIn: 'root' })
-export class CharacterService {
-  private url: string = environment.url;
-
-  private _characters: CharacterModel[];
-  private _character: CharacterModel;
-  private characterUpdate = new EventEmitter<CharacterModel>();
-
-  constructor(private http: HttpClient){}
-
-  requestCharacters() : Observable<CharacterModel[]>{
-    return this.http.get<CharacterModel[]>(`${this.url}/people`);
+export default class CharacterService extends CacheTools {
+  private url: string = environment.url + "/people/";
+  
+  requestPage(page: number, search: string) : Observable<any>{
+    return super.requestPage(page, search, this.url);
   }
-
-  requestCharacterByUrl(url: string){
-    return this.http.get<CharacterModel>(`${url}`);
-  }
-
-  set characters(characters: CharacterModel[]){
-    this._characters = characters;
-  }
-  get characters(){
-    return this._characters;
-  }
-
-  set character(character: CharacterModel){
-    this._character = character;
-  }
-  get character(){
-    return this._character;
+  requestById(id: number, entity: EntityEnum) : Observable<CharacterModel> {
+    return super.requestById(id, entity)
   }
 }

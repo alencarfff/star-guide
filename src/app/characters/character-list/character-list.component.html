@@ -1,17 +1,15 @@
 <div class="row">
-    <h3>Characters</h3>
-    <button>Expand ({{ characters.length }})</button>
+    <h3 class="header-title">Characters</h3> 
+    <sw-search (onSearch)="search($event)"></sw-search>    
 </div>
 
-<ul class="character-list">
-    <li *ngFor="let character of characters" class="character-item">
-        <div class="character">
-            <div class="image-container" *ngIf="movieId != 0">
-                <img src="../../../assets/img/movies/iii/characters/anakin-skywalker.png" />
-            </div>
-            <div class="body">
-                <h4 class="name">{{ character.name }}</h4>
-            </div>
-        </div>
-    </li>
-</ul>
+<sw-card-list 
+    [items]="characters" 
+    [actualEntity]="actualEntity" 
+    (onClick)="goToDetail($event)">
+</sw-card-list>
+
+<sw-paginator
+    (onChange)="request()"
+    [pageable]="pageable">
+</sw-paginator>

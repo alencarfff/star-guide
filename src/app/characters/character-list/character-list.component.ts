@@ -1,50 +1,87 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { CharacterService } from 'src/app/core/services/character.service';
-import { UtilService } from 'src/app/core/util.service';
+import { Component, OnInit } from '@angular/core';
+import CharacterService from 'src/app/core/services/character.service';
 import CharacterModel from 'src/app/core/models/character.model';
-import { Subscription } from 'rxjs';
+import { PageableModel } from 'src/app/core/models/pageable.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EntityEnum } from 'src/app/core/models/entity.enum';
+import UtilService  from 'src/app/core/util.service';
+import RouteInterface from 'src/app/core/interfaces/route.interface';
 
 @Component({
   selector: 'sw-character-list',
   templateUrl: './character-list.component.html',
   styleUrls: ['./character-list.component.scss']
 })
-export class CharacterListComponent implements OnInit, OnDestroy {
-  @Input() characterUrls: string[];
-  @Input() movieId;
+export class CharacterListComponent implements OnInit {
+  private readonly actualEntity: EntityEnum = EntityEnum.CHARACTER;
+  private searchValue: string = null;
   private characters: CharacterModel[] = [];
-  private subscriptions: Subscription[] = [];
+  private pageable: PageableModel;
 
-  constructor(private characterService: CharacterService,
-              private utilService: UtilService) {}
+  constructor(private activatedRoute: ActivatedRoute, 
+    private router: Router,
+    private utilService: UtilService,
+    private characterService: CharacterService) {
 
-  private readonly moviesAssetsPath: string = "/src/assets/img/movies";
+    this.pageable = { next: null, previous: null, page: 1 }
+  }
 
   ngOnInit() {
-    this.characterUrls.forEach(characterUrl => {
-      this.subscriptions.push(
-        this.characterService.requestCharacterByUrl(characterUrl).subscribe(character => {
-          this.characters.push(character);
-        })
-      );
+    const page = this.activatedRoute.snapshot.parent.data['characters'];
+
+    this.characters = page.results;
+    this.pageable.next = page.next;
+    this.pageable.previous = page.previous;
+    this.characterService.savePage(page, this.pageable.page);
+  }
+
+  request(){
+    const page = this.characterService.getPage(this.pageable.page);
+    console.log(this.pageable, page)
+
+    if( page ){
+      this.characters = page.results;
+    } 
+    else {
+      this.update()
+    }
+  }
+
+  search(value: string){
+    this.searchValue = value;
+    this.characterService
+      .search(value, this.actualEntity)
+      .subscribe(response => {
+        this.characters = response.results;
+        this.pageable.next = response.next;
+        this.pageable.previous = response.previous;
+        this.pageable.page = 1; 
+      });
+  }
+
+  update(){
+    this.characterService.requestPage(this.pageable.page, this.searchValue).subscribe(response => {
+      this.characters = response.results;
+      this.pageable.next = response.next;
+      this.pageable.previous = response.previous;      
+
+      if( !this.searchValue ){
+        this.characterService.savePage(response, this.pageable.page);
+      }
     });
   }
 
-  toRoman(num: number){
-    return this.utilService.toRoman(num);
+  getImage(url: string){
+    return this.utilService.getEntityImage(url, this.actualEntity);
+  }
+  
+  getId(character: CharacterModel){
+    return this.utilService.getEntityId(character.url);
   }
 
-  getCharacterImage(character: CharacterModel){
-    return `${this.moviesAssetsPath}/${this.toRoman(this.movieId)}/characters/${this.getCharacterId(character.url)}`;
-  }
-
-  getCharacterId(url: string){
-    return 0;
-  }
-
-  ngOnDestroy(){
-    this.subscriptions.forEach(sub => {
-      sub.unsubscribe();
-    });
+  goToDetail(position: number){
+    const character = this.characters[position];
+    this.characterService.setPreloadedItem = character;
+    this.router.navigate(['characters', this.getId(character)]);
   }
 }

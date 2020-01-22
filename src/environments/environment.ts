@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: "https://cors-anywhere.herokuapp.com/https://swapi.co/api"
+  // url: "https://cors-anywhere.herokuapp.com/https://swapi.co/api"
+  url: "https://swapi.co/api"
 };
 
 /*

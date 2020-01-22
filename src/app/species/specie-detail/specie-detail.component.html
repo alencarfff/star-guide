@@ -1,0 +1,18 @@
+<sw-entity-detail *ngIf="specie"
+    [title]="specie.name" 
+    imagePath="'/assets/img/default.jpg'" 
+    entity="Specie">
+
+    <p><span class="bold">Classification: </span> {{ specie.classification }}</p>
+    <p><span class="bold">Designation: </span> {{ specie.designation }}</p>
+    <p><span class="bold">Average lifespan: </span> {{ specie.average_lifespan }}</p>
+    <p><span class="bold">Language: </span> {{ specie.language }}</p>
+    
+    <hr class="mv-25" />
+    
+    <p><span class="bold">Average Height: </span> {{ specie.average_height }}</p>
+    <p><span class="bold">Skin colors: </span> {{ specie.skin_colors }}</p>
+    <p><span class="bold">Hair color: </span> {{ specie.hair_colors }}</p>
+    <p><span class="bold">Eye colors: </span> {{ specie.eye_colors }}</p>
+
+</sw-entity-detail>

@@ -1,0 +1,43 @@
+.card {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    border: 1px solid #00abdf;
+    border-radius: 3px;
+    // transition: border 250ms ease-in-out,
+    //             color 300ms ease,
+    //             text-shadow 300ms ease;
+
+    @media screen and (max-width: 1024px){
+        .image-container {
+            padding: 0 !important;
+        }
+        .body {
+            padding: 0 5px !important;
+        }
+    }
+
+    .image-container {
+        max-width: 100%;
+        padding: 15px 40px 0;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .body {
+        font-size: calc(.5em + .75vmax);
+        text-align: center;
+
+        .name {
+            margin: 0;
+            padding: 10px 10px 15px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }   
+    }
+}

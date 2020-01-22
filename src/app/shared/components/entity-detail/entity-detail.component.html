@@ -1,0 +1,21 @@
+<div class="character">    
+    <div class="content">
+        <div class="section-data">
+            <div class="column-left">
+                <div class="header">
+                    <h2 class="title">{{ title }} </h2>
+                    <p class="subtitle">{{ entity }}</p>
+                </div>
+                <div class="mv-25 body">
+                    <ng-content></ng-content>
+                </div>
+            </div>
+            <div class="column-right">
+                <div class="image-container">
+                    <!-- <img *ngIf="characterId" [src]="'/assets/img/characters/' + characterId + '.jpg'" /> -->
+                    <img [src]="imagePath" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,9 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: ActivatedRoute,
               private movieService: MovieService) { }
 
-  ngOnInit() {
-    this.movieService.movies = this.router.snapshot.data['movies'];
-  }
+  ngOnInit() {}
 
   toRoman(num) {
     var roman = { x: 10, ix: 9, v: 5, iv: 4, i: 1 };

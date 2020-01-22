@@ -1,41 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import MovieModel from 'src/app/core/models/movie.model';
 import MovieService from 'src/app/core/services/movie.service';
-import { UtilService } from 'src/app/core/util.service';
+import UtilService  from 'src/app/core/util.service';
+import CacheTools from 'src/app/core/classes/cache-tools.class';
+import { EntityEnum } from 'src/app/core/models/entity.enum';
+import { EntityDetailComponent } from 'src/app/shared/components/entity-detail/entity-detail.component';
+import { Subscription } from 'rxjs';
+import EntityInfo from 'src/app/core/models/entity-info.model';
 
 @Component({
   selector: 'sw-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.scss']
+  styleUrls: [
+    './movie-detail.component.scss',
+  ]
 })
-export class MovieDetailComponent implements OnInit {
+export class MovieDetailComponent extends EntityDetailComponent implements OnInit {
   private movie: MovieModel;
   private movieId: number = 0;
   private textIsPlaying: boolean = false;
 
-  constructor(private movieService: MovieService,
-              private utilService: UtilService,
-              private activatedRoute: ActivatedRoute) { }
+  constructor(injector: Injector) { 
+    super(injector);            
+  }
 
   ngOnInit() {
-    const movie = this.movieService.movie || null;
-
-    if( movie ) {
-      this.movie = movie;
-    }
-    else {
-      this.movie = this.getMovieFromRoute();
-    }
-
-    this.movieId = this.movie.episode_id || 0;
-
-    this.movieService.observeMovieChange().subscribe(movie => {
-      this.movie = movie;
-      this.movieId = movie.episode_id;
-    });
-
+    super.loadFromCacheOrRequestEntity(this.movieService, EntityEnum.MOVIE, this.fill.bind(this));
+    
     this.activateStopTextTimer();
+  }
+
+  fill(info: EntityInfo, subscription: Subscription) {    
+    console.log(info)
+    this.movie = info.entity;
+    this.movieId = this.movie.episode_id;
+
+    if( subscription ) {
+      subscription.unsubscribe();
+    }
   }
 
   skipOrShowText(){
@@ -57,12 +60,5 @@ export class MovieDetailComponent implements OnInit {
 
   toRoman(num: number){
     return this.utilService.toRoman(num);
-  }
-
-  getMovieFromRoute(){
-    const movies: MovieModel[] = this.movieService.movies || null;
-    const position = +this.activatedRoute.snapshot.params['id']
-
-    return movies[position - 1];
   }
 }

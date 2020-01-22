@@ -9,6 +9,8 @@ section {
 p {
     text-align: center;
     margin: 0 auto;
+    padding: 5px 0;
+    font-size: calc(.5em + .75vmax);
     color: $txt-color--default;
     font-family: 'Star Jedi', sans-serif;
 
@@ -16,12 +18,5 @@ p {
         color: $txt-color--default;
         text-decoration: none;
         border-bottom: 1px solid cyan;
-        transition: color 300ms ease,
-                    border-bottom 300ms ease;
-
-        &:hover {
-            color: cyan;
-            border-bottom: 1px solid #000;
-        }
     }
 }
