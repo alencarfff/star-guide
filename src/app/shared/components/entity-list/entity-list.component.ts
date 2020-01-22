@@ -18,22 +18,22 @@ export class EntityListComponent implements RouteInterface {
   protected utilService: UtilService;
   protected router: Router;
 
-  constructor(injector: Injector, 
+  constructor(injector: Injector,
     private entityService: any,
     private entityEnum: EntityEnum) {
 
     this.pageable = { next: null, previous: null, page: 1 }
 
-    this.activatedRoute = injector.get(ActivatedRoute); 
+    this.activatedRoute = injector.get(ActivatedRoute);
     this.utilService = injector.get(UtilService);
     this.router = injector.get(Router);
   }
 
   loadDataFromRouteOrRequest(fillDataCb: Function){
     const routeData = this.getRouteData();
-    
+
     if( routeData ){
-      this.entityService.savePage(routeData, this.pageable.page);  
+      this.entityService.savePage(routeData, this.pageable.page);
 
       fillDataCb(routeData.results, null);
     }
@@ -48,7 +48,7 @@ export class EntityListComponent implements RouteInterface {
 
   private request(fillDataCb: Function){
     const page = this.entityService.getPage(this.pageable.page);
-    
+
     if( page ){
       fillDataCb(page.results, null);
     }
@@ -56,7 +56,7 @@ export class EntityListComponent implements RouteInterface {
       const subcription = this.entityService
         .requestPage(this.pageable.page, this.searchValue)
         .subscribe(page => {
-          this.entityService.savePage(page, this.pageable.page);  
+          this.entityService.savePage(page, this.pageable.page);
 
           fillDataCb(page.results, subcription);
         });
@@ -75,7 +75,7 @@ export class EntityListComponent implements RouteInterface {
         updateCb({ search: this.search, page });
       });
   }
-  
+
   getImage(url: string) : string {
     return this.utilService.getEntityImage(url, this.entityEnum);
   }

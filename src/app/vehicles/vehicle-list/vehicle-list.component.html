@@ -1,10 +1,10 @@
 <div class="row">
     <h3 class="header-title">Vehicles</h3>
-    <sw-search (onSearch)="search($event)"></sw-search>    
+    <sw-search (onSearch)="search($event)"></sw-search>
 </div>
 
-<sw-card-list 
-    [items]="vehicles" 
+<sw-card-list
+    [items]="vehicles"
     (onClick)="goToDetail($event)">
 </sw-card-list>
 

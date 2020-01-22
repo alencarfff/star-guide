@@ -29,7 +29,7 @@ export class EntityDetailComponent {
     if( entity ) {
       const id = this.utilService.getEntityId(entity.url);
       const relatedMovies = this.utilService.getEntityRelatedMovies(this.movieService, entity);
-      
+
       fillDataCb({ entity, id, relatedMovies}, null)
     }
     else {
