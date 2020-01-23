@@ -12,9 +12,7 @@ import EntityInfo from 'src/app/core/models/entity-info.model';
 @Component({
   selector: 'sw-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrls: [
-    './movie-detail.component.scss',
-  ]
+  styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent extends EntityDetailComponent implements OnInit {
   private movie: MovieModel;

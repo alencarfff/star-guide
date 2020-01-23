@@ -12,7 +12,7 @@ import { EntityEnum } from 'src/app/core/models/entity.enum';
 export class EntityDetailComponent {
   @Input() private title: string = "";
   @Input() private imagePath: string = "";
-  @Input() private entity: string = "";
+  @Input() private subtitle: string = "";
   protected movieService: MovieService;
   protected utilService: UtilService;
   protected activatedRoute: ActivatedRoute;
