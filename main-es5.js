@@ -6992,7 +6992,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var environment = {
       production: false,
       // url: "https://cors-anywhere.herokuapp.com/https://swapi.co/api"
-      url: "https://swapi.co/api"
+      url: "https://swapi.dev/api"
     };
     /*
      * For easier debugging in development mode, you can import the following file
